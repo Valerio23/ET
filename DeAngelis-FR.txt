@@ -1,0 +1,3 @@
+1. The system shall send a join request for a group travel to that travel creator.
+2. The system shall notify the user when someone joins her/his group travels.
+3. The system shall provide an accept or decline feature for a follow request.
