@@ -1,0 +1,7 @@
+Functional requirements
+1.	The system shall provide a research of a destination based on some filters.
+2.	The system shall notify the user when someone asks to follow her/him.
+3.	The system shall provide an accept or decline feature for a join request about a group travel.
+
+Dictionary:
+•	Filters: continent, sea or mountain place, youth place, art place.
