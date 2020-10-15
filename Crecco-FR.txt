@@ -1,0 +1,8 @@
+Functional requirements
+1.	The system shall provide a modify personal information* feature.
+2.	The system shall provide a list of the other user’s travels filtered by destination.
+3.	The system shall provide for all the users an upload photo feature.
+
+
+Dictionary:
+- personal information: username, email and password.
