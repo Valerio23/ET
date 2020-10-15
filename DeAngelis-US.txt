@@ -1,0 +1,5 @@
+1. As a new user, I want to find an intuitive front-end with clear and coincise instrunctions, so that I can quickly learn how to book and organize my travels. 
+
+2. As a user, I want the possibility to see the list of users who joined my travel, so that I can manage the travel.
+
+3. As a user, I want to receive a notification for the travel i\'92ve joined, so that i can know if the organiser accepted me or not.
