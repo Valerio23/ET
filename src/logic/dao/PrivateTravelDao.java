@@ -217,6 +217,7 @@ public class PrivateTravelDao {
         return listOfTravells;
     }
     
+   
     public static List<PrivateTravel> retrieveTravels(String username) throws SystemException {
     	
     	 Statement stmt = null;
@@ -239,7 +240,7 @@ public class PrivateTravelDao {
              return listOfTravells;
          } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
-		} finally {
+         } finally {
         	 try {
                  if (stmt != null)
                      stmt.close();
@@ -254,7 +255,7 @@ public class PrivateTravelDao {
     	
    	 	Statement stmt = null;
         
-        List<PrivateTravel> listOfTravells = new ArrayList<>();
+        List<PrivateTravel> listOfSavedTravells = new ArrayList<>();
                 
         try {
        	 
@@ -265,13 +266,13 @@ public class PrivateTravelDao {
             ResultSet rs = SimpleQueries.selectUpcomingTravels(stmt, username);
 
             if (!rs.first()){ // rs empty
-            	return listOfTravells;
+            	return listOfSavedTravells;
             }
             
-            listOfTravells = setPrivateTravelInfoFromResultSet(rs);
+            listOfSavedTravells = setPrivateTravelInfoFromResultSet(rs);
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-            return listOfTravells;
+            return listOfSavedTravells;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -289,7 +290,7 @@ public class PrivateTravelDao {
     	
    	 	Statement stmt = null;
         
-        List<PrivateTravel> listOfTravells = new ArrayList<>();
+        List<PrivateTravel> listOfNextBookedTravells = new ArrayList<>();
         
         try {
             // creazione ed esecuzione della query
@@ -297,13 +298,13 @@ public class PrivateTravelDao {
             ResultSet rs = SimpleQueries.selectUpcomingBookedTravels(stmt, username);
 
             if (!rs.first()){ // rs empty
-            	return listOfTravells;
+            	return listOfNextBookedTravells;
             }
             
-            listOfTravells = setPrivateTravelInfoFromResultSet(rs);
+            listOfNextBookedTravells = setPrivateTravelInfoFromResultSet(rs);
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-            return listOfTravells;
+            return listOfNextBookedTravells;
          } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		 } finally {
