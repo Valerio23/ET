@@ -45,9 +45,9 @@ public class NotifSingletonClass {
 	private JoinNotificationBean joinToJoinBeanNotification(JoinNotification joinNotification) {
 		// JoiNotification to JoinNotificationBean
 		PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-		viaggioGruppoBean.setIdTravel(String.valueOf(joinNotification.getTravel().getIdTravel()));
-		viaggioGruppoBean.setTravelName(joinNotification.getTravel().getTravelName());
-		return new JoinNotificationBean(joinNotification.getId(), joinNotification.getSender().getUsername(), viaggioGruppoBean, joinNotification.getMsg(), joinNotification.getDate());
+		viaggioGruppoBean.setIdTravel(String.valueOf(joinNotification.getTravelJoin().getIdTravel()));
+		viaggioGruppoBean.setTravelName(joinNotification.getTravelJoin().getTravelName());
+		return new JoinNotificationBean(joinNotification.getIdJoin(), joinNotification.getSenderJoin().getUsername(), viaggioGruppoBean, joinNotification.getMsgJoin(), joinNotification.getDateJoin());
 	}
 	
 	public List<JoinNotificationBean> getJoinNotifList(String username) {
@@ -69,7 +69,7 @@ public class NotifSingletonClass {
 
 	private FollowNotificationBean followToFollowBeanNotification(FollowNotification followNotification) {
 		// FollowNotification to FollowNotificationBean
-		return new FollowNotificationBean(followNotification.getId(), followNotification.getSender().getUsername(), followNotification.getMsg(), followNotification.getDate());
+		return new FollowNotificationBean(followNotification.getIdFollow(), followNotification.getSenderFollow().getUsername(), followNotification.getMsgFollow(), followNotification.getDateFollow());
 	}
 	
 	public List<FollowNotificationBean> getFollowNotifList(String username) {
@@ -90,7 +90,7 @@ public class NotifSingletonClass {
 
 	private ReplyNotificationBean replyToReplyBeanNotification(ReplyNotification replyNotification) {
 		// ReplyNotification to ReplyNotificationBean
-		return new ReplyNotificationBean(replyNotification.getId(), replyNotification.getSender().getUsername(), replyNotification.getMsg(), replyNotification.getDate());
+		return new ReplyNotificationBean(replyNotification.getIdReply(), replyNotification.getSenderReply().getUsername(), replyNotification.getMsgReply(), replyNotification.getDateReply());
 	}
 	
 	public List<ReplyNotificationBean> getReplyNotifList(String username) {

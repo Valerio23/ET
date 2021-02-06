@@ -583,7 +583,7 @@ public class PublicTravelDao {
     	try {
             // creazione ed esecuzione della query
             stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            CRUDQueries.joinGrTravel(stmt, joinNotification.getSender().getUsername(), joinNotification.getTravel().getIdTravel(), joinNotification.getMsg());
+            CRUDQueries.joinGrTravel(stmt, joinNotification.getSenderJoin().getUsername(), joinNotification.getTravelJoin().getIdTravel(), joinNotification.getMsgJoin());
         } catch (SQLException e) {
 			throw new SystemException("Error in sending request... retry!");
 		} finally {

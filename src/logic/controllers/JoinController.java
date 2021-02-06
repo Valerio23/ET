@@ -76,9 +76,9 @@ public class JoinController {
 		PublicTravel viaggioGruppo = new PublicTravel();
 		viaggioGruppo.setIdTravel(idTravel);
 		JoinNotification joinNotification = new JoinNotification();
-		joinNotification.setSender(sender);
-		joinNotification.setTravel(viaggioGruppo);
-		joinNotification.setMsg(sender.getUsername() + " ha richiesto di unirsi al viaggio: " + travelName);
+		joinNotification.setSenderJoin(sender);
+		joinNotification.setTravelJoin(viaggioGruppo);
+		joinNotification.setMsgJoin(sender.getUsername() + " ha richiesto di unirsi al viaggio: " + travelName + " con destinazione " + viaggioGruppoBean.getDestination());
 
 		/* Controllo che non esista già la mia richiesta */
 		PublicTravelDao.checkRequests(idTravel, username);

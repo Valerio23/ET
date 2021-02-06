@@ -48,11 +48,11 @@ public class FollowNotificationDao {
 				receiver.setUsername(rs.getString("Receiver"));
 				
 				FollowNotification followNotification = new FollowNotification();
-				followNotification.setId(rs.getInt("id"));
-				followNotification.setMsg(rs.getString(MESSAGE));
-				followNotification.setSender(sender);
-				followNotification.setReceiver(receiver);
-				followNotification.setDate(rs.getString("Date"));
+				followNotification.setIdFollow(rs.getInt("id"));
+				followNotification.setMsgFollow(rs.getString(MESSAGE));
+				followNotification.setSenderFollow(sender);
+				followNotification.setReceiverFollow(receiver);
+				followNotification.setDateFollow(rs.getString("Date"));
 				
 				followNotifications.add(followNotification);
 			} while(rs.next());

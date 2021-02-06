@@ -31,8 +31,7 @@ public class ProfileController {
 	private static final String WEB_CONTENT = "WebContent";
 	private static final String USR_DIR = "user.dir";
 	
-	public List<String> retrieveTravelPhotos(String idViaggio) throws SystemException {
-		List<String> filenames = PrivateTravelDao.retrieveTravelPhoto(Integer.valueOf(idViaggio));
+	private List<String> setSavePaths(List<String> filenames){
 		List<String> savePaths = new ArrayList<>();
 		String currentDirectoryProject = System.getProperty(USR_DIR);
     	String savePath = "";
@@ -40,74 +39,66 @@ public class ProfileController {
 			savePath = currentDirectoryProject + File.separator + WEB_CONTENT + File.separator + IMAGES + File.separator + DB_IMAGES + File.separator +  filename;
 			savePaths.add(savePath);
 		}
-		return savePaths;	
+		return savePaths;
+	}
+	
+	public List<String> retrieveTravelPhotos(String idViaggio) throws SystemException {
+		List<String> filenames = PrivateTravelDao.retrieveTravelPhoto(Integer.valueOf(idViaggio));
+		return setSavePaths(filenames);	
 	}
 	
 	public List<String> retrieveTravelGroupPhotos(String idViaggioGruppo) throws SystemException {
 		List<String> filenames = PublicTravelDao.retrieveTravelGroupPhoto(Integer.valueOf(idViaggioGruppo));
-		List<String> savePaths = new ArrayList<>();
-		String currentDirectoryProject = System.getProperty(USR_DIR);
-    	String savePath = "";
-		for(String filename : filenames) {
-			savePath = currentDirectoryProject + File.separator + WEB_CONTENT + File.separator + IMAGES + File.separator + DB_IMAGES + File.separator +  filename;
-			savePaths.add(savePath);
-		}
-		return savePaths;	
+		return setSavePaths(filenames);	
 	}
 	
-	public List<PrivateTravelBean> loadMyOldT(String username) throws SystemException {
-		List<PrivateTravel> travels;
+	
+	private List<PrivateTravelBean> setPrivateTravelsInfo(List<PrivateTravel> travels){
+		
 		List<PrivateTravelBean> travelsBean = new ArrayList<>();
 		
-		travels = PrivateTravelDao.retrieveTravels(username);
-	
 		for(PrivateTravel vg : travels) {
-			HotelBean hotelBean = new HotelBean();
-            hotelBean.setBreakfast(vg.getHotelInfo().getBreakfast());
-            hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
-            hotelBean.setHotelName(vg.getHotelInfo().getHotelName());
-            hotelBean.setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-            hotelBean.setPrice(vg.getHotelInfo().getPrice());
-            hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
+			PrivateTravelBean vgBean = new PrivateTravelBean();
+            vgBean.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
+            vgBean.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
+            vgBean.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
+            vgBean.getHotelInfo().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
+            vgBean.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
+            vgBean.getHotelInfo().setStars(String.valueOf(vg.getHotelInfo().getStars()));
             
-            PrivateTravelBean vgBean = new PrivateTravelBean();
             vgBean.setCreator(vg.getCreator());
             vgBean.setDestination(vg.getDestination());
             vgBean.setDescription(vg.getDescription());
             vgBean.setStartDate(vg.getStartDate());
             vgBean.setEndDate(vg.getEndDate());
-            vgBean.setHotelInfo(hotelBean);
             vgBean.setTravelName(vg.getTravelName());
             vgBean.setIdTravel(String.valueOf(vg.getIdTravel()));
             vgBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
             
             travelsBean.add(vgBean);
 		}
-
+		
 		return travelsBean;
 	}
 	
-	public List<PublicTravelBean> loadMyOldTGR(String username) throws SystemException {
-		List<PublicTravel> travels;
+	private List<PublicTravelBean> setPublicTravelInfo(List<PublicTravel> travels){
+		
 		List<PublicTravelBean> travelsBean = new ArrayList<>();
 		
-		travels = PublicTravelDao.retrieveGroupTravels(username);
 		for(PublicTravel vg : travels) {
-			HotelBean hotelBean = new HotelBean();
-			hotelBean.setBreakfast(vg.getHotelInfo().getBreakfast());
-			hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
-			hotelBean.setHotelName(vg.getHotelInfo().getHotelName());
-			hotelBean.setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-			hotelBean.setPrice(vg.getHotelInfo().getPrice());
-			hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
+			PublicTravelBean vgrBean = new PublicTravelBean();
+			vgrBean.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
+			vgrBean.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
+			vgrBean.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
+			vgrBean.getHotelInfo().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
+			vgrBean.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
+			vgrBean.getHotelInfo().setStars(String.valueOf(vg.getHotelInfo().getStars()));
             
-            PublicTravelBean vgrBean = new PublicTravelBean();
             vgrBean.setCreator(vg.getCreator());
             vgrBean.setDestination(vg.getDestination());
             vgrBean.setDescription(vg.getDescription());
             vgrBean.setStartDate(vg.getStartDate());
             vgrBean.setEndDate(vg.getEndDate());
-            vgrBean.setHotelInfo(hotelBean);
             vgrBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
             vgrBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
             vgrBean.setIdTravel(String.valueOf(vg.getIdTravel()));
@@ -118,67 +109,29 @@ public class ProfileController {
 		return travelsBean;
 	}
 	
+	public List<PrivateTravelBean> loadMyOldT(String username) throws SystemException {
+		List<PrivateTravel> travels;
+		travels = PrivateTravelDao.retrieveTravels(username);
+		return setPrivateTravelsInfo(travels);
+	}
+	
+	public List<PublicTravelBean> loadMyOldTGR(String username) throws SystemException {
+		List<PublicTravel> travels;
+		travels = PublicTravelDao.retrieveGroupTravels(username);
+		return setPublicTravelInfo(travels);
+	}
+	
 	public List<PrivateTravelBean> loadMyUpcomingT(String username) throws SystemException {
 		List<PrivateTravel> travels;
-		List<PrivateTravelBean> travelsBean = new ArrayList<>();
-		
 		travels = PrivateTravelDao.retrieveNextBookedTravels(username);
-		
-		for(PrivateTravel vg : travels) {
-			HotelBean hotelBean = new HotelBean();
-            hotelBean.setBreakfast(vg.getHotelInfo().getBreakfast());
-            hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
-            hotelBean.setHotelName(vg.getHotelInfo().getHotelName());
-            hotelBean.setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-            hotelBean.setPrice(vg.getHotelInfo().getPrice());
-            hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
-            
-            PrivateTravelBean vgBean = new PrivateTravelBean();
-            vgBean.setCreator(vg.getCreator());
-            vgBean.setDestination(vg.getDestination());
-            vgBean.setDescription(vg.getDescription());
-            vgBean.setStartDate(vg.getStartDate());
-            vgBean.setEndDate(vg.getEndDate());
-            vgBean.setHotelInfo(hotelBean);
-            vgBean.setTravelName(vg.getTravelName());
-            vgBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
-            
-            travelsBean.add(vgBean);
-		}
-		
-		return travelsBean;
+		return setPrivateTravelsInfo(travels);
 	}
 	
 	public List<PublicTravelBean> loadMyUpcomingTGR(String username) throws SystemException {
 		
 		List<PublicTravel> travels;
-		List<PublicTravelBean> travelsBean = new ArrayList<>();
 		travels = PublicTravelDao.retreiveMyNextBookedGrTravells(username);
-		for(PublicTravel vg : travels) {
-			HotelBean hotelBean = new HotelBean();
-			hotelBean.setBreakfast(vg.getHotelInfo().getBreakfast());
-			hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
-			hotelBean.setHotelName(vg.getHotelInfo().getHotelName());
-			hotelBean.setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-			hotelBean.setPrice(vg.getHotelInfo().getPrice());
-			hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
-            
-            PublicTravelBean vgrBean = new PublicTravelBean();
-            vgrBean.setCreator(vg.getCreator());
-            vgrBean.setDestination(vg.getDestination());
-            vgrBean.setDescription(vg.getDescription());
-            vgrBean.setStartDate(vg.getStartDate());
-            vgrBean.setEndDate(vg.getEndDate());
-            vgrBean.setHotelInfo(hotelBean);
-            vgrBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-            vgrBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
-            vgrBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgrBean.setTravelName(vg.getTravelName());
-			travelsBean.add(vgrBean);
-		}
-		
-		return travelsBean;
+		return setPublicTravelInfo(travels);
 	}
 	
 	public String retrieveUserPhoto(String username) throws DefaultPhotoException, SystemException {
@@ -238,7 +191,7 @@ public class ProfileController {
 		}
 	}
 	
-public List<UserBean> retrieveFollowers(String username) throws SystemException {
+	public List<UserBean> retrieveFollowers(String username) throws SystemException {
 		
 		List<User> followers;
 		List<UserBean> followersBean = new ArrayList<>();

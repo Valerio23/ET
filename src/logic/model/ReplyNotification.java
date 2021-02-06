@@ -2,64 +2,64 @@ package logic.model;
 
 public class ReplyNotification {
 	
-	private int id;
-	private User receiver;
-	private String msg;
-	private String date;
-	private User sender;
+	private int idReply;
+	private User receiverReply;
+	private String msgReply;
+	private String dateReply;
+	private User senderReply;
 	
 	public ReplyNotification() {
-		this.id = 0;
-		this.receiver = null;
-		this.sender = null;
-		this.msg = "";
-		this.date = "";
+		this.idReply = 0;
+		this.receiverReply = null;
+		this.senderReply = null;
+		this.msgReply = "";
+		this.dateReply = "";
 	}
 	
 	public ReplyNotification(User sender, User receiver, String msg) {
-		this.sender = sender;
-		this.receiver = receiver;
-		this.msg = msg;
+		this.senderReply = sender;
+		this.receiverReply = receiver;
+		this.msgReply = msg;
 	}
 		
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMsgReply(String msg) {
+		this.msgReply = msg;
 	}
 	
-	public String getMsg() {
-		return this.msg;
+	public String getMsgReply() {
+		return this.msgReply;
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdReply() {
+		return idReply;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdReply(int id) {
+		this.idReply = id;
 	}
 	
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateReply(String date) {
+		this.dateReply = date;
 	}
 
-	public String getDate() {
-		return this.date;
+	public String getDateReply() {
+		return this.dateReply;
 	}
 
-	public User getSender() {
-		return sender;
+	public User getSenderReply() {
+		return senderReply;
 	}
 
-	public void setSender(User sender) {
-		this.sender = sender;
+	public void setSenderReply(User sender) {
+		this.senderReply = sender;
 	}
 
-	public User getReceiver() {
-		return receiver;
+	public User getReceiverReply() {
+		return receiverReply;
 	}
 
-	public void setReceiver(User receiver) {
-		this.receiver = receiver;
+	public void setReceiverReply(User receiver) {
+		this.receiverReply = receiver;
 	}
 		
 }

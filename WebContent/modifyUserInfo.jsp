@@ -228,7 +228,7 @@ pageEncoding="ISO-8859-1"%>
 	                    </div>
 	                    <br>
 					</form>
-					<form action="modifyUserInfo.jsp" method="post" enctype="multipart/form-data">
+					<form action="" method="post" enctype="multipart/form-data">
 						<label>Change photo</label>
 						<div class="input-group">
 							<span class="input-group-addon"><em class="glyphicon glyphicon-picture"></em></span>

@@ -57,9 +57,9 @@ public class SearchFollowController {
 		/* Verifica che l'utente non mi segua */
 		if(UserDao.checkFollow(userFollower, userFollowed)) { 
 			FollowNotification followNotification = new FollowNotification();
-			followNotification.setSender(userFollower);
-			followNotification.setReceiver(userFollowed);
-			followNotification.setMsg(follower + " ha iniziato a seguitirti, vuoi seguirlo?");
+			followNotification.setSenderFollow(userFollower);
+			followNotification.setReceiverFollow(userFollowed);
+			followNotification.setMsgFollow(follower + " ha iniziato a seguitirti, vuoi seguirlo?");
 			UserDao.sendRequestFollow(followNotification);
 			UserDao.addFollowed(userFollower, userFollowed);
 		}

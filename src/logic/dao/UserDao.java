@@ -339,7 +339,7 @@ public class UserDao {
     	try {	    			    		
             // creazione ed esecuzione della query
             stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            CRUDQueries.sendRequestFollowed(stmt, followNotification.getSender().getUsername(), followNotification.getReceiver().getUsername(), followNotification.getMsg());
+            CRUDQueries.sendRequestFollowed(stmt, followNotification.getSenderFollow().getUsername(), followNotification.getReceiverFollow().getUsername(), followNotification.getMsgFollow());
         } catch (SQLException e) {
 			throw new SystemException("Follow request failed... retry!");
 		} finally {

@@ -2,58 +2,58 @@ package logic.model;
 
 public class FollowNotification {
 	
-	private int id;
-	private String msg;
-	private String date;
-	private User sender;
-	private User receiver;
+	private int idFollow;
+	private String msgFollow;
+	private String dateFollow;
+	private User senderFollow;
+	private User receiverFollow;
 	
 	public FollowNotification() {}
 
 	public FollowNotification(User sender, User receiver, String msg) {
-		this.sender = sender;
-		this.receiver = receiver;
-		this.msg = msg;
+		this.senderFollow = sender;
+		this.receiverFollow = receiver;
+		this.msgFollow = msg;
 	}
 	
-	public void setMsg(String u) {
-		this.msg = u;
+	public void setMsgFollow(String u) {
+		this.msgFollow = u;
 	}
 	
-	public String getMsg() {
-		return this.msg;
+	public String getMsgFollow() {
+		return this.msgFollow;
 	}
 	
-	public void setDate(String d) {
-		this.date = d;
+	public void setDateFollow(String d) {
+		this.dateFollow = d;
 	}
 	
-	public String getDate() {
-		return this.date;
+	public String getDateFollow() {
+		return this.dateFollow;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdFollow() {
+		return idFollow;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdFollow(int id) {
+		this.idFollow = id;
 	}
 
-	public User getSender() {
-		return sender;
+	public User getSenderFollow() {
+		return senderFollow;
 	}
 
-	public void setSender(User sender) {
-		this.sender = sender;
+	public void setSenderFollow(User sender) {
+		this.senderFollow = sender;
 	}
 
-	public User getReceiver() {
-		return receiver;
+	public User getReceiverFollow() {
+		return receiverFollow;
 	}
 
-	public void setReceiver(User receiver) {
-		this.receiver = receiver;
+	public void setReceiverFollow(User receiver) {
+		this.receiverFollow = receiver;
 	}
 	
 }

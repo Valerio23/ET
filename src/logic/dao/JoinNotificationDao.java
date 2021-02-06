@@ -49,11 +49,11 @@ public class JoinNotificationDao {
 				viaggioGruppo.setTravelName(rs.getString("NomeViaggio"));
 				
 				JoinNotification joinNotification = new JoinNotification();
-				joinNotification.setId(rs.getInt("id"));
-				joinNotification.setSender(sender);
-				joinNotification.setTravel(viaggioGruppo);
-				joinNotification.setMsg(rs.getString(MESSAGE));
-				joinNotification.setDate(rs.getString("Date"));
+				joinNotification.setIdJoin(rs.getInt("id"));
+				joinNotification.setSenderJoin(sender);
+				joinNotification.setTravelJoin(viaggioGruppo);
+				joinNotification.setMsgJoin(rs.getString(MESSAGE));
+				joinNotification.setDateJoin(rs.getString("Date"));
 				
 				joinNotifications.add(joinNotification);
 			} while(rs.next());

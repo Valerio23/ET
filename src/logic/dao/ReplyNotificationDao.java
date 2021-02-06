@@ -48,11 +48,11 @@ public class ReplyNotificationDao {
 				receiver.setUsername(rs.getString("Receiver"));
 				
 				ReplyNotification replyNotification = new ReplyNotification();
-				replyNotification.setId(rs.getInt("id"));
-				replyNotification.setSender(sender);
-				replyNotification.setReceiver(receiver);
-				replyNotification.setDate(rs.getString("Date"));
-				replyNotification.setMsg(rs.getString(MESSAGE));
+				replyNotification.setIdReply(rs.getInt("id"));
+				replyNotification.setSenderReply(sender);
+				replyNotification.setReceiverReply(receiver);
+				replyNotification.setDateReply(rs.getString("Date"));
+				replyNotification.setMsgReply(rs.getString(MESSAGE));
 				
 				replyNotifications.add(replyNotification);
 			} while(rs.next());
@@ -78,7 +78,7 @@ public class ReplyNotificationDao {
     	try {
             // creazione ed esecuzione della query
             stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            CRUDQueries.sendNotificationReply(stmt, replyNotification.getSender().getUsername(), replyNotification.getReceiver().getUsername(), replyNotification.getMsg());
+            CRUDQueries.sendNotificationReply(stmt, replyNotification.getSenderReply().getUsername(), replyNotification.getReceiverReply().getUsername(), replyNotification.getMsgReply());
         } catch (SQLException e) {
         	e.printStackTrace();
 			throw new SystemException(SYSTEM_ERROR);

@@ -2,68 +2,68 @@ package logic.model;
 
 public class JoinNotification {
 	
-	private int id;
-	private User sender;
-	private User receiver;
-	private PublicTravel travel;
-	private String date;
-	private String msg;
+	private int idJoin;
+	private User senderJoin;
+	private User receiverJoin;
+	private PublicTravel travelJoin;
+	private String dateJoin;
+	private String msgJoin;
 
 	public JoinNotification() {}
 	
 	public JoinNotification(String username, String travelName, int idTravel, String date) {
-		this.receiver.setUsername(username);
-		this.travel.setIdTravel(idTravel);
-		this.travel.setTravelName(travelName);
-		this.date = date;
+		this.receiverJoin.setUsername(username);
+		this.travelJoin.setIdTravel(idTravel);
+		this.travelJoin.setTravelName(travelName);
+		this.dateJoin = date;
 	}	
 	
-	public User getReceiver() {
-		return receiver;
+	public User getReceiverJoin() {
+		return receiverJoin;
 	}
 
-	public void setReceiver(User receiver) {
-		this.receiver = receiver;
+	public void setReceiverJoin(User receiver) {
+		this.receiverJoin = receiver;
 	}
 	
-	public void setTravel(PublicTravel viaggioGruppo) {
-		this.travel = viaggioGruppo;
+	public void setTravelJoin(PublicTravel viaggioGruppo) {
+		this.travelJoin = viaggioGruppo;
 	}
 	
-	public PublicTravel getTravel() {
-		return this.travel;
+	public PublicTravel getTravelJoin() {
+		return this.travelJoin;
 	}
 	
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMsgJoin(String msg) {
+		this.msgJoin = msg;
 	}
 	
-	public String getMsg() {
-		return this.msg;
+	public String getMsgJoin() {
+		return this.msgJoin;
 	}
 	
-	public void setDate(String d) {
-		this.date = d;
+	public void setDateJoin(String d) {
+		this.dateJoin = d;
 	}
 	
-	public String getDate() {
-		return this.date;
+	public String getDateJoin() {
+		return this.dateJoin;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdJoin() {
+		return idJoin;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdJoin(int id) {
+		this.idJoin = id;
 	}
 
-	public User getSender() {
-		return sender;
+	public User getSenderJoin() {
+		return senderJoin;
 	}
 
-	public void setSender(User sender) {
-		this.sender = sender;
+	public void setSenderJoin(User sender) {
+		this.senderJoin = sender;
 	}
 	
 }
