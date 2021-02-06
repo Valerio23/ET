@@ -12,7 +12,6 @@ import logic.exceptions.BookTravelException;
 import logic.exceptions.DeleteTravelException;
 import logic.exceptions.SaveTravelException;
 import logic.exceptions.SystemException;
-import logic.model.Hotel;
 import logic.model.PrivateTravel;
 import logic.queries.CRUDQueries;
 import logic.queries.SimpleQueries;
@@ -65,7 +64,7 @@ public class PrivateTravelDao {
     	Statement stmt = null;
     	ResultSet rs;
     	
-    	List<String> filenames = new ArrayList<>();
+    	List<String> filenamesPhotos = new ArrayList<>();
     	
     	try {
             // creazione ed esecuzione della query
@@ -73,18 +72,18 @@ public class PrivateTravelDao {
             rs = SimpleQueries.retrieveTravelPhoto(stmt, idViaggio);
             
             if (!rs.first()) { // rs empty
-            	return filenames;
+            	return filenamesPhotos;
             }
             
             rs.first();
             
-            String filename = "";
+            String filenamePhoto = "";
             do {
-            	filename = rs.getString("Filename");
-            	filenames.add(filename);
+            	filenamePhoto = rs.getString("Filename");
+            	filenamesPhotos.add(filenamePhoto);
             } while(rs.next());
             
-            return filenames;
+            return filenamesPhotos;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -187,6 +186,37 @@ public class PrivateTravelDao {
        
     }
     
+    private static List<PrivateTravel> setPrivateTravelInfoFromResultSet(ResultSet rs) throws SQLException{
+    	List<PrivateTravel> listOfTravells = new ArrayList<>();
+    	
+			rs.first();
+			do{
+				PrivateTravel vg = new PrivateTravel();
+	            
+				vg.getHotelInfo().setBreakfast(rs.getString(BREAKFAST));
+				vg.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
+				vg.getHotelInfo().setHotelName(rs.getString(HOTEL_NAME));
+				vg.getHotelInfo().setNumRooms(rs.getInt(NUM_ROOMS));
+				vg.getHotelInfo().setPrice(rs.getString(PRICE));
+				vg.getHotelInfo().setStars(rs.getInt(STARS));
+	            
+	            vg.setCreator(rs.getString(CREATOR));
+	            vg.setDestination(rs.getString(DESTINAZIONE));
+	            vg.setDescription(rs.getString(DESCRIPTION));
+	            vg.setStartDate(rs.getString(DATA_V));
+	            vg.setEndDate(rs.getString(DATA_END));
+	            vg.setTravelName(rs.getString(NOME_VIAGGIO));
+	            vg.setIdTravel(rs.getInt("idV"));
+	            vg.setNumMaxUt(rs.getInt(NUM_MAX_UT));
+	            
+	            listOfTravells.add(vg);
+
+	        } while(rs.next());
+		
+        
+        return listOfTravells;
+    }
+    
     public static List<PrivateTravel> retrieveTravels(String username) throws SystemException {
     	
     	 Statement stmt = null;
@@ -201,31 +231,8 @@ public class PrivateTravelDao {
              	return listOfTravells;
              }
              
+             listOfTravells = setPrivateTravelInfoFromResultSet(rs);
              // riposizionamento del cursore
-             rs.first();
-             do{
-            	 Hotel hotel = new Hotel();                
-            	 hotel.setBreakfast(rs.getString(BREAKFAST));
-                 hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                 hotel.setHotelName(rs.getString(HOTEL_NAME));
-                 hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                 hotel.setPrice(rs.getString(PRICE));
-                 hotel.setStars(rs.getInt(STARS));
-                 
-                 PrivateTravel vg = new PrivateTravel();
-                 vg.setCreator(rs.getString(CREATOR));
-                 vg.setDestination(rs.getString(DESTINAZIONE));
-                 vg.setDescription(rs.getString(DESCRIPTION));
-                 vg.setStartDate(rs.getString(DATA_V));
-                 vg.setEndDate(rs.getString(DATA_END));
-                 vg.setHotelInfo(hotel);
-                 vg.setTravelName(rs.getString(NOME_VIAGGIO));
-                 vg.setIdTravel(rs.getInt("idV"));
-                 vg.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                 
-                 listOfTravells.add(vg);
-
-             } while(rs.next());
              
              // STEP 5.1: Clean-up dell'ambiente
              rs.close();
@@ -261,32 +268,7 @@ public class PrivateTravelDao {
             	return listOfTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do {                
-                Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PrivateTravel vg = new PrivateTravel();
-                vg.setCreator(rs.getString(CREATOR));
-                vg.setDestination(rs.getString(DESTINAZIONE));
-                vg.setDescription(rs.getString(DESCRIPTION));
-                vg.setStartDate(rs.getString(DATA_V));
-                vg.setEndDate(rs.getString(DATA_END));
-                vg.setHotelInfo(hotel);
-                vg.setTravelName(rs.getString(NOME_VIAGGIO));
-                vg.setIdTravel(rs.getInt("idV"));
-                // NUMERO DI VIAGGIATORI???? 
-                
-                listOfTravells.add(vg);
-
-            } while(rs.next());
-            
+            listOfTravells = setPrivateTravelInfoFromResultSet(rs);
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
             return listOfTravells;
@@ -318,32 +300,7 @@ public class PrivateTravelDao {
             	return listOfTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do {                
-                Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PrivateTravel vg = new PrivateTravel();
-                vg.setCreator(rs.getString(CREATOR));
-                vg.setDestination(rs.getString(DESTINAZIONE));
-                vg.setDescription(rs.getString(DESCRIPTION));
-                vg.setStartDate(rs.getString(DATA_V));
-                vg.setEndDate(rs.getString(DATA_END));
-                vg.setHotelInfo(hotel);
-                vg.setTravelName(rs.getString(NOME_VIAGGIO));
-                vg.setIdTravel(rs.getInt("idV"));
-                vg.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                
-                listOfTravells.add(vg);
-
-            } while(rs.next());
-            
+            listOfTravells = setPrivateTravelInfoFromResultSet(rs);
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
             return listOfTravells;
@@ -379,12 +336,8 @@ public class PrivateTravelDao {
             rs.first();
             
             do {
-                
-                Hotel hotel = new Hotel();
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                
-                PrivateTravel vg = new PrivateTravel();
-                vg.setHotelInfo(hotel);
+            	PrivateTravel vg = new PrivateTravel();
+                vg.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
                 vg.setIdTravel(rs.getInt("idV"));
                 vg.setDestination(rs.getString(DESTINAZIONE));
                 vg.setTravelName(rs.getString(NOME_VIAGGIO));
