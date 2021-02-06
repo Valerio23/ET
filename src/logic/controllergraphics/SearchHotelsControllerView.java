@@ -775,7 +775,7 @@ public class SearchHotelsControllerView implements Initializable {
 		fdStartDate.setText(vgr.getStartDate());
 		fdEndDate.setText(vgr.getEndDate());
 		String price = vgr.getHotelInfo().getPrice();
-		price = price.replaceAll("euro", "€");
+		price = price.replace("euro", "€");
 		fdPrice.setText(price);
 		fdRooms.setText(vgr.getHotelInfo().getNumRooms());
 		fdStars.setText(vgr.getHotelInfo().getStars());
@@ -789,7 +789,7 @@ public class SearchHotelsControllerView implements Initializable {
 		fdStartDate.setText(vg.getStartDate());
 		fdEndDate.setText(vg.getEndDate());
 		String price = vg.getHotelInfo().getPrice();
-		price = price.replaceAll("euro", "€");
+		price = price.replace("euro", "€");
 		fdPrice.setText(price);
 		fdRooms.setText(vg.getHotelInfo().getNumRooms());
 		fdStars.setText(vg.getHotelInfo().getStars());

@@ -86,7 +86,7 @@ public class PrivateTravelDetailView {
     	lblRooms.setText(vg.getHotelInfo().getNumRooms());
     	lblBreakfast.setText(vg.getHotelInfo().getBreakfast());
     	String price = vg.getHotelInfo().getPrice();
-    	price = price.replaceAll("euro", "€");
+    	price = price.replace("euro", "€");
     	lblPrice.setText(price);
     	txtDescription.setText(vg.getDescription());
     }

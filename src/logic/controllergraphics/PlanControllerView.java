@@ -393,7 +393,7 @@ public class PlanControllerView implements Initializable {
     	PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
 		viaggioGruppoBean.setCreator(this.userBean.getUsername());
 		String price = cbPrice.getSelectionModel().getSelectedItem();
-		price = price.replaceAll("€", "euro");
+		price = price.replace("€", "euro");
 		viaggioGruppoBean.getHotelInfo().setPrice(price);
 		viaggioGruppoBean.getHotelInfo().setStars(String.valueOf(stars));
 		if(cbBreakfast.isSelected()) {
@@ -426,7 +426,7 @@ public class PlanControllerView implements Initializable {
     	PrivateTravelBean viaggioBean = new PrivateTravelBean();
 		viaggioBean.setCreator(this.userBean.getUsername());
 		String price = cbPrice.getSelectionModel().getSelectedItem();
-		price = price.replaceAll("€", "euro");
+		price = price.replace("€", "euro");
 		viaggioBean.getHotelInfo().setPrice(price);
 		viaggioBean.getHotelInfo().setStars(String.valueOf(stars));
 		if(cbBreakfast.isSelected()) {
@@ -1220,7 +1220,7 @@ public class PlanControllerView implements Initializable {
 			dpEnd.setValue(LocalDate.parse(this.vgBean.getEndDate(), formatter));
 		}
 		String price = this.vgBean.getHotelInfo().getPrice();
-		price = price.replaceAll("euro", "€");
+		price = price.replace("euro", "€");
 		cbPrice.setValue(price);
 		tfRooms.setText(this.vgBean.getHotelInfo().getNumRooms());
 		tfTrav.setText(this.vgBean.getNumMaxUt());

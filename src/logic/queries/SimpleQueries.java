@@ -144,12 +144,7 @@ public class SimpleQueries {
     	String sql = String.format("SELECT * FROM `RepliesNotif` WHERE Receiver = '%s';", username);
     	return stmt.executeQuery(sql);
     }
-	
-    public static ResultSet retrieveAvailableSlots(Statement stmt, int idV) throws SQLException{
-    	String sql = String.format("SELECT PostiOccupati FROM `Viaggi_gruppo` WHERE idV = '%d';", idV);
-    	return stmt.executeQuery(sql);
-    }
-	
+
     public static ResultSet selectTravelSlots(Statement stmt, int idV) throws SQLException{
     	String sql = String.format("SELECT NumMaxUt, PostiOccupati FROM `Viaggi_gruppo` WHERE idV = '%d';", idV);
     	return stmt.executeQuery(sql);

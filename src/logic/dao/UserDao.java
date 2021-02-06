@@ -26,6 +26,7 @@ public class UserDao {
 	private static final String PHOTO = "Photo";
 	private static final String ERROR = "Unexpected application error occurred... retry!";
 	private static final String EMAIL = "email";
+	private static final String FILENAME = "Filename";
 	
 	private UserDao() {
 		
@@ -191,7 +192,7 @@ public class UserDao {
             	return filename;
             }
             
-            filename = rs.getString("Filename");
+            filename = rs.getString(FILENAME);
             rs.close();
             return filename;
         } catch (SQLException e) {
@@ -396,8 +397,8 @@ public class UserDao {
                 String username = rs.getString("Seguito");
                 String email = rs.getString(EMAIL);
                 String photo = "";
-                if(rs.getString("Filename") != null) {
-                	photo = rs.getString("Filename");
+                if(rs.getString(FILENAME) != null) {
+                	photo = rs.getString(FILENAME);
                 }
                 User user = new User();
                 user.setEmail(email);
@@ -446,8 +447,8 @@ public class UserDao {
                 String username = rs.getString("Username");
                 String email = rs.getString(EMAIL);
                 String photo = "";
-                if(rs.getString("Filename") != null) {
-                	photo = rs.getString("Filename");
+                if(rs.getString(FILENAME) != null) {
+                	photo = rs.getString(FILENAME);
                 }
               
                 User usr = new User();
