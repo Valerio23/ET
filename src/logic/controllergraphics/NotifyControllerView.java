@@ -159,14 +159,14 @@ public class NotifyControllerView implements Initializable {
 	
 	@Override
     public void initialize(URL location ,ResourceBundle resources) {
-		tcDateJoin.setCellValueFactory(new PropertyValueFactory<>("date"));
-		tcDescJoin.setCellValueFactory(new PropertyValueFactory<>("msg"));
+		tcDateJoin.setCellValueFactory(new PropertyValueFactory<>("dateJoin"));
+		tcDescJoin.setCellValueFactory(new PropertyValueFactory<>("msgJoin"));
 		
-		tcDateFollow.setCellValueFactory(new PropertyValueFactory<>("date"));
-		tcDescFollow.setCellValueFactory(new PropertyValueFactory<>("msg"));
+		tcDateFollow.setCellValueFactory(new PropertyValueFactory<>("dateFollow"));
+		tcDescFollow.setCellValueFactory(new PropertyValueFactory<>("msgFollow"));
 		
-		tcDateReply.setCellValueFactory(new PropertyValueFactory<>("date"));
-		tcDescReply.setCellValueFactory(new PropertyValueFactory<>("msg"));
+		tcDateReply.setCellValueFactory(new PropertyValueFactory<>("dateReply"));
+		tcDescReply.setCellValueFactory(new PropertyValueFactory<>("msgReply"));
 		
 		ToggleGroup tgKindNotification = new ToggleGroup();
 		rbJoinNotifications.setToggleGroup(tgKindNotification);

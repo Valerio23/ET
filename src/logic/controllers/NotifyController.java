@@ -31,10 +31,10 @@ public class NotifyController {
 
 	public void acceptJoinNotification(String username, JoinNotificationBean joinNotificationBean) throws SystemException, SeatsNotAvailableException {
 		
-		int idTravel = Integer.parseInt(joinNotificationBean.getViaggioGruppoBean().getIdTravel());
-		int idNotif = joinNotificationBean.getId();
-		String travelname = joinNotificationBean.getViaggioGruppoBean().getTravelName();
-		String participant = joinNotificationBean.getSender();
+		int idTravel = Integer.parseInt(joinNotificationBean.getViaggioGruppoBeanJoin().getIdTravel());
+		int idNotif = joinNotificationBean.getIdJoin();
+		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelName();
+		String participant = joinNotificationBean.getSenderJoin();
 		
 		/* Controllo se i posti sono ancora disponibili */
 		int slots = PublicTravelDao.retrieveTravelSlots(idTravel);
@@ -77,8 +77,8 @@ public class NotifyController {
 	
 	public void acceptFollowNotification(String followed, FollowNotificationBean followNotificationBean) throws SystemException {
 		
-		int idNotif = followNotificationBean.getId();
-		String follower = followNotificationBean.getSender();
+		int idNotif = followNotificationBean.getIdFollow();
+		String follower = followNotificationBean.getSenderFollow();
 		
 		User userFollower = new User();
 		userFollower.setUsername(followed);
@@ -101,9 +101,9 @@ public class NotifyController {
 	
 	public void declineJoinNotification(String username, JoinNotificationBean joinNotificationBean) throws SystemException {
 		
-		int idNotif = joinNotificationBean.getId();
-		String travelname = joinNotificationBean.getViaggioGruppoBean().getTravelName();
-		String participant = joinNotificationBean.getSender();
+		int idNotif = joinNotificationBean.getIdJoin();
+		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelName();
+		String participant = joinNotificationBean.getSenderJoin();
 		
 		/* Invio notifica di conferma/risposta */
 		User sender = new User();
@@ -121,8 +121,8 @@ public class NotifyController {
 	
 	public void declineFollowNotification(String username, FollowNotificationBean followNotificationBean) throws SystemException {
 		
-		int idNotif = followNotificationBean.getId();
-		String follower = followNotificationBean.getSender();
+		int idNotif = followNotificationBean.getIdFollow();
+		String follower = followNotificationBean.getSenderFollow();
 		
 		/* Invio notifica di conferma/risposta */
 		User userFollower = new User();
@@ -139,7 +139,7 @@ public class NotifyController {
 	}
 	
 	public void deleteNotification(ReplyNotificationBean replyNotificationBean) throws SystemException {
-		int idNotif = replyNotificationBean.getId();
+		int idNotif = replyNotificationBean.getIdReply();
 		ReplyNotificationDao.deleteReplyNotification(idNotif);
 		NotifSingletonClass.getNotifSingletonInstance().removeReplyNotification(replyNotificationBean);
 	}

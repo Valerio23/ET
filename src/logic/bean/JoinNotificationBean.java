@@ -2,60 +2,60 @@ package logic.bean;
 
 public class JoinNotificationBean {
 	
-	private int id;
-	private PublicTravelBean viaggioGruppoBean;
-	private String msg;
-	private String date;
-	private String sender;
+	private int idJoin;
+	private PublicTravelBean viaggioGruppoBeanJoin;
+	private String msgJoin;
+	private String dateJoin;
+	private String senderJoin;
 	
 	public JoinNotificationBean() {}
 
 	public JoinNotificationBean(int id, String sender, PublicTravelBean viaggioGruppoBean, String msg, String date) {
-		this.viaggioGruppoBean = viaggioGruppoBean;
-		this.msg = msg;
-		this.date = date;
-		this.id = id;
-		this.sender = sender;
+		this.viaggioGruppoBeanJoin = viaggioGruppoBean;
+		this.msgJoin = msg;
+		this.dateJoin = date;
+		this.idJoin = id;
+		this.senderJoin = sender;
 	}
 
-	public String getMsg() {
-		return msg;
+	public String getMsgJoin() {
+		return msgJoin;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMsgJoin(String msg) {
+		this.msgJoin = msg;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDateJoin() {
+		return dateJoin;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateJoin(String date) {
+		this.dateJoin = date;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdJoin() {
+		return idJoin;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdJoin(int id) {
+		this.idJoin = id;
 	}
 
-	public String getSender() {
-		return sender;
+	public String getSenderJoin() {
+		return senderJoin;
 	}
 
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setSenderJoin(String sender) {
+		this.senderJoin = sender;
 	}
 
-	public PublicTravelBean getViaggioGruppoBean() {
-		return viaggioGruppoBean;
+	public PublicTravelBean getViaggioGruppoBeanJoin() {
+		return viaggioGruppoBeanJoin;
 	}
 
-	public void setViaggioGruppoBean(PublicTravelBean viaggioGruppoBean) {
-		this.viaggioGruppoBean = viaggioGruppoBean;
+	public void setViaggioGruppoBeanJoin(PublicTravelBean viaggioGruppoBean) {
+		this.viaggioGruppoBeanJoin = viaggioGruppoBean;
 	}
 	
 }

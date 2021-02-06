@@ -2,52 +2,52 @@ package logic.bean;
 
 public class ReplyNotificationBean {
 	
-	private int id;
-	private String msg;
-	private String date;
-	private String sender;
+	private int idReply;
+	private String msgReply;
+	private String dateReply;
+	private String senderReply;
 	
 	public ReplyNotificationBean() {
 		
 	}
 	
 	public ReplyNotificationBean(int id, String sender, String msg, String date) {
-		this.msg = msg;
-		this.date = date;
-		this.id = id;
-		this.sender = sender;
+		this.msgReply = msg;
+		this.dateReply = date;
+		this.idReply = id;
+		this.senderReply = sender;
 	}
 
-	public String getMsg() {
-		return msg;
+	public String getMsgReply() {
+		return msgReply;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void setMsgReply(String msg) {
+		this.msgReply = msg;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDateReply() {
+		return dateReply;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateReply(String date) {
+		this.dateReply = date;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdReply() {
+		return idReply;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdReply(int id) {
+		this.idReply = id;
 	}
 
-	public String getSender() {
-		return sender;
+	public String getSenderReply() {
+		return senderReply;
 	}
 
-	public void setSender(String sender) {
-		this.sender = sender;
+	public void setSenderReply(String sender) {
+		this.senderReply = sender;
 	}
 
 }
