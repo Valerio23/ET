@@ -321,7 +321,7 @@ public class PrivateTravelDao {
     public static List<PrivateTravel> retrieveFollowerTravelsPrivate(String usrn) throws SystemException {
 		
 		Statement stmt = null;
-        List<PrivateTravel> travels = new ArrayList<>();
+        List<PrivateTravel> followerTravels = new ArrayList<>();
         
         try {      	 
             // creazione ed esecuzione della query
@@ -330,7 +330,7 @@ public class PrivateTravelDao {
             ResultSet rs = SimpleQueries.selectAllTravelsDone(stmt, usrn);
             
             if (!rs.first()){ // rs empty
-            	return travels;
+            	return followerTravels;
             }
             
             // riposizionamento del cursore
@@ -343,13 +343,13 @@ public class PrivateTravelDao {
                 vg.setDestination(rs.getString(DESTINAZIONE));
                 vg.setTravelName(rs.getString(NOME_VIAGGIO));
                 
-                travels.add(vg);
+                followerTravels.add(vg);
 
             } while(rs.next());
             
             // STEP 5.1: Clean-up dell'ambiente
             rs.close();
-            return travels;
+            return followerTravels;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {

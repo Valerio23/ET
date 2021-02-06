@@ -25,6 +25,11 @@ public class ReplyNotificationDao {
 	
 	}
 	
+	private static void printLogger() {
+		Logger logger = Logger.getLogger(ReplyNotificationDao.class.getName());
+    	logger.log(Level.WARNING, SYSTEM_ERROR);
+	}
+	
 	public static List<ReplyNotification> retrieveReplyNotifications(String username) throws SystemException {
     	
     	Statement stmt = null;
@@ -60,15 +65,13 @@ public class ReplyNotificationDao {
 			return replyNotifications;
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new SystemException(SYSTEM_ERROR);
         } finally {
         	try {
                 if (stmt != null)
                     stmt.close();
         	} catch (SQLException se) {
-        		Logger logger = Logger.getLogger(ReplyNotificationDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+        		printLogger();
             }
         }
     }
@@ -80,15 +83,13 @@ public class ReplyNotificationDao {
             stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             CRUDQueries.sendNotificationReply(stmt, replyNotification.getSenderReply().getUsername(), replyNotification.getReceiverReply().getUsername(), replyNotification.getMsgReply());
         } catch (SQLException e) {
-        	e.printStackTrace();
-			throw new SystemException(SYSTEM_ERROR);
+        	throw new SystemException(SYSTEM_ERROR);
 		} finally {
         	try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(ReplyNotificationDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }  	
     }
@@ -106,8 +107,7 @@ public class ReplyNotificationDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(ReplyNotificationDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     }
