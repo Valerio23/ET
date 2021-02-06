@@ -578,7 +578,7 @@ public class InfoPublicTravelControllerView {
     	lblRooms.setText(vgr.getHotelInfo().getNumRooms());
     	lblBreakfast.setText(vgr.getHotelInfo().getBreakfast());
     	String price = vgr.getHotelInfo().getPrice();
-    	price = price.replaceAll("euro", "€");
+    	price = price.replace("euro", "€");
     	lblPrice.setText(price);
     	lblTravellers.setText(vgr.getNumMaxUt());
     	txtDescription.setText(vgr.getDescription());

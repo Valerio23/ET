@@ -139,11 +139,9 @@ public class SummaryPublicTravelControllerView {
 					planController.saveGroupTravel(vgr);
 					this.showAlertInformation("Saved... you will be redirected to the homepage!");
 					stage.close();
-				} catch (SaveTravelException|SystemException|DatesException|TravRoomException e) {
+				} catch (SaveTravelException|SystemException|DatesException|TravRoomException|DescriptionSyntaxException e) {
 					this.showAlertError(e.getMessage());
-				} catch (DescriptionSyntaxException e) {
-					this.showAlertError(e.getMessage());
-				}
+				} 
     		}
     		else if(result.get() == buttonTypeBook) {
     			// book
@@ -152,11 +150,9 @@ public class SummaryPublicTravelControllerView {
 					planController.bookAndSaveGroupTravel(vgr);
 					this.showAlertInformation("Booked... you will be redirected to the homepage!");
 					stage.close();
-				} catch (BookGroupTravelException|SystemException|DatesException|TravRoomException e) {
+				} catch (BookGroupTravelException|SystemException|DatesException|TravRoomException|DescriptionSyntaxException e) {
 					this.showAlertError(e.getMessage());
-				} catch (DescriptionSyntaxException e) {
-					this.showAlertError(e.getMessage());
-				}
+				} 
     		}
 		}
     }
@@ -184,7 +180,7 @@ public class SummaryPublicTravelControllerView {
 		this.lblHotelName.setText(vgr.getHotelInfo().getHotelName());
 		this.lblStars.setText(vgr.getHotelInfo().getStars());
 		String price = vgr.getHotelInfo().getPrice();
-    	price = price.replaceAll("euro", "€");
+    	price = price.replace("euro", "€");
 		this.lblPrice.setText(price);
 		this.lblBreakfast.setText(vgr.getHotelInfo().getBreakfast());
 		this.lblData.setText(vgr.getStartDate());
