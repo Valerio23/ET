@@ -335,38 +335,38 @@ public class PlanController {
 	
 	private PrivateTravel viaggioBeanToViaggio(PrivateTravelBean vg) {
 		PrivateTravel viaggio = new PrivateTravel();
-		viaggio.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
-		viaggio.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
-		viaggio.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
-		viaggio.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfo().getNumRooms()));
-		viaggio.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
-		viaggio.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfo().getStars()));
-		viaggio.setCreator(vg.getCreator());
-		viaggio.setDescription(vg.getDescription());
-		viaggio.setDestination(vg.getDestination());
-		viaggio.setStartDate(vg.getStartDate());
-		viaggio.setEndDate(vg.getEndDate());
-		viaggio.setTravelName(vg.getTravelName());
-		viaggio.setNumMaxUt(Integer.parseInt(vg.getNumMaxUt()));
+		viaggio.getHotelInfo().setBreakfast(vg.getHotelInfoBean().getBreakfast());
+		viaggio.getHotelInfo().setHotelLink(vg.getHotelInfoBean().getHotelLink());
+		viaggio.getHotelInfo().setHotelName(vg.getHotelInfoBean().getHotelName());
+		viaggio.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfoBean().getNumRooms()));
+		viaggio.getHotelInfo().setPrice(vg.getHotelInfoBean().getPrice());
+		viaggio.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfoBean().getStars()));
+		viaggio.setCreator(vg.getCreatorBean());
+		viaggio.setDescription(vg.getDescriptionBean());
+		viaggio.setDestination(vg.getDestinationBean());
+		viaggio.setStartDate(vg.getStartDateBean());
+		viaggio.setEndDate(vg.getEndDateBean());
+		viaggio.setTravelName(vg.getTravelNameBean());
+		viaggio.setNumMaxUt(Integer.parseInt(vg.getNumMaxUtBean()));
 		
 		return viaggio;
 	}
 	
 	private PublicTravel viaggioGruppoBeanToViaggioGruppo(PublicTravelBean vg) {
 		PublicTravel viaggioGruppo = new PublicTravel();
-		viaggioGruppo.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
-		viaggioGruppo.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
-		viaggioGruppo.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
-		viaggioGruppo.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfo().getNumRooms()));
-		viaggioGruppo.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
-		viaggioGruppo.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfo().getStars()));
-		viaggioGruppo.setCreator(vg.getCreator());
-		viaggioGruppo.setDescription(vg.getDescription());
-		viaggioGruppo.setDestination(vg.getDestination());
-		viaggioGruppo.setStartDate(vg.getStartDate());
-		viaggioGruppo.setEndDate(vg.getEndDate());
-		viaggioGruppo.setTravelName(vg.getTravelName());
-		viaggioGruppo.setNumMaxUt(Integer.valueOf(vg.getNumMaxUt()));
+		viaggioGruppo.getHotelInfo().setBreakfast(vg.getHotelInfoBean().getBreakfast());
+		viaggioGruppo.getHotelInfo().setHotelLink(vg.getHotelInfoBean().getHotelLink());
+		viaggioGruppo.getHotelInfo().setHotelName(vg.getHotelInfoBean().getHotelName());
+		viaggioGruppo.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfoBean().getNumRooms()));
+		viaggioGruppo.getHotelInfo().setPrice(vg.getHotelInfoBean().getPrice());
+		viaggioGruppo.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfoBean().getStars()));
+		viaggioGruppo.setCreator(vg.getCreatorBean());
+		viaggioGruppo.setDescription(vg.getDescriptionBean());
+		viaggioGruppo.setDestination(vg.getDestinationBean());
+		viaggioGruppo.setStartDate(vg.getStartDateBean());
+		viaggioGruppo.setEndDate(vg.getEndDateBean());
+		viaggioGruppo.setTravelName(vg.getTravelNameBean());
+		viaggioGruppo.setNumMaxUt(Integer.valueOf(vg.getNumMaxUtBean()));
 		
 		return viaggioGruppo;
 	}
@@ -436,38 +436,38 @@ public class PlanController {
 	}
 
 	public void saveTravel(PrivateTravelBean vg) throws SaveTravelException, SystemException, DatesException, TravRoomException {	
-		this.validateDates(vg.getStartDate(), vg.getEndDate());
-		this.validateTravellersAndRooms(vg.getNumMaxUt(), vg.getHotelInfo().getNumRooms());
+		this.validateDates(vg.getStartDateBean(), vg.getEndDateBean());
+		this.validateTravellersAndRooms(vg.getNumMaxUtBean(), vg.getHotelInfoBean().getNumRooms());
 		PrivateTravelDao.saveTravel(viaggioBeanToViaggio(vg));
 	}
 	
 	public void bookTravel(PrivateTravelBean vg) throws BookTravelException, SystemException, DatesException, TravRoomException {
-		this.validateDates(vg.getStartDate(), vg.getEndDate());
-		this.validateTravellersAndRooms(vg.getNumMaxUt(), vg.getHotelInfo().getNumRooms());
+		this.validateDates(vg.getStartDateBean(), vg.getEndDateBean());
+		this.validateTravellersAndRooms(vg.getNumMaxUtBean(), vg.getHotelInfoBean().getNumRooms());
 		PrivateTravelDao.bookTravel(viaggioBeanToViaggio(vg).getIdTravel());
 	}
 	
 	public void bookAndSaveTravel(PrivateTravelBean vg) throws BookTravelException, SystemException, DatesException, TravRoomException {
-		this.validateDates(vg.getStartDate(), vg.getEndDate());
-		this.validateTravellersAndRooms(vg.getNumMaxUt(), vg.getHotelInfo().getNumRooms());
+		this.validateDates(vg.getStartDateBean(), vg.getEndDateBean());
+		this.validateTravellersAndRooms(vg.getNumMaxUtBean(), vg.getHotelInfoBean().getNumRooms());
 		PrivateTravelDao.bookAndSaveTravel(viaggioBeanToViaggio(vg));
 	}
 	
 	public void saveGroupTravel(PublicTravelBean vgr) throws SaveTravelException, SystemException, DatesException, TravRoomException {
-		this.validateDates(vgr.getStartDate(), vgr.getEndDate());
-		this.validateTravellersAndRooms(vgr.getNumMaxUt(), vgr.getHotelInfo().getNumRooms());
+		this.validateDates(vgr.getStartDateBean(), vgr.getEndDateBean());
+		this.validateTravellersAndRooms(vgr.getNumMaxUtBean(), vgr.getHotelInfoBean().getNumRooms());
 		PublicTravelDao.saveGroupTravel(viaggioGruppoBeanToViaggioGruppo(vgr));
 	}
 	
 	public void bookGroupTravel(PublicTravelBean vgr) throws BookGroupTravelException, SystemException, DatesException, TravRoomException {
-		this.validateDates(vgr.getStartDate(), vgr.getEndDate());
-		this.validateTravellersAndRooms(vgr.getNumMaxUt(), vgr.getHotelInfo().getNumRooms());
+		this.validateDates(vgr.getStartDateBean(), vgr.getEndDateBean());
+		this.validateTravellersAndRooms(vgr.getNumMaxUtBean(), vgr.getHotelInfoBean().getNumRooms());
 		PublicTravelDao.bookGroupTravel(viaggioGruppoBeanToViaggioGruppo(vgr).getIdTravel());
 	}
 	
 	public void bookAndSaveGroupTravel(PublicTravelBean vgr) throws BookGroupTravelException, SystemException, DatesException, TravRoomException {
-		this.validateDates(vgr.getStartDate(), vgr.getEndDate());
-		this.validateTravellersAndRooms(vgr.getNumMaxUt(), vgr.getHotelInfo().getNumRooms());
+		this.validateDates(vgr.getStartDateBean(), vgr.getEndDateBean());
+		this.validateTravellersAndRooms(vgr.getNumMaxUtBean(), vgr.getHotelInfoBean().getNumRooms());
 		PublicTravelDao.bookAndSaveGroupTravel(viaggioGruppoBeanToViaggioGruppo(vgr));
 	}
 

@@ -153,12 +153,12 @@ public class FollowersControllerView implements Initializable {
 		tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 		
 		/* Private travel */
-		tcTravelName.setCellValueFactory(new PropertyValueFactory<>("travelName"));
-		tcDest.setCellValueFactory(new PropertyValueFactory<>("destination"));
+		tcTravelName.setCellValueFactory(new PropertyValueFactory<>("travelNameBean"));
+		tcDest.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
 		
 		/* Public travel */
-		tcTravelGrName.setCellValueFactory(new PropertyValueFactory<>("travelName"));
-		tcDestGr.setCellValueFactory(new PropertyValueFactory<>("destination"));
+		tcTravelGrName.setCellValueFactory(new PropertyValueFactory<>("travelNameBean"));
+		tcDestGr.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
 	}
     
     @FXML
@@ -553,7 +553,7 @@ public class FollowersControllerView implements Initializable {
     void viewHotel(ActionEvent event) {
     	PrivateTravelBean v = tvUserTravels.getSelectionModel().getSelectedItem();
     	if(v != null) {
-    		openLinkHotel(v.getHotelInfo().getHotelLink());
+    		openLinkHotel(v.getHotelInfoBean().getHotelLink());
     	}
     	else {
     		showAlertError("Please select a private travel!");
@@ -571,7 +571,7 @@ public class FollowersControllerView implements Initializable {
         	
     		try {
     			ProfileController profileController = new ProfileController();
-    			filenames = profileController.retrieveTravelPhotos(v.getIdTravel());
+    			filenames = profileController.retrieveTravelPhotos(v.getIdTravelBean());
            		
     			if (!filenames.isEmpty()) {				
     				this.showPhoto(filenames);
@@ -594,7 +594,7 @@ public class FollowersControllerView implements Initializable {
     	PublicTravelBean v = tvUserTravelsGr.getSelectionModel().getSelectedItem();
     	
     	if(v != null) {
-    		openLinkHotel(v.getHotelInfo().getHotelLink());
+    		openLinkHotel(v.getHotelInfoBean().getHotelLink());
     	}
 		else {
 			showAlertError("Please select a public travel!");
@@ -612,7 +612,7 @@ public class FollowersControllerView implements Initializable {
         	
     		try {
     			ProfileController profileController = new ProfileController();
-        		filenames = profileController.retrieveTravelGroupPhotos(v.getIdTravel());
+        		filenames = profileController.retrieveTravelGroupPhotos(v.getIdTravelBean());
     		
     			if (!filenames.isEmpty()) {				
     				this.showPhoto(filenames);

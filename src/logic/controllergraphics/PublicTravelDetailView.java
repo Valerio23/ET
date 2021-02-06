@@ -54,7 +54,7 @@ public class PublicTravelDetailView {
     
     @FXML
     void onMouseHotelNameClicked(MouseEvent event) {
-    	openLinkHotel(vgr.getHotelInfo().getHotelLink());
+    	openLinkHotel(vgr.getHotelInfoBean().getHotelLink());
     }
 
     @FXML
@@ -77,20 +77,20 @@ public class PublicTravelDetailView {
     
     public void setTravelInfo(PublicTravelBean vgr) {
     	this.vgr = vgr;
-    	lblUsernameTravel.setText(vgr.getCreator());
-    	lblDest.setText(vgr.getDestination());
-    	lblData.setText(vgr.getStartDate());
-    	lblDataEnd.setText(vgr.getEndDate());
+    	lblUsernameTravel.setText(vgr.getCreatorBean());
+    	lblDest.setText(vgr.getDestinationBean());
+    	lblData.setText(vgr.getStartDateBean());
+    	lblDataEnd.setText(vgr.getEndDateBean());
     	lblPosti.setText(vgr.getAvailableSeats());
-    	lblHotelName.setText(vgr.getHotelInfo().getHotelName());
-    	lblStars.setText(vgr.getHotelInfo().getStars());
-    	lblRooms.setText(vgr.getHotelInfo().getNumRooms());
-    	lblBreakfast.setText(vgr.getHotelInfo().getBreakfast());
-    	String price = vgr.getHotelInfo().getPrice();
+    	lblHotelName.setText(vgr.getHotelInfoBean().getHotelName());
+    	lblStars.setText(vgr.getHotelInfoBean().getStars());
+    	lblRooms.setText(vgr.getHotelInfoBean().getNumRooms());
+    	lblBreakfast.setText(vgr.getHotelInfoBean().getBreakfast());
+    	String price = vgr.getHotelInfoBean().getPrice();
     	price = price.replace("euro", "€");
     	lblPrice.setText(price);
-    	lblTravellers.setText(vgr.getNumMaxUt());
-    	txtDescription.setText(vgr.getDescription());
+    	lblTravellers.setText(vgr.getNumMaxUtBean());
+    	txtDescription.setText(vgr.getDescriptionBean());
     }
 	
 }

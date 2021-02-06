@@ -45,8 +45,8 @@ public class NotifSingletonClass {
 	private JoinNotificationBean joinToJoinBeanNotification(JoinNotification joinNotification) {
 		// JoiNotification to JoinNotificationBean
 		PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-		viaggioGruppoBean.setIdTravel(String.valueOf(joinNotification.getTravelJoin().getIdTravel()));
-		viaggioGruppoBean.setTravelName(joinNotification.getTravelJoin().getTravelName());
+		viaggioGruppoBean.setIdTravelBean(String.valueOf(joinNotification.getTravelJoin().getIdTravel()));
+		viaggioGruppoBean.setTravelNameBean(joinNotification.getTravelJoin().getTravelName());
 		return new JoinNotificationBean(joinNotification.getIdJoin(), joinNotification.getSenderJoin().getUsername(), viaggioGruppoBean, joinNotification.getMsgJoin(), joinNotification.getDateJoin());
 	}
 	

@@ -391,30 +391,30 @@ public class PlanControllerView implements Initializable {
     
     private void radioPublicTravelSelected() { 	
     	PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-		viaggioGruppoBean.setCreator(this.userBean.getUsername());
+		viaggioGruppoBean.setCreatorBean(this.userBean.getUsername());
 		String price = cbPrice.getSelectionModel().getSelectedItem();
 		price = price.replace("€", "euro");
-		viaggioGruppoBean.getHotelInfo().setPrice(price);
-		viaggioGruppoBean.getHotelInfo().setStars(String.valueOf(stars));
+		viaggioGruppoBean.getHotelInfoBean().setPrice(price);
+		viaggioGruppoBean.getHotelInfoBean().setStars(String.valueOf(stars));
 		if(cbBreakfast.isSelected()) {
-			viaggioGruppoBean.getHotelInfo().setBreakfast(INCLUDED);
+			viaggioGruppoBean.getHotelInfoBean().setBreakfast(INCLUDED);
 		}
 		else {
-			viaggioGruppoBean.getHotelInfo().setBreakfast(NOT_INCLUDED);
+			viaggioGruppoBean.getHotelInfoBean().setBreakfast(NOT_INCLUDED);
 		}
 		
 		try {
 			PlanController planController = new PlanController();
 			viaggioGruppoBean.setAndValidateTravelName(tfTravelName.getText());
 			if(dpStart.getValue() != null && dpEnd.getValue() != null) {
-				viaggioGruppoBean.setStartDate(dpStart.getValue().toString());
-				viaggioGruppoBean.setEndDate(dpEnd.getValue().toString());
+				viaggioGruppoBean.setStartDateBean(dpStart.getValue().toString());
+				viaggioGruppoBean.setEndDateBean(dpEnd.getValue().toString());
 			}
-			planController.validateDates(viaggioGruppoBean.getStartDate(), viaggioGruppoBean.getEndDate());
+			planController.validateDates(viaggioGruppoBean.getStartDateBean(), viaggioGruppoBean.getEndDateBean());
 			viaggioGruppoBean.setAndValidateDestination(tfDest.getText());
 			viaggioGruppoBean.setAndValidateNumTravellers(tfTrav.getText());
-			viaggioGruppoBean.getHotelInfo().setAndValidateNumRooms(tfRooms.getText());
-			planController.validateTravellersAndRooms(viaggioGruppoBean.getNumMaxUt(), viaggioGruppoBean.getHotelInfo().getNumRooms());
+			viaggioGruppoBean.getHotelInfoBean().setAndValidateNumRooms(tfRooms.getText());
+			planController.validateTravellersAndRooms(viaggioGruppoBean.getNumMaxUtBean(), viaggioGruppoBean.getHotelInfoBean().getNumRooms());
 			
 			this.validationPublicTravelSuccess(viaggioGruppoBean);
 		} catch (TravelNameSyntaxException|DestinationSyntaxException|NumTravSyntaxException|NumRoomsSyntaxException|DatesException|TravRoomException e) {
@@ -424,30 +424,30 @@ public class PlanControllerView implements Initializable {
     
     private void radioPrivateTravelSelected() {
     	PrivateTravelBean viaggioBean = new PrivateTravelBean();
-		viaggioBean.setCreator(this.userBean.getUsername());
+		viaggioBean.setCreatorBean(this.userBean.getUsername());
 		String price = cbPrice.getSelectionModel().getSelectedItem();
 		price = price.replace("€", "euro");
-		viaggioBean.getHotelInfo().setPrice(price);
-		viaggioBean.getHotelInfo().setStars(String.valueOf(stars));
+		viaggioBean.getHotelInfoBean().setPrice(price);
+		viaggioBean.getHotelInfoBean().setStars(String.valueOf(stars));
 		if(cbBreakfast.isSelected()) {
-			viaggioBean.getHotelInfo().setBreakfast(INCLUDED);
+			viaggioBean.getHotelInfoBean().setBreakfast(INCLUDED);
 		}
 		else {
-			viaggioBean.getHotelInfo().setBreakfast(NOT_INCLUDED);
+			viaggioBean.getHotelInfoBean().setBreakfast(NOT_INCLUDED);
 		}
 		
 		try {
 			PlanController planController = new PlanController();
 			viaggioBean.setAndValidateTravelName(tfTravelName.getText());
 			if(dpStart.getValue() != null && dpEnd.getValue() != null) {
-				viaggioBean.setStartDate(dpStart.getValue().toString());
-				viaggioBean.setEndDate(dpEnd.getValue().toString());
+				viaggioBean.setStartDateBean(dpStart.getValue().toString());
+				viaggioBean.setEndDateBean(dpEnd.getValue().toString());
 			}
-			planController.validateDates(viaggioBean.getStartDate(), viaggioBean.getEndDate());
+			planController.validateDates(viaggioBean.getStartDateBean(), viaggioBean.getEndDateBean());
 			viaggioBean.setAndValidateDestination(tfDest.getText());
 			viaggioBean.setAndValidateNumTravellers(tfTrav.getText());
-			viaggioBean.getHotelInfo().setAndValidateNumRooms(tfRooms.getText());
-			planController.validateTravellersAndRooms(viaggioBean.getNumMaxUt(), viaggioBean.getHotelInfo().getNumRooms());
+			viaggioBean.getHotelInfoBean().setAndValidateNumRooms(tfRooms.getText());
+			planController.validateTravellersAndRooms(viaggioBean.getNumMaxUtBean(), viaggioBean.getHotelInfoBean().getNumRooms());
 			
 			this.validationPrivateTravelSuccess(viaggioBean);
 		} catch (TravelNameSyntaxException|DestinationSyntaxException|NumTravSyntaxException|NumRoomsSyntaxException|DatesException|TravRoomException e) {
@@ -478,17 +478,17 @@ public class PlanControllerView implements Initializable {
 		hotelBean.setStars(String.valueOf(stars));
 		
 		this.vgBean = new PrivateTravelBean();
-		this.vgBean.setTravelName(tfTravelName.getText());
-		this.vgBean.setDestination(tfDest.getText());
-		this.vgBean.setCreator(lblUsername.getText());
+		this.vgBean.setTravelNameBean(tfTravelName.getText());
+		this.vgBean.setDestinationBean(tfDest.getText());
+		this.vgBean.setCreatorBean(lblUsername.getText());
 		if(dpStart.getValue() != null) {
-			this.vgBean.setStartDate(dpStart.getValue().toString());
+			this.vgBean.setStartDateBean(dpStart.getValue().toString());
 		}
 		if(dpEnd.getValue() != null) {
-			this.vgBean.setEndDate(dpEnd.getValue().toString());
+			this.vgBean.setEndDateBean(dpEnd.getValue().toString());
 		}
-		this.vgBean.setHotelInfo(hotelBean);
-		this.vgBean.setNumMaxUt(tfTrav.getText());
+		this.vgBean.setHotelInfoBean(hotelBean);
+		this.vgBean.setNumMaxUtBean(tfTrav.getText());
     }
     
     private void handlerNextPageInfoPublicTravel() {
@@ -504,19 +504,19 @@ public class PlanControllerView implements Initializable {
 		hotelBean.setStars(String.valueOf(stars));
 		
 		this.vgrBean = new PublicTravelBean();
-		this.vgrBean.setTravelName(tfTravelName.getText());
-		this.vgrBean.setDestination(tfDest.getText());
-		this.vgrBean.setCreator(lblUsername.getText());
+		this.vgrBean.setTravelNameBean(tfTravelName.getText());
+		this.vgrBean.setDestinationBean(tfDest.getText());
+		this.vgrBean.setCreatorBean(lblUsername.getText());
 		
 		if(dpStart.getValue() != null) {
-			this.vgrBean.setStartDate(dpStart.getValue().toString());
+			this.vgrBean.setStartDateBean(dpStart.getValue().toString());
 		}
 		
 		if(dpEnd.getValue() != null) {
-			this.vgrBean.setEndDate(dpEnd.getValue().toString());
+			this.vgrBean.setEndDateBean(dpEnd.getValue().toString());
 		}
-		this.vgrBean.setHotelInfo(hotelBean);
-		this.vgrBean.setNumMaxUt(tfTrav.getText());
+		this.vgrBean.setHotelInfoBean(hotelBean);
+		this.vgrBean.setNumMaxUtBean(tfTrav.getText());
     }
     
     @FXML
@@ -1175,56 +1175,56 @@ public class PlanControllerView implements Initializable {
 	}
 	
 	private boolean checkBreakfastPublic() {
-		return this.vgrBean.getHotelInfo().getBreakfast().equalsIgnoreCase(INCLUDED);
+		return this.vgrBean.getHotelInfoBean().getBreakfast().equalsIgnoreCase(INCLUDED);
 	}
 	
 	private boolean checkBreakfastPrivate() {
-		return this.vgBean.getHotelInfo().getBreakfast().equalsIgnoreCase(INCLUDED);
+		return this.vgBean.getHotelInfoBean().getBreakfast().equalsIgnoreCase(INCLUDED);
 	}
 	
 	public void setPublicTravelInfo(PublicTravelBean vgrBean) {
 		boolean ret;
 		this.vgrBean = vgrBean;
-		tfTravelName.setText(this.vgrBean.getTravelName());
+		tfTravelName.setText(this.vgrBean.getTravelNameBean());
 		
 		ret = checkBreakfastPublic();
 		cbBreakfast.setSelected(ret);
-		tfDest.setText(this.vgrBean.getDestination());
+		tfDest.setText(this.vgrBean.getDestinationBean());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		if(!this.vgrBean.getStartDate().equalsIgnoreCase("")) {
-			dpStart.setValue(LocalDate.parse(this.vgrBean.getStartDate(), formatter));
+		if(!this.vgrBean.getStartDateBean().equalsIgnoreCase("")) {
+			dpStart.setValue(LocalDate.parse(this.vgrBean.getStartDateBean(), formatter));
 		}
-		if(!this.vgrBean.getEndDate().equalsIgnoreCase("")) {
-			dpEnd.setValue(LocalDate.parse(this.vgrBean.getEndDate(), formatter));
+		if(!this.vgrBean.getEndDateBean().equalsIgnoreCase("")) {
+			dpEnd.setValue(LocalDate.parse(this.vgrBean.getEndDateBean(), formatter));
 		}
-		cbPrice.setValue(this.vgrBean.getHotelInfo().getPrice());
-		tfRooms.setText(this.vgrBean.getHotelInfo().getNumRooms());
-		setImageStars(this.vgrBean.getHotelInfo().getStars());
-		tfTrav.setText(this.vgrBean.getNumMaxUt());
+		cbPrice.setValue(this.vgrBean.getHotelInfoBean().getPrice());
+		tfRooms.setText(this.vgrBean.getHotelInfoBean().getNumRooms());
+		setImageStars(this.vgrBean.getHotelInfoBean().getStars());
+		tfTrav.setText(this.vgrBean.getNumMaxUtBean());
 	}
 	
 	public void setPrivateTravelInfo(PrivateTravelBean vgBean) {
 		boolean ret;
 		this.vgBean = vgBean;
-		tfTravelName.setText(this.vgBean.getTravelName());
+		tfTravelName.setText(this.vgBean.getTravelNameBean());
 		
 		ret = checkBreakfastPrivate();
 		cbBreakfast.setSelected(ret);
 		
-		tfDest.setText(this.vgBean.getDestination());
+		tfDest.setText(this.vgBean.getDestinationBean());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		if(!this.vgBean.getStartDate().equalsIgnoreCase("")) {
-			dpStart.setValue(LocalDate.parse(this.vgBean.getStartDate(), formatter));
+		if(!this.vgBean.getStartDateBean().equalsIgnoreCase("")) {
+			dpStart.setValue(LocalDate.parse(this.vgBean.getStartDateBean(), formatter));
 		}
-		if(!this.vgBean.getEndDate().equalsIgnoreCase("")) {
-			dpEnd.setValue(LocalDate.parse(this.vgBean.getEndDate(), formatter));
+		if(!this.vgBean.getEndDateBean().equalsIgnoreCase("")) {
+			dpEnd.setValue(LocalDate.parse(this.vgBean.getEndDateBean(), formatter));
 		}
-		String price = this.vgBean.getHotelInfo().getPrice();
+		String price = this.vgBean.getHotelInfoBean().getPrice();
 		price = price.replace("euro", "€");
 		cbPrice.setValue(price);
-		tfRooms.setText(this.vgBean.getHotelInfo().getNumRooms());
-		tfTrav.setText(this.vgBean.getNumMaxUt());
-		setImageStars(this.vgBean.getHotelInfo().getStars());
+		tfRooms.setText(this.vgBean.getHotelInfoBean().getNumRooms());
+		tfTrav.setText(this.vgBean.getNumMaxUtBean());
+		setImageStars(this.vgBean.getHotelInfoBean().getStars());
 	}
 
 	public void setFiltersLabelError(String s) {

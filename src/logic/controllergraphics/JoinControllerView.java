@@ -147,11 +147,11 @@ public class JoinControllerView implements Initializable{
     
     @Override
     public void initialize(URL location ,ResourceBundle resources) {
-    	tcID.setCellValueFactory(new PropertyValueFactory<>("idTravel"));
-    	tcUsername.setCellValueFactory(new PropertyValueFactory<>("creator"));
-		tcDest.setCellValueFactory(new PropertyValueFactory<>("destination"));
-		tcDataPartenza.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-		tcNumMax.setCellValueFactory(new PropertyValueFactory<>("numMaxUt"));
+    	tcID.setCellValueFactory(new PropertyValueFactory<>("idTravelBean"));
+    	tcUsername.setCellValueFactory(new PropertyValueFactory<>("creatorBean"));
+		tcDest.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
+		tcDataPartenza.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
+		tcNumMax.setCellValueFactory(new PropertyValueFactory<>("numMaxUtBean"));
 		tcPostiDisponiibli.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
 		
 		cebContinent.setItems(continentList);

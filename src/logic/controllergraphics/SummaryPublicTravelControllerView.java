@@ -74,7 +74,7 @@ public class SummaryPublicTravelControllerView {
     
     @FXML
     void onMouseHotelNameClicked(MouseEvent event) {
-    	openLinkHotel(vgr.getHotelInfo().getHotelLink());
+    	openLinkHotel(vgr.getHotelInfoBean().getHotelLink());
     }
 
    
@@ -175,17 +175,17 @@ public class SummaryPublicTravelControllerView {
     
 	public void setPublicTravelInfo(PublicTravelBean vgr) {
 		this.vgr = vgr;
-		this.lblUsernameTravel.setText(vgr.getCreator());
-		this.lblDest.setText(vgr.getDestination());
-		this.lblHotelName.setText(vgr.getHotelInfo().getHotelName());
-		this.lblStars.setText(vgr.getHotelInfo().getStars());
-		String price = vgr.getHotelInfo().getPrice();
+		this.lblUsernameTravel.setText(vgr.getCreatorBean());
+		this.lblDest.setText(vgr.getDestinationBean());
+		this.lblHotelName.setText(vgr.getHotelInfoBean().getHotelName());
+		this.lblStars.setText(vgr.getHotelInfoBean().getStars());
+		String price = vgr.getHotelInfoBean().getPrice();
     	price = price.replace("euro", "€");
 		this.lblPrice.setText(price);
-		this.lblBreakfast.setText(vgr.getHotelInfo().getBreakfast());
-		this.lblData.setText(vgr.getStartDate());
-		this.lblDataEnd.setText(vgr.getEndDate());	
-		this.lblRooms.setText(vgr.getHotelInfo().getNumRooms());
-		this.lblTravellers.setText(String.valueOf(vgr.getNumMaxUt()));
+		this.lblBreakfast.setText(vgr.getHotelInfoBean().getBreakfast());
+		this.lblData.setText(vgr.getStartDateBean());
+		this.lblDataEnd.setText(vgr.getEndDateBean());	
+		this.lblRooms.setText(vgr.getHotelInfoBean().getNumRooms());
+		this.lblTravellers.setText(String.valueOf(vgr.getNumMaxUtBean()));
 	}
 }

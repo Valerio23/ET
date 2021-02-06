@@ -202,8 +202,8 @@ public class ProfileControllerView implements Initializable {
 	
 	private static final String COLOR_ENTERED = "-fx-background-color: #d16002";
 	private static final String COLOR_EXITED = "-fx-background-color: #f9ab51";
-	private static final String TRAVEL = "travelName";
-	private static final String DEST = "destination";
+	private static final String TRAVEL = "travelNameBean";
+	private static final String DEST = "destinationBean";
 	private static final String PRIVATE = "Please, select a private travel!";
 	private static final String PUBLIC = "Please, select a public travel!";
 	
@@ -219,13 +219,13 @@ public class ProfileControllerView implements Initializable {
 		
 		tcDestPrivate.setCellValueFactory(new PropertyValueFactory<>(DEST));
 		tcPrivateTravelName.setCellValueFactory(new PropertyValueFactory<>(TRAVEL));
-		tcFromPrivate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-		tcToPrivate.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+		tcFromPrivate.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
+		tcToPrivate.setCellValueFactory(new PropertyValueFactory<>("endDateBean"));
 		
     	tcDestPublic.setCellValueFactory(new PropertyValueFactory<>(DEST));
 		tcPublicTravelName.setCellValueFactory(new PropertyValueFactory<>(TRAVEL));
-		tcFromPublic.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-		tcToPublic.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+		tcFromPublic.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
+		tcToPublic.setCellValueFactory(new PropertyValueFactory<>("endDateBean"));
 		
 		ToggleGroup tgKindTravel = new ToggleGroup();
 		rbNextTravel.setToggleGroup(tgKindTravel);
@@ -848,7 +848,7 @@ public class ProfileControllerView implements Initializable {
 		if(v != null) {
 			try {
 	    		ProfileController profileController = new ProfileController();
-	    		List<String> filenames = profileController.retrieveTravelPhotos(v.getIdTravel());
+	    		List<String> filenames = profileController.retrieveTravelPhotos(v.getIdTravelBean());
 
 				if(!filenames.isEmpty()) {
 
@@ -892,7 +892,7 @@ public class ProfileControllerView implements Initializable {
     void viewHotel(MouseEvent event) {
     	PrivateTravelBean v = tvUserTravels.getSelectionModel().getSelectedItem();
     	if(v != null) {
-    		openLinkHotel(v.getHotelInfo().getHotelLink());
+    		openLinkHotel(v.getHotelInfoBean().getHotelLink());
     	}
     	else {
     		showAlertInformation(PRIVATE);
@@ -907,7 +907,7 @@ public class ProfileControllerView implements Initializable {
     		List<String> filenames = new ArrayList<>();
     		ProfileController profileController = new ProfileController();
     		try {
-    			filenames = profileController.retrieveTravelGroupPhotos(vgr.getIdTravel());
+    			filenames = profileController.retrieveTravelGroupPhotos(vgr.getIdTravelBean());
     		    	
     			if (!filenames.isEmpty()) {
 
@@ -951,7 +951,7 @@ public class ProfileControllerView implements Initializable {
     void viewHotelGr(MouseEvent event) {
     	PublicTravelBean vgr = tvUserTravelsGr.getSelectionModel().getSelectedItem();
     	if(vgr != null) {
-    		openLinkHotel(vgr.getHotelInfo().getHotelLink());
+    		openLinkHotel(vgr.getHotelInfoBean().getHotelLink());
     	}
     	else {
     		showAlertInformation(PUBLIC);

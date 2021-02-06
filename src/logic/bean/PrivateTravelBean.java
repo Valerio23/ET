@@ -7,117 +7,117 @@ import logic.exceptions.TravelNameSyntaxException;
 
 public class PrivateTravelBean {
 	
-	private String idTravel;
-	private String creator;
-	private String destination;
-	private String startDate;
-	private String endDate;
-	private String numMaxUt;
-	private String description;
-	private String travelName;
-	private HotelBean hotelInfo;
+	private String idTravelBean;
+	private String creatorBean;
+	private String destinationBean;
+	private String startDateBean;
+	private String endDateBean;
+	private String numMaxUtBean;
+	private String descriptionBean;
+	private String travelNameBean;
+	private HotelBean hotelInfoBean;
 	
 	public PrivateTravelBean() {
-		idTravel = "";
-		creator = "";
-		destination = "";
-		startDate = "";
-		endDate = "";
-		description = "";
-		travelName = "";
-		hotelInfo = new HotelBean();
+		idTravelBean = "";
+		creatorBean = "";
+		destinationBean = "";
+		startDateBean = "";
+		endDateBean = "";
+		descriptionBean = "";
+		travelNameBean = "";
+		hotelInfoBean = new HotelBean();
 	}
 	
-	public String getIdTravel() {
-		return idTravel;
+	public String getIdTravelBean() {
+		return idTravelBean;
 	}
 
-	public void setIdTravel(String idTravel) {
-		this.idTravel = idTravel;
+	public void setIdTravelBean(String idTravel) {
+		this.idTravelBean = idTravel;
 	}
 
-	public String getCreator() {
-		return creator;
+	public String getCreatorBean() {
+		return creatorBean;
 	}
 
-	public void setCreator(String creator) {
-		this.creator = creator;
+	public void setCreatorBean(String creator) {
+		this.creatorBean = creator;
 	}
 
-	public String getDestination() {
-		return destination;
+	public String getDestinationBean() {
+		return destinationBean;
 	}
 
-	public void setDestination(String destination) {
-		this.destination = destination;
+	public void setDestinationBean(String destination) {
+		this.destinationBean = destination;
 	}
 	
-	public String getStartDate() {
-		return startDate;
+	public String getStartDateBean() {
+		return startDateBean;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setStartDateBean(String startDate) {
+		this.startDateBean = startDate;
 	}
 
-	public String getEndDate() {
-		return endDate;
+	public String getEndDateBean() {
+		return endDateBean;
 	}
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setEndDateBean(String endDate) {
+		this.endDateBean = endDate;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescriptionBean() {
+		return descriptionBean;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionBean(String description) {
+		this.descriptionBean = description;
 	}
 	
 	public void setAndValidateDescription(String description) throws DescriptionSyntaxException {
 		description = this.validateDescription(description);
-		this.description = description;
+		this.descriptionBean = description;
 	}
 	
-	public String getTravelName() {
-		return travelName;
+	public String getTravelNameBean() {
+		return travelNameBean;
 	}
 
-	public void setTravelName(String travelName) {
-		this.travelName = travelName;
+	public void setTravelNameBean(String travelName) {
+		this.travelNameBean = travelName;
 	}
 	
-	public HotelBean getHotelInfo() {
-		return hotelInfo;
+	public HotelBean getHotelInfoBean() {
+		return hotelInfoBean;
 	}
 
-	public void setHotelInfo(HotelBean hotelInfo) {
-		this.hotelInfo = hotelInfo;
+	public void setHotelInfoBean(HotelBean hotelInfo) {
+		this.hotelInfoBean = hotelInfo;
 	}
 	
-	public String getNumMaxUt() {
-		return numMaxUt;
+	public String getNumMaxUtBean() {
+		return numMaxUtBean;
 	}
 
-	public void setNumMaxUt(String numMaxUt) {
-		this.numMaxUt = numMaxUt;
+	public void setNumMaxUtBean(String numMaxUt) {
+		this.numMaxUtBean = numMaxUt;
 	}
 	
 	public void setAndValidateDestination(String destination) throws DestinationSyntaxException {
 		destination = this.validateDestination(destination);
-		this.destination = destination;
+		this.destinationBean = destination;
 	}
 	
 	public void setAndValidateTravelName(String travelName) throws TravelNameSyntaxException {
 		travelName = this.validateTravelName(travelName);
-		this.travelName = travelName;
+		this.travelNameBean = travelName;
 	}
 	
 	public void setAndValidateNumTravellers(String numTrav) throws NumTravSyntaxException {
 		this.validateNumTrav(numTrav);
-		this.numMaxUt = numTrav;
+		this.numMaxUtBean = numTrav;
 	}
 	
 	private String validateDescription(String description) throws DescriptionSyntaxException {

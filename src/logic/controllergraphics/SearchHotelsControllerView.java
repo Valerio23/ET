@@ -240,8 +240,8 @@ public class SearchHotelsControllerView implements Initializable {
 	        		//CREATE A PRIVATE TRAVEL
 	        		//status == 1 --> CREATE A PRIVATE TRAVEL
 	        		        		       		
-	        		this.vgBean.getHotelInfo().setHotelName(selectedHotel.getHotelName());
-	            	this.vgBean.getHotelInfo().setHotelLink(selectedHotel.getHotelLink());
+	        		this.vgBean.getHotelInfoBean().setHotelName(selectedHotel.getHotelName());
+	            	this.vgBean.getHotelInfoBean().setHotelLink(selectedHotel.getHotelLink());
 	            	
 	        		FXMLLoader loader = new FXMLLoader();
 	        		loader.setLocation(getClass().getResource("/logic/views/SummaryPrivateTravelView.fxml"));
@@ -260,8 +260,8 @@ public class SearchHotelsControllerView implements Initializable {
 	        		//CREATE A PUBLIC TRAVEL
 	        		//status == 0 --> CREATE A PUBLIC TRAVEL
 	        	
-	        		this.vgrBean.getHotelInfo().setHotelName(selectedHotel.getHotelName());
-	        		this.vgrBean.getHotelInfo().setHotelLink(selectedHotel.getHotelLink());
+	        		this.vgrBean.getHotelInfoBean().setHotelName(selectedHotel.getHotelName());
+	        		this.vgrBean.getHotelInfoBean().setHotelLink(selectedHotel.getHotelLink());
 	        		    		
 	        		FXMLLoader loader = new FXMLLoader();
 	        		loader.setLocation(getClass().getResource("/logic/views/SummaryPublicTravelView.fxml"));
@@ -770,30 +770,30 @@ public class SearchHotelsControllerView implements Initializable {
 	
 	public void setPublicTravelInfo(PublicTravelBean vgr) {
 		this.vgrBean = vgr;
-		fdBreakfast.setText(vgr.getHotelInfo().getBreakfast());
-		fdDest.setText(vgr.getDestination());
-		fdStartDate.setText(vgr.getStartDate());
-		fdEndDate.setText(vgr.getEndDate());
-		String price = vgr.getHotelInfo().getPrice();
+		fdBreakfast.setText(vgr.getHotelInfoBean().getBreakfast());
+		fdDest.setText(vgr.getDestinationBean());
+		fdStartDate.setText(vgr.getStartDateBean());
+		fdEndDate.setText(vgr.getEndDateBean());
+		String price = vgr.getHotelInfoBean().getPrice();
 		price = price.replace("euro", "€");
 		fdPrice.setText(price);
-		fdRooms.setText(vgr.getHotelInfo().getNumRooms());
-		fdStars.setText(vgr.getHotelInfo().getStars());
-		fdTrav.setText(vgr.getNumMaxUt());
+		fdRooms.setText(vgr.getHotelInfoBean().getNumRooms());
+		fdStars.setText(vgr.getHotelInfoBean().getStars());
+		fdTrav.setText(vgr.getNumMaxUtBean());
 	}
 	
 	public void setPrivateTravelInfo(PrivateTravelBean vg) {
 		this.vgBean = vg;
-		fdBreakfast.setText(vg.getHotelInfo().getBreakfast());
-		fdDest.setText(vg.getDestination());
-		fdStartDate.setText(vg.getStartDate());
-		fdEndDate.setText(vg.getEndDate());
-		String price = vg.getHotelInfo().getPrice();
+		fdBreakfast.setText(vg.getHotelInfoBean().getBreakfast());
+		fdDest.setText(vg.getDestinationBean());
+		fdStartDate.setText(vg.getStartDateBean());
+		fdEndDate.setText(vg.getEndDateBean());
+		String price = vg.getHotelInfoBean().getPrice();
 		price = price.replace("euro", "€");
 		fdPrice.setText(price);
-		fdRooms.setText(vg.getHotelInfo().getNumRooms());
-		fdStars.setText(vg.getHotelInfo().getStars());
-		fdTrav.setText(vg.getNumMaxUt());
+		fdRooms.setText(vg.getHotelInfoBean().getNumRooms());
+		fdStars.setText(vg.getHotelInfoBean().getStars());
+		fdTrav.setText(vg.getNumMaxUtBean());
 	}
 	
 	@FXML

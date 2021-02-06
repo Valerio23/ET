@@ -70,10 +70,10 @@ public class UploadPhotosController {
             hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
        	 
             PrivateTravelBean vgBean = new PrivateTravelBean();
-            vgBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgBean.setDestination(vg.getDestination());
-            vgBean.setTravelName(vg.getTravelName());
-            vgBean.setHotelInfo(hotelBean);
+            vgBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+            vgBean.setDestinationBean(vg.getDestination());
+            vgBean.setTravelNameBean(vg.getTravelName());
+            vgBean.setHotelInfoBean(hotelBean);
             travelsBean.add(vgBean);
 		}
 		
@@ -91,10 +91,10 @@ public class UploadPhotosController {
             hotelBean.setHotelLink(vg.getHotelInfo().getHotelLink());
             
             PublicTravelBean vgrBean = new PublicTravelBean();
-            vgrBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgrBean.setDestination(vg.getDestination());
-            vgrBean.setTravelName(vg.getTravelName());
-            vgrBean.setHotelInfo(hotelBean);
+            vgrBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+            vgrBean.setDestinationBean(vg.getDestination());
+            vgrBean.setTravelNameBean(vg.getTravelName());
+            vgrBean.setHotelInfoBean(hotelBean);
             
             travelsBean.add(vgrBean);
 		}

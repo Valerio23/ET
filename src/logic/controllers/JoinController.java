@@ -45,21 +45,21 @@ public class JoinController {
 		for(PublicTravel vg : travels) {
             
             PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-            viaggioGruppoBean.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
-            viaggioGruppoBean.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
-            viaggioGruppoBean.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
-            viaggioGruppoBean.getHotelInfo().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-            viaggioGruppoBean.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
-            viaggioGruppoBean.getHotelInfo().setStars(String.valueOf(vg.getHotelInfo().getStars()));
-            viaggioGruppoBean.setCreator(vg.getCreator());
-            viaggioGruppoBean.setDestination(vg.getDestination());
-            viaggioGruppoBean.setDescription(vg.getDescription());
-            viaggioGruppoBean.setStartDate(vg.getStartDate());
-            viaggioGruppoBean.setEndDate(vg.getEndDate());
+            viaggioGruppoBean.getHotelInfoBean().setBreakfast(vg.getHotelInfo().getBreakfast());
+            viaggioGruppoBean.getHotelInfoBean().setHotelLink(vg.getHotelInfo().getHotelLink());
+            viaggioGruppoBean.getHotelInfoBean().setHotelName(vg.getHotelInfo().getHotelName());
+            viaggioGruppoBean.getHotelInfoBean().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
+            viaggioGruppoBean.getHotelInfoBean().setPrice(vg.getHotelInfo().getPrice());
+            viaggioGruppoBean.getHotelInfoBean().setStars(String.valueOf(vg.getHotelInfo().getStars()));
+            viaggioGruppoBean.setCreatorBean(vg.getCreator());
+            viaggioGruppoBean.setDestinationBean(vg.getDestination());
+            viaggioGruppoBean.setDescriptionBean(vg.getDescription());
+            viaggioGruppoBean.setStartDateBean(vg.getStartDate());
+            viaggioGruppoBean.setEndDateBean(vg.getEndDate());
             viaggioGruppoBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-            viaggioGruppoBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
-            viaggioGruppoBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            viaggioGruppoBean.setTravelName(vg.getTravelName());
+            viaggioGruppoBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+            viaggioGruppoBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+            viaggioGruppoBean.setTravelNameBean(vg.getTravelName());
             
             publicTravelBeans.add(viaggioGruppoBean);
 		}
@@ -69,8 +69,8 @@ public class JoinController {
 	
 	public void sendRequest(PublicTravelBean viaggioGruppoBean, String username) throws SystemException, DuplicateRequestException {
 		
-		int idTravel = Integer.parseInt(viaggioGruppoBean.getIdTravel());
-		String travelName = viaggioGruppoBean.getTravelName();
+		int idTravel = Integer.parseInt(viaggioGruppoBean.getIdTravelBean());
+		String travelName = viaggioGruppoBean.getTravelNameBean();
 		User sender = new User();
 		sender.setUsername(username);
 		PublicTravel viaggioGruppo = new PublicTravel();
@@ -78,7 +78,7 @@ public class JoinController {
 		JoinNotification joinNotification = new JoinNotification();
 		joinNotification.setSenderJoin(sender);
 		joinNotification.setTravelJoin(viaggioGruppo);
-		joinNotification.setMsgJoin(sender.getUsername() + " ha richiesto di unirsi al viaggio: " + travelName + " con destinazione " + viaggioGruppoBean.getDestination());
+		joinNotification.setMsgJoin(sender.getUsername() + " ha richiesto di unirsi al viaggio: " + travelName + " con destinazione " + viaggioGruppoBean.getDestinationBean());
 
 		/* Controllo che non esista già la mia richiesta */
 		PublicTravelDao.checkRequests(idTravel, username);

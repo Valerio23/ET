@@ -54,8 +54,8 @@ public class UploadPhotosControllerView implements Initializable {
     
 	private static final String COLOR_ENTERED = "-fx-background-color: #d16002";
 	private static final String COLOR_EXITED = "-fx-background-color: #f9ab51";
-    private static final String DEST = "destination";
-    private static final String TRAVEL = "travelName";
+    private static final String DEST = "destinationBean";
+    private static final String TRAVEL = "travelNameBean";
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -95,7 +95,7 @@ public class UploadPhotosControllerView implements Initializable {
     			}	
     			try {
     				UploadPhotosController addTravelPhotosController = new UploadPhotosController();
-    				addTravelPhotosController.addTravelPhotos(v.getIdTravel(), files, this.userBean.getUsername());
+    				addTravelPhotosController.addTravelPhotos(v.getIdTravelBean(), files, this.userBean.getUsername());
     				showAlertInformation("Photos correctly uploaded!");
     			} catch (SystemException e) {
     				showAlertError("Error on photo upload!");
@@ -122,7 +122,7 @@ public class UploadPhotosControllerView implements Initializable {
     			}	
     			try {
     				UploadPhotosController addTravelPhotosController = new UploadPhotosController();
-    				addTravelPhotosController.addTravelGroupPhotos(vgr.getIdTravel(), files, this.userBean.getUsername());
+    				addTravelPhotosController.addTravelGroupPhotos(vgr.getIdTravelBean(), files, this.userBean.getUsername());
     				showAlertInformation("Photos correctly uploaded!");
     			} catch (SystemException e) {
     				showAlertError("Error on photo upload!");

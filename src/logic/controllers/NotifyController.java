@@ -31,9 +31,9 @@ public class NotifyController {
 
 	public void acceptJoinNotification(String username, JoinNotificationBean joinNotificationBean) throws SystemException, SeatsNotAvailableException {
 		
-		int idTravel = Integer.parseInt(joinNotificationBean.getViaggioGruppoBeanJoin().getIdTravel());
+		int idTravel = Integer.parseInt(joinNotificationBean.getViaggioGruppoBeanJoin().getIdTravelBean());
 		int idNotif = joinNotificationBean.getIdJoin();
-		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelName();
+		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelNameBean();
 		String participant = joinNotificationBean.getSenderJoin();
 		
 		/* Controllo se i posti sono ancora disponibili */
@@ -102,7 +102,7 @@ public class NotifyController {
 	public void declineJoinNotification(String username, JoinNotificationBean joinNotificationBean) throws SystemException {
 		
 		int idNotif = joinNotificationBean.getIdJoin();
-		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelName();
+		String travelname = joinNotificationBean.getViaggioGruppoBeanJoin().getTravelNameBean();
 		String participant = joinNotificationBean.getSenderJoin();
 		
 		/* Invio notifica di conferma/risposta */

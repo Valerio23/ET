@@ -31,16 +31,16 @@ public class ManagePublicTravelController {
                 hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
                 
                 PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-                viaggioGruppoBean.setCreator(vg.getCreator());
-                viaggioGruppoBean.setDestination(vg.getDestination());
-                viaggioGruppoBean.setDescription(vg.getDescription());
-                viaggioGruppoBean.setStartDate(vg.getStartDate());
-                viaggioGruppoBean.setEndDate(vg.getEndDate());
-                viaggioGruppoBean.setHotelInfo(hotelBean);
+                viaggioGruppoBean.setCreatorBean(vg.getCreator());
+                viaggioGruppoBean.setDestinationBean(vg.getDestination());
+                viaggioGruppoBean.setDescriptionBean(vg.getDescription());
+                viaggioGruppoBean.setStartDateBean(vg.getStartDate());
+                viaggioGruppoBean.setEndDateBean(vg.getEndDate());
+                viaggioGruppoBean.setHotelInfoBean(hotelBean);
                 viaggioGruppoBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-                viaggioGruppoBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
-                viaggioGruppoBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-                viaggioGruppoBean.setTravelName(vg.getTravelName());
+                viaggioGruppoBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+                viaggioGruppoBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+                viaggioGruppoBean.setTravelNameBean(vg.getTravelName());
                 
 				travelsBean.add(viaggioGruppoBean);
 			}

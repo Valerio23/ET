@@ -168,17 +168,17 @@ public class ManageTravelControllerView implements Initializable {
     
     @Override
     public void initialize(URL location ,ResourceBundle resources) {
-    	tcId.setCellValueFactory(new PropertyValueFactory<>("idTravel"));
-		tcDest.setCellValueFactory(new PropertyValueFactory<>("destination"));
-		tcTravelName.setCellValueFactory(new PropertyValueFactory<>("travelName"));
-		tcFrom.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-		tcTo.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+    	tcId.setCellValueFactory(new PropertyValueFactory<>("idTravelBean"));
+		tcDest.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
+		tcTravelName.setCellValueFactory(new PropertyValueFactory<>("travelNameBean"));
+		tcFrom.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
+		tcTo.setCellValueFactory(new PropertyValueFactory<>("endDateBean"));
 		
-    	tcIdGr.setCellValueFactory(new PropertyValueFactory<>("idTravel"));
-		tcDestGr.setCellValueFactory(new PropertyValueFactory<>("destination"));
-		tcTravelNameGr.setCellValueFactory(new PropertyValueFactory<>("travelName"));
-		tcFromGr.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-		tcToGr.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+    	tcIdGr.setCellValueFactory(new PropertyValueFactory<>("idTravelBean"));
+		tcDestGr.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
+		tcTravelNameGr.setCellValueFactory(new PropertyValueFactory<>("travelNameBean"));
+		tcFromGr.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
+		tcToGr.setCellValueFactory(new PropertyValueFactory<>("endDateBean"));
 	}
     
     @FXML
@@ -562,7 +562,7 @@ public class ManageTravelControllerView implements Initializable {
     	if(selectedTravel != null) {
     		try {
     			ManagePrivateTravelController manageTravelController = new ManagePrivateTravelController();
-				manageTravelController.bookTravel(selectedTravel.getIdTravel());
+				manageTravelController.bookTravel(selectedTravel.getIdTravelBean());
 				this.showAlertInformation("Travel booked successfully!\nYou can see it in your profile page.");
 				this.travels.remove(selectedTravel);
 				this.setTableView();
@@ -585,7 +585,7 @@ public class ManageTravelControllerView implements Initializable {
     	if(selectedTravel != null) {
     		try {
     			ManagePublicTravelController manageTravelController = new ManagePublicTravelController();
-				manageTravelController.bookTravelGr(selectedTravel.getIdTravel());
+				manageTravelController.bookTravelGr(selectedTravel.getIdTravelBean());
 				this.showAlertInformation("Travel booked successfully!\nYou can see it in your profile page.");
 				this.travelsGr.remove(selectedTravel);
 				this.setTableViewGRTravels();
@@ -608,7 +608,7 @@ public class ManageTravelControllerView implements Initializable {
     	if(selectedTravel != null) {
     		try {
     			ManagePrivateTravelController manageTravelController = new ManagePrivateTravelController();
-				manageTravelController.deleteTravel(selectedTravel.getIdTravel());
+				manageTravelController.deleteTravel(selectedTravel.getIdTravelBean());
 				this.showAlertInformation("Travel deleted successfully!");
 				this.travels.remove(selectedTravel);
 				this.setTableView();
@@ -631,7 +631,7 @@ public class ManageTravelControllerView implements Initializable {
     	if(selectedTravel != null) {
     		try {
     			ManagePublicTravelController manageTravelController = new ManagePublicTravelController();
-				manageTravelController.deleteTravelGr(selectedTravel.getIdTravel());
+				manageTravelController.deleteTravelGr(selectedTravel.getIdTravelBean());
 				this.showAlertInformation("Travel deleted successfully!");
 				this.travelsGr.remove(selectedTravel);
 				this.setTableViewGRTravels();

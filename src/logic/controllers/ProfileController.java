@@ -59,21 +59,21 @@ public class ProfileController {
 		
 		for(PrivateTravel vg : travels) {
 			PrivateTravelBean vgBean = new PrivateTravelBean();
-            vgBean.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
-            vgBean.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
-            vgBean.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
-            vgBean.getHotelInfo().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-            vgBean.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
-            vgBean.getHotelInfo().setStars(String.valueOf(vg.getHotelInfo().getStars()));
+            vgBean.getHotelInfoBean().setBreakfast(vg.getHotelInfo().getBreakfast());
+            vgBean.getHotelInfoBean().setHotelLink(vg.getHotelInfo().getHotelLink());
+            vgBean.getHotelInfoBean().setHotelName(vg.getHotelInfo().getHotelName());
+            vgBean.getHotelInfoBean().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
+            vgBean.getHotelInfoBean().setPrice(vg.getHotelInfo().getPrice());
+            vgBean.getHotelInfoBean().setStars(String.valueOf(vg.getHotelInfo().getStars()));
             
-            vgBean.setCreator(vg.getCreator());
-            vgBean.setDestination(vg.getDestination());
-            vgBean.setDescription(vg.getDescription());
-            vgBean.setStartDate(vg.getStartDate());
-            vgBean.setEndDate(vg.getEndDate());
-            vgBean.setTravelName(vg.getTravelName());
-            vgBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
+            vgBean.setCreatorBean(vg.getCreator());
+            vgBean.setDestinationBean(vg.getDestination());
+            vgBean.setDescriptionBean(vg.getDescription());
+            vgBean.setStartDateBean(vg.getStartDate());
+            vgBean.setEndDateBean(vg.getEndDate());
+            vgBean.setTravelNameBean(vg.getTravelName());
+            vgBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+            vgBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
             
             travelsBean.add(vgBean);
 		}
@@ -87,22 +87,22 @@ public class ProfileController {
 		
 		for(PublicTravel vg : travels) {
 			PublicTravelBean vgrBean = new PublicTravelBean();
-			vgrBean.getHotelInfo().setBreakfast(vg.getHotelInfo().getBreakfast());
-			vgrBean.getHotelInfo().setHotelLink(vg.getHotelInfo().getHotelLink());
-			vgrBean.getHotelInfo().setHotelName(vg.getHotelInfo().getHotelName());
-			vgrBean.getHotelInfo().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
-			vgrBean.getHotelInfo().setPrice(vg.getHotelInfo().getPrice());
-			vgrBean.getHotelInfo().setStars(String.valueOf(vg.getHotelInfo().getStars()));
+			vgrBean.getHotelInfoBean().setBreakfast(vg.getHotelInfo().getBreakfast());
+			vgrBean.getHotelInfoBean().setHotelLink(vg.getHotelInfo().getHotelLink());
+			vgrBean.getHotelInfoBean().setHotelName(vg.getHotelInfo().getHotelName());
+			vgrBean.getHotelInfoBean().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
+			vgrBean.getHotelInfoBean().setPrice(vg.getHotelInfo().getPrice());
+			vgrBean.getHotelInfoBean().setStars(String.valueOf(vg.getHotelInfo().getStars()));
             
-            vgrBean.setCreator(vg.getCreator());
-            vgrBean.setDestination(vg.getDestination());
-            vgrBean.setDescription(vg.getDescription());
-            vgrBean.setStartDate(vg.getStartDate());
-            vgrBean.setEndDate(vg.getEndDate());
+            vgrBean.setCreatorBean(vg.getCreator());
+            vgrBean.setDestinationBean(vg.getDestination());
+            vgrBean.setDescriptionBean(vg.getDescription());
+            vgrBean.setStartDateBean(vg.getStartDate());
+            vgrBean.setEndDateBean(vg.getEndDate());
             vgrBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-            vgrBean.setNumMaxUt(String.valueOf(vg.getNumMaxUt()));
-            vgrBean.setIdTravel(String.valueOf(vg.getIdTravel()));
-            vgrBean.setTravelName(vg.getTravelName());
+            vgrBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+            vgrBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
+            vgrBean.setTravelNameBean(vg.getTravelName());
 			travelsBean.add(vgrBean);
 		}
 		
@@ -250,14 +250,14 @@ public class ProfileController {
 		hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
 		
 		PrivateTravelBean vgBean = new PrivateTravelBean();
-		vgBean.setCreator(vg.getCreator());
-		vgBean.setDescription(vg.getDescription());
-		vgBean.setDestination(vg.getDestination());
-		vgBean.setStartDate(vg.getStartDate());
-		vgBean.setEndDate(vg.getEndDate());
-		vgBean.setHotelInfo(hotelBean);
-		vgBean.setTravelName(vg.getTravelName());
-		vgBean.setIdTravel(String.valueOf(vg.getIdTravel()));
+		vgBean.setCreatorBean(vg.getCreator());
+		vgBean.setDescriptionBean(vg.getDescription());
+		vgBean.setDestinationBean(vg.getDestination());
+		vgBean.setStartDateBean(vg.getStartDate());
+		vgBean.setEndDateBean(vg.getEndDate());
+		vgBean.setHotelInfoBean(hotelBean);
+		vgBean.setTravelNameBean(vg.getTravelName());
+		vgBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
 		
 		return vgBean;
 	}
@@ -272,15 +272,15 @@ public class ProfileController {
 		hotelBean.setStars(String.valueOf(vgr.getHotelInfo().getStars()));
 		
 		PublicTravelBean vgrBean = new PublicTravelBean();
-		vgrBean.setCreator(vgr.getCreator());
-		vgrBean.setDescription(vgr.getDescription());
-		vgrBean.setDestination(vgr.getDestination());
-		vgrBean.setStartDate(vgr.getStartDate());
-		vgrBean.setEndDate(vgr.getEndDate());
-		vgrBean.setHotelInfo(hotelBean);
-		vgrBean.setTravelName(vgr.getTravelName());
-		vgrBean.setNumMaxUt(String.valueOf(vgr.getNumMaxUt()));
-		vgrBean.setIdTravel(String.valueOf(vgr.getIdTravel()));
+		vgrBean.setCreatorBean(vgr.getCreator());
+		vgrBean.setDescriptionBean(vgr.getDescription());
+		vgrBean.setDestinationBean(vgr.getDestination());
+		vgrBean.setStartDateBean(vgr.getStartDate());
+		vgrBean.setEndDateBean(vgr.getEndDate());
+		vgrBean.setHotelInfoBean(hotelBean);
+		vgrBean.setTravelNameBean(vgr.getTravelName());
+		vgrBean.setNumMaxUtBean(String.valueOf(vgr.getNumMaxUt()));
+		vgrBean.setIdTravelBean(String.valueOf(vgr.getIdTravel()));
 		
 		return vgrBean;
 	}
