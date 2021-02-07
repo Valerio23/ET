@@ -449,19 +449,19 @@ public class PublicTravelDao {
              stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
              ResultSet rs = SimpleQueries.selectNotAvailableTravelSlots(stmt, idV);
              
-             int availableSlots = 0;
+             int notAvailableSlots = 0;
              
              if (!rs.first()){ // rs empty
-             	return availableSlots;
+             	return notAvailableSlots;
              }
              
              // riposizionamento del cursore
              rs.first();
              
- 	       	availableSlots = rs.getInt(POSTI_OCCUPATI);
+ 	       	notAvailableSlots = rs.getInt(POSTI_OCCUPATI);
       
              rs.close();
-             return availableSlots;
+             return notAvailableSlots;
          } catch (SQLException e) {
  			throw new SystemException(SYSTEM_ERROR);
  		} finally {
