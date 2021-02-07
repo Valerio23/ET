@@ -13,7 +13,6 @@ import logic.exceptions.DeleteGroupTravelException;
 import logic.exceptions.DuplicateRequestException;
 import logic.exceptions.SaveTravelException;
 import logic.exceptions.SystemException;
-import logic.model.Hotel;
 import logic.model.JoinNotification;
 import logic.model.PublicTravel;
 import logic.queries.CRUDQueries;
@@ -42,6 +41,11 @@ public class PublicTravelDao {
 		
 	}
 	
+	private static void printLogger() {
+		Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
+    	logger.log(Level.WARNING, SYSTEM_ERROR);
+	}
+	
 	public static void addTravelGroupPhoto(int idViaggioGruppo, File file, String filename) throws SystemException {
         
     	Statement stmt = null;
@@ -57,8 +61,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     	    	
@@ -94,8 +97,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();           
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
 
@@ -116,8 +118,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     }
@@ -137,8 +138,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     }
@@ -158,8 +158,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     }
@@ -179,10 +178,42 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
+    }
+    
+    private static List<PublicTravel> setPublicTravelInfo(ResultSet rs) throws SQLException{
+    	
+    	List<PublicTravel> listOfGrTravells = new ArrayList<>();
+        
+    	// riposizionamento del cursore
+        rs.first();
+        do{
+        	PublicTravel vgr = new PublicTravel();
+            
+        	vgr.getHotelInfo().setBreakfast(rs.getString(BREAKFAST));
+        	vgr.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
+        	vgr.getHotelInfo().setHotelName(rs.getString(HOTEL_NAME));
+        	vgr.getHotelInfo().setNumRooms(rs.getInt(NUM_ROOMS));
+        	vgr.getHotelInfo().setPrice(rs.getString(PRICE));
+        	vgr.getHotelInfo().setStars(rs.getInt(STARS));
+            
+            vgr.setCreator(rs.getString(CREATOR));
+            vgr.setDestination(rs.getString(DESTINATION));
+            vgr.setDescription(rs.getString(DESCRIPTION));
+            vgr.setStartDate(rs.getString(DATA_V));
+            vgr.setEndDate(rs.getString(DATA_END));
+            vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
+            vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
+            vgr.setIdTravel(rs.getInt("idV"));
+            vgr.setTravelName(rs.getString(NOME_VIAGGIO));
+            
+            listOfGrTravells.add(vgr);
+
+        } while(rs.next());
+        
+        return listOfGrTravells;
     }
     
     public static List<PublicTravel> retrieveGroupTravels(String u) throws SystemException {
@@ -200,32 +231,8 @@ public class PublicTravelDao {
             	return listOfGrTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do{
-            	Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PublicTravel vgr = new PublicTravel();
-                vgr.setCreator(rs.getString(CREATOR));
-                vgr.setDestination(rs.getString(DESTINATION));
-                vgr.setDescription(rs.getString(DESCRIPTION));
-                vgr.setStartDate(rs.getString(DATA_V));
-                vgr.setEndDate(rs.getString(DATA_END));
-                vgr.setHotelInfo(hotel);
-                vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
-                vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setTravelName(rs.getString(NOME_VIAGGIO));
-                
-                listOfGrTravells.add(vgr);
-
-            } while(rs.next());
+            listOfGrTravells = setPublicTravelInfo(rs);
+            
             rs.close();
             return listOfGrTravells;
         } catch (SQLException e) {
@@ -235,8 +242,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
     }
@@ -245,7 +251,7 @@ public class PublicTravelDao {
     	
    	 	Statement stmt = null;
             	
-        List<PublicTravel> listOfGrTravells = new ArrayList<>();
+        List<PublicTravel> listOfSavedGrTravells = new ArrayList<>();
         
         try {
             // creazione ed esecuzione della query
@@ -253,37 +259,12 @@ public class PublicTravelDao {
             ResultSet rs = SimpleQueries.selectUpcomingGrTravels(stmt, u);
 
             if (!rs.first()){ // rs empty
-            	return listOfGrTravells;
+            	return listOfSavedGrTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do{
-            	Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PublicTravel vgr = new PublicTravel();
-                vgr.setCreator(rs.getString(CREATOR));
-                vgr.setDestination(rs.getString(DESTINATION));
-                vgr.setDescription(rs.getString(DESCRIPTION));
-                vgr.setStartDate(rs.getString(DATA_V));
-                vgr.setEndDate(rs.getString(DATA_END));
-                vgr.setHotelInfo(hotel);
-                vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
-                vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setTravelName(rs.getString(NOME_VIAGGIO));
-                
-                listOfGrTravells.add(vgr);
-
-            } while(rs.next());
+            listOfSavedGrTravells = setPublicTravelInfo(rs);
             rs.close();
-            return listOfGrTravells;
+            return listOfSavedGrTravells;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -291,8 +272,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
     }
@@ -301,7 +281,7 @@ public class PublicTravelDao {
     	
    	 	Statement stmt = null;
     	
-        List<PublicTravel> listOfGrTravells = new ArrayList<>();
+        List<PublicTravel> listOfNextBookedGrTravells = new ArrayList<>();
         
         try {
             // creazione ed esecuzione della query
@@ -309,37 +289,12 @@ public class PublicTravelDao {
             ResultSet rs = SimpleQueries.selectUpcomingBookedGrTravels(stmt, u);
 
             if (!rs.first()){ // rs empty
-            	return listOfGrTravells;
+            	return listOfNextBookedGrTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do{
-            	Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PublicTravel vgr = new PublicTravel();
-                vgr.setCreator(rs.getString(CREATOR));
-                vgr.setDestination(rs.getString(DESTINATION));
-                vgr.setDescription(rs.getString(DESCRIPTION));
-                vgr.setStartDate(rs.getString(DATA_V));
-                vgr.setEndDate(rs.getString(DATA_END));
-                vgr.setHotelInfo(hotel);
-                vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
-                vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setTravelName(rs.getString(NOME_VIAGGIO));
-                
-                listOfGrTravells.add(vgr);
-
-            } while(rs.next());
+            listOfNextBookedGrTravells = setPublicTravelInfo(rs);
             rs.close();
-            return listOfGrTravells;
+            return listOfNextBookedGrTravells;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -347,8 +302,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
     }
@@ -357,7 +311,7 @@ public class PublicTravelDao {
     	
    	 	Statement stmt = null;
     	
-        List<PublicTravel> listOfGrTravells = new ArrayList<>();
+        List<PublicTravel> listOfJoinableGrTravells = new ArrayList<>();
         
         try {
             // creazione ed esecuzione della query
@@ -365,37 +319,12 @@ public class PublicTravelDao {
             ResultSet rs = SimpleQueries.selectAllGrTravels(stmt, u);
 
             if (!rs.first()){ // rs empty
-            	return listOfGrTravells;
+            	return listOfJoinableGrTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do{
-            	Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PublicTravel vgr = new PublicTravel();
-                vgr.setCreator(rs.getString(CREATOR));
-                vgr.setDestination(rs.getString(DESTINATION));
-                vgr.setDescription(rs.getString(DESCRIPTION));
-                vgr.setStartDate(rs.getString(DATA_V));
-                vgr.setEndDate(rs.getString(DATA_END));
-                vgr.setHotelInfo(hotel);
-                vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
-                vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setTravelName(rs.getString(NOME_VIAGGIO));
-                
-                listOfGrTravells.add(vgr);
-
-            } while(rs.next());
+            listOfJoinableGrTravells = setPublicTravelInfo(rs);
             rs.close();
-            return listOfGrTravells;
+            return listOfJoinableGrTravells;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -403,8 +332,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
     }
@@ -413,7 +341,7 @@ public class PublicTravelDao {
     	
    	 	Statement stmt = null;
     	
-        List<PublicTravel> listOfGrTravells = new ArrayList<>();
+        List<PublicTravel> listOfSpecialGrTravells = new ArrayList<>();
         
         try {
             // creazione ed esecuzione della query
@@ -421,37 +349,12 @@ public class PublicTravelDao {
             ResultSet rs = SimpleQueries.retrieveSpecialTravels(stmt, username, sea, art, young, continent);
 
             if (!rs.first()){ // rs empty
-            	return listOfGrTravells;
+            	return listOfSpecialGrTravells;
             }
             
-            // riposizionamento del cursore
-            rs.first();
-            do{
-            	Hotel hotel = new Hotel();
-                hotel.setBreakfast(rs.getString(BREAKFAST));
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
-                hotel.setHotelName(rs.getString(HOTEL_NAME));
-                hotel.setNumRooms(rs.getInt(NUM_ROOMS));
-                hotel.setPrice(rs.getString(PRICE));
-                hotel.setStars(rs.getInt(STARS));
-                
-                PublicTravel vgr = new PublicTravel();
-                vgr.setCreator(rs.getString(CREATOR));
-                vgr.setDestination(rs.getString(DESTINATION));
-                vgr.setDescription(rs.getString(DESCRIPTION));
-                vgr.setStartDate(rs.getString(DATA_V));
-                vgr.setEndDate(rs.getString(DATA_END));
-                vgr.setHotelInfo(hotel);
-                vgr.setAvailableSeats(rs.getInt(NUM_MAX_UT) - rs.getInt(POSTI_OCCUPATI));
-                vgr.setNumMaxUt(rs.getInt(NUM_MAX_UT));
-                vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setTravelName(rs.getString(NOME_VIAGGIO));
-                
-                listOfGrTravells.add(vgr);
-
-            } while(rs.next());
+            listOfSpecialGrTravells = setPublicTravelInfo(rs);
             rs.close();
-            return listOfGrTravells;
+            return listOfSpecialGrTravells;
         } catch (SQLException e) {
 			throw new SystemException(SYSTEM_ERROR);
 		} finally {
@@ -459,8 +362,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
     }
@@ -480,8 +382,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     } 
@@ -500,8 +401,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
             }
         }
     }
@@ -535,8 +435,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-          	   Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+          	  printLogger();
             }
         }
     }
@@ -570,8 +469,7 @@ public class PublicTravelDao {
                  if (stmt != null)
                      stmt.close();
              } catch (SQLException se) {
-           	   Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-             	logger.log(Level.WARNING, SYSTEM_ERROR);
+           	   printLogger();
              }
          }
      }
@@ -592,8 +490,7 @@ public class PublicTravelDao {
 					stmt.close();
 	            }	
 			} catch (SQLException e) {
-				Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-				logger.log(Level.WARNING, SYSTEM_ERROR);
+				printLogger();
 			}
         }
     }
@@ -614,8 +511,7 @@ public class PublicTravelDao {
 					stmt.close();
 	            }
 			} catch (SQLException e) {
-		    	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-				logger.log(Level.WARNING, SYSTEM_ERROR);
+		    	printLogger();
 			}
         }
     	
@@ -642,8 +538,7 @@ public class PublicTravelDao {
 					stmt.close();
 	            }
         	} catch (SQLException e) {
-            	Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-				logger.log(Level.WARNING, SYSTEM_ERROR);
+            	printLogger();
 			}
         }
     }
@@ -666,11 +561,9 @@ public class PublicTravelDao {
             rs.first();
             
             do {
-                Hotel hotel = new Hotel();
-                hotel.setHotelLink(rs.getString(HOTEL_LINK));
+            	PublicTravel vgr = new PublicTravel();
                 
-                PublicTravel vgr = new PublicTravel();
-                vgr.setHotelInfo(hotel);
+                vgr.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
                 vgr.setIdTravel(rs.getInt("idV"));
                 vgr.setDestination(rs.getString(DESTINATION));
                 vgr.setTravelName(rs.getString(NOME_VIAGGIO));
@@ -689,8 +582,7 @@ public class PublicTravelDao {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se) {
-                Logger logger = Logger.getLogger(PublicTravelDao.class.getName());
-            	logger.log(Level.WARNING, SYSTEM_ERROR);
+                printLogger();
             }
         }
 	}
