@@ -18,7 +18,7 @@ public class TestJoinController {
 		int result = 0;
 		
 		PublicTravelBean publicTravelBean = new PublicTravelBean();
-		publicTravelBean.setIdTravelBean("10");
+		publicTravelBean.setIdTravelBean("15");
 
 		try {
 			joinController.sendJoinRequest(publicTravelBean, "Cecco");
