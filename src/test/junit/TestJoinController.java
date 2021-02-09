@@ -15,19 +15,19 @@ public class TestJoinController {
 	@Test
 	public void testSendJoinRequestForNewTravel() {
 		JoinController joinController = new JoinController();
-		int result = 0;
+		int resultTest = 0;
 		
-		PublicTravelBean publicTravelBean = new PublicTravelBean();
-		publicTravelBean.setIdTravelBean("15");
+		PublicTravelBean publicTrBean = new PublicTravelBean();
+		publicTrBean.setIdTravelBean("15");
 
 		try {
-			joinController.sendJoinRequest(publicTravelBean, "Cecco");
-			result = 1;
+			joinController.sendJoinRequest(publicTrBean, "Cecco");
+			resultTest = 1;
 		} catch (SystemException|DuplicateRequestException e) {
-			result = 0;
+			resultTest = 0;
 		}
 		
-		assertEquals(1, result);
+		assertEquals(1, resultTest);
 	}
 	
 	/* Autor: Enrico D'Alessandro - Test 8 */
