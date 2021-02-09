@@ -182,7 +182,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"creator\" name=\"creator\" value=\""+ privateTravelBean.getCreator() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"creator\" name=\"creator\" value=\""+ privateTravelBean.getCreatorBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -196,7 +196,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"name\" name=\"name\" value=\""+ privateTravelBean.getTravelName() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"name\" name=\"name\" value=\""+ privateTravelBean.getTravelNameBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -210,7 +210,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"dest\" name=\"dest\" value=\""+ privateTravelBean.getDestination() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"dest\" name=\"dest\" value=\""+ privateTravelBean.getDestinationBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -224,7 +224,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"startDate\" name=\"startDate\" value=\""+ privateTravelBean.getStartDate() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"startDate\" name=\"startDate\" value=\""+ privateTravelBean.getStartDateBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -238,7 +238,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"endDate\" name=\"endDate\" value=\""+ privateTravelBean.getEndDate() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"endDate\" name=\"endDate\" value=\""+ privateTravelBean.getEndDateBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -256,7 +256,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"hotel\" name=\"hotel\" value=\""+ privateTravelBean.getHotelInfo().getHotelName() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"hotel\" name=\"hotel\" value=\""+ privateTravelBean.getHotelInfoBean().getHotelName() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -270,7 +270,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"stars\" name=\"stars\" value=\""+ privateTravelBean.getHotelInfo().getStars() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"stars\" name=\"stars\" value=\""+ privateTravelBean.getHotelInfoBean().getStars() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -284,7 +284,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"rooms\" name=\"rooms\" value=\""+ privateTravelBean.getHotelInfo().getNumRooms() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"rooms\" name=\"rooms\" value=\""+ privateTravelBean.getHotelInfoBean().getNumRooms() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      
@@ -298,7 +298,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"breakfast\" name=\"breakfast\" value=\""+ privateTravelBean.getHotelInfo().getBreakfast() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"breakfast\" name=\"breakfast\" value=\""+ privateTravelBean.getHotelInfoBean().getBreakfast() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      %>
@@ -311,7 +311,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null) {
-				    	  String price = privateTravelBean.getHotelInfo().getPrice();
+				    	  String price = privateTravelBean.getHotelInfoBean().getPrice();
 				    	  price = price.replaceAll("euro", "&euro;");
 				    	  out.println("<input class=\"form-control\" id=\"price\" name=\"price\" value=\""+ price +"\" type= \"text\" readonly>");
 				      }
@@ -331,7 +331,7 @@
 				      <% 
 						      
 				      if(privateTravelBean != null){
-				    	  out.println("<input class=\"form-control\" id=\"numberOfTravellers\" name=\"numberOfTravellers\" value=\""+ privateTravelBean.getNumMaxUt() +"\" type= \"text\" readonly>");
+				    	  out.println("<input class=\"form-control\" id=\"numberOfTravellers\" name=\"numberOfTravellers\" value=\""+ privateTravelBean.getNumTravelersBean() +"\" type= \"text\" readonly>");
 				      }
 				      
 				      

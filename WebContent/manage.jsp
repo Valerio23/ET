@@ -92,8 +92,8 @@ pageEncoding="ISO-8859-1"%>
 		    			ManagePrivateTravelController manageTravelController = new ManagePrivateTravelController();
 						
 						for(PrivateTravelBean privateTravelBean: privateTravelBeans){
-							if(Integer.parseInt(privateTravelBean.getIdTravel()) == Integer.parseInt(request.getParameter("book_private_travel"))){
-								manageTravelController.bookTravel(privateTravelBean.getIdTravel());
+							if(Integer.parseInt(privateTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("book_private_travel"))){
+								manageTravelController.bookTravel(privateTravelBean.getIdTravelBean());
 								privateTravelBeans.remove(privateTravelBean);
 								session.setAttribute("book_private_success", "Travel correctly booked");
 								session.removeAttribute("book_private_travel");
@@ -107,8 +107,8 @@ pageEncoding="ISO-8859-1"%>
 						ManagePrivateTravelController manageTravelController = new ManagePrivateTravelController();
 						
 						for(PrivateTravelBean privateTravelBean: privateTravelBeans){
-							if(Integer.parseInt(privateTravelBean.getIdTravel()) == Integer.parseInt(request.getParameter("delete_private_travel"))){
-								managePrivateTravelController.deleteTravel(privateTravelBean.getIdTravel());
+							if(Integer.parseInt(privateTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("delete_private_travel"))){
+								managePrivateTravelController.deleteTravel(privateTravelBean.getIdTravelBean());
 								privateTravelBeans.remove(privateTravelBean);
 								session.setAttribute("delete_private_success", "Travel correctly deleted");
 								session.removeAttribute("delete_private_travel");
@@ -125,8 +125,8 @@ pageEncoding="ISO-8859-1"%>
 						ManagePublicTravelController manageTravelController = new ManagePublicTravelController();
 						
 						for(PublicTravelBean publicTravelBean: publicTravelBeans){
-							if(Integer.parseInt(publicTravelBean.getIdTravel()) == Integer.parseInt(request.getParameter("book_public_travel"))){
-								manageTravelController.bookTravelGr(publicTravelBean.getIdTravel());
+							if(Integer.parseInt(publicTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("book_public_travel"))){
+								manageTravelController.bookTravelGr(publicTravelBean.getIdTravelBean());
 								publicTravelBeans.remove(publicTravelBean);
 								session.setAttribute("book_public_success", "Travel correctly booked");
 								session.removeAttribute("book_public_travel");
@@ -139,8 +139,8 @@ pageEncoding="ISO-8859-1"%>
 						ManagePublicTravelController manageTravelController = new ManagePublicTravelController();
 						
 						for(PublicTravelBean publicTravelBean: publicTravelBeans){
-							if(Integer.parseInt(publicTravelBean.getIdTravel()) == Integer.parseInt(request.getParameter("delete_public_travel"))){
-								managePublicTravelController.deleteTravelGr(publicTravelBean.getIdTravel());
+							if(Integer.parseInt(publicTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("delete_public_travel"))){
+								managePublicTravelController.deleteTravelGr(publicTravelBean.getIdTravelBean());
 								publicTravelBeans.remove(publicTravelBean);
 								session.setAttribute("delete_public_success", "Travel correctly deleted");
 								session.removeAttribute("delete_public_travel");
@@ -227,9 +227,9 @@ pageEncoding="ISO-8859-1"%>
 							out.println("<h4>Private travels</h4>");
 							String price = "";
 							for(PrivateTravelBean privateTravelBean : privateTravelBeans) { 
-								price = privateTravelBean.getHotelInfo().getPrice();
+								price = privateTravelBean.getHotelInfoBean().getPrice();
 								price = price.replaceAll("euro", "&euro;");
-								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Travel name: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getTravelName() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + privateTravelBean.getDestination() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + privateTravelBean.getDescription() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Price per night: " + " </strong></p> <p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getStartDate() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getEndDate() + "</p><p></p><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"book_private_travel\" value=\""+ privateTravelBean.getIdTravel() +"\"><input type=\"submit\" value=\"Book\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"delete_private_travel\" value=\""+ privateTravelBean.getIdTravel() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Travel name: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getTravelNameBean() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + privateTravelBean.getDestinationBean() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + privateTravelBean.getDescriptionBean() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Price per night: " + " </strong></p> <p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getStartDateBean() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + privateTravelBean.getEndDateBean() + "</p><p></p><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"book_private_travel\" value=\""+ privateTravelBean.getIdTravelBean() +"\"><input type=\"submit\" value=\"Book\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"delete_private_travel\" value=\""+ privateTravelBean.getIdTravelBean() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 							}
 						%>
                        <hr>
@@ -239,9 +239,9 @@ pageEncoding="ISO-8859-1"%>
 		       				out.println("<h4>Public travels</h4>");	
 			       			
 		       				for(PublicTravelBean publicTravelBean : publicTravelBeans) {
-		       					price = publicTravelBean.getHotelInfo().getPrice();
+		       					price = publicTravelBean.getHotelInfoBean().getPrice();
 								price = price.replaceAll("euro", "&euro;");
-								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Travel name: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getTravelName() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + publicTravelBean.getDestination() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + publicTravelBean.getDescription() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Price per night: " + " </strong></p> <p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getStartDate() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getEndDate() + "</p><p></p><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"book_public_travel\" value=\""+ publicTravelBean.getIdTravel() +"\"><input type=\"submit\" value=\"Book\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"delete_public_travel\" value=\""+ publicTravelBean.getIdTravel() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Travel name: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getTravelNameBean() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + publicTravelBean.getDestinationBean() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + publicTravelBean.getDescriptionBean() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Price per night: " + " </strong></p> <p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getStartDateBean() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getEndDateBean() + "</p><p></p><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"book_public_travel\" value=\""+ publicTravelBean.getIdTravelBean() +"\"><input type=\"submit\" value=\"Book\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"manage.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"delete_public_travel\" value=\""+ publicTravelBean.getIdTravelBean() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 		       				}
 						%>
                        <hr>

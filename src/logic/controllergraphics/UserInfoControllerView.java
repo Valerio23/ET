@@ -474,7 +474,7 @@ public class UserInfoControllerView {
 		dialog.setHeaderText(null);
 		dialog.setContentText("Please enter your new password");
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
+		if (result.isPresent()) {
 			previousPassword = this.userBean.getPassword();
 			try {
 				 this.userBean.setAndValidatePassword(result.get());
@@ -489,10 +489,10 @@ public class UserInfoControllerView {
 					 profileController.changePassword(this.userBean.getUsername(), this.userBean.getPassword());
 					 lblPasswordProfile.setText(result.get());
 	   			 }
-			 } catch (PasswordSyntaxException|PasswordException|SystemException e) {
+			} catch (PasswordSyntaxException|PasswordException|SystemException e) {
 				this.userBean.setPassword(previousPassword);
-				showAlertError(e.getMessage());
-			 }
+				this.showAlertError(e.getMessage());
+			}
 		}
     }
 
@@ -524,7 +524,7 @@ public class UserInfoControllerView {
    			 	}
 			} catch (UsernameSyntaxException|SystemException|UsernameException|DuplicateUsernameException e) {
 				this.userBean.setUsername(previousUsername);
-				showAlertError(e.getMessage());
+				this.showAlertError(e.getMessage());
 			}
 		}
     }
@@ -549,7 +549,7 @@ public class UserInfoControllerView {
 				ivUserPhoto.setSmooth(true);
 				ivUserPhoto.setCache(true);
 			} catch (DefaultPhotoException|SystemException e) {
-				showAlertError(e.getMessage());
+				this.showAlertError(e.getMessage());
 			} 			
 		}
     }

@@ -73,7 +73,7 @@ public class ProfileController {
             vgBean.setEndDateBean(vg.getEndDate());
             vgBean.setTravelNameBean(vg.getTravelName());
             vgBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
-            vgBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+            vgBean.setNumTravelersBean(String.valueOf(vg.getNumMaxUt()));
             
             travelsBean.add(vgBean);
 		}
@@ -100,7 +100,7 @@ public class ProfileController {
             vgrBean.setStartDateBean(vg.getStartDate());
             vgrBean.setEndDateBean(vg.getEndDate());
             vgrBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-            vgrBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+            vgrBean.setNumTravelersBean(String.valueOf(vg.getNumMaxUt()));
             vgrBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
             vgrBean.setTravelNameBean(vg.getTravelName());
 			travelsBean.add(vgrBean);
@@ -279,7 +279,7 @@ public class ProfileController {
 		vgrBean.setEndDateBean(vgr.getEndDate());
 		vgrBean.setHotelInfoBean(hotelBean);
 		vgrBean.setTravelNameBean(vgr.getTravelName());
-		vgrBean.setNumMaxUtBean(String.valueOf(vgr.getNumMaxUt()));
+		vgrBean.setNumTravelersBean(String.valueOf(vgr.getNumMaxUt()));
 		vgrBean.setIdTravelBean(String.valueOf(vgr.getIdTravel()));
 		
 		return vgrBean;

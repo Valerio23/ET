@@ -44,7 +44,7 @@ public class LoginControllerView {
 
     Image imgBack = new Image(getClass().getResourceAsStream("/logic/views/images/back.png"));
     Image imgBackOver = new Image(getClass().getResourceAsStream("/logic/views/images/back-over.png"));
-
+    
     @FXML
     void back(MouseEvent event) {
     	

@@ -186,6 +186,6 @@ public class SummaryPublicTravelControllerView {
 		this.lblData.setText(vgr.getStartDateBean());
 		this.lblDataEnd.setText(vgr.getEndDateBean());	
 		this.lblRooms.setText(vgr.getHotelInfoBean().getNumRooms());
-		this.lblTravellers.setText(String.valueOf(vgr.getNumMaxUtBean()));
+		this.lblTravellers.setText(String.valueOf(vgr.getNumTravelersBean()));
 	}
 }

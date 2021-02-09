@@ -137,7 +137,7 @@
 								if(usersToFollow != null){
 									for(UserBean user : (List<UserBean>)session.getAttribute("usersToFollow")){
 										if(user.getUsername().equalsIgnoreCase(request.getParameter("send_follow_request"))){
-											searchFollowController.followReq(username, user);
+											searchFollowController.sendFollowRequest(username, user.getUsername());
 											session.setAttribute("request_correctly_sent", "Request correctly sent!");
 											session.removeAttribute("send_follow_request");
 											session.removeAttribute("usersToFollow");

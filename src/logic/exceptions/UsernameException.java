@@ -1,6 +1,6 @@
 package logic.exceptions;
 
-public class UsernameException extends Exception{
+public class UsernameException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public UsernameException (String message){

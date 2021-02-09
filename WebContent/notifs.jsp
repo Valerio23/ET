@@ -81,7 +81,7 @@ pageEncoding="ISO-8859-1"%>
 				try {
 					if(request.getParameter("join_notification_accept") != null) {
 						for(JoinNotificationBean joinNotificationBean: joinNotificationBeans){
-							if(joinNotificationBean.getId() == Integer.parseInt(request.getParameter("join_notification_accept"))){
+							if(joinNotificationBean.getIdJoin() == Integer.parseInt(request.getParameter("join_notification_accept"))){
 								notifyController.acceptJoinNotification(username, joinNotificationBean);
 								break;
 							}
@@ -90,7 +90,7 @@ pageEncoding="ISO-8859-1"%>
 					
 					if(request.getParameter("join_notification_decline") != null) {
 						for(JoinNotificationBean joinNotificationBean: joinNotificationBeans){
-							if(joinNotificationBean.getId() == Integer.parseInt(request.getParameter("join_notification_decline"))){
+							if(joinNotificationBean.getIdJoin() == Integer.parseInt(request.getParameter("join_notification_decline"))){
 								notifyController.declineJoinNotification(username, joinNotificationBean);
 								break;
 							}
@@ -99,7 +99,7 @@ pageEncoding="ISO-8859-1"%>
 					
 					if(request.getParameter("follow_notification_accept") != null) {
 						for(FollowNotificationBean followNotificationBean: followNotificationBeans){
-							if(followNotificationBean.getId() == Integer.parseInt(request.getParameter("follow_notification_accept"))){
+							if(followNotificationBean.getIdFollow() == Integer.parseInt(request.getParameter("follow_notification_accept"))){
 								notifyController.acceptFollowNotification(username, followNotificationBean);
 								break;
 							}
@@ -108,7 +108,7 @@ pageEncoding="ISO-8859-1"%>
 			
 					if(request.getParameter("follow_notification_decline") != null) {
 						for(FollowNotificationBean followNotificationBean: followNotificationBeans){
-							if(followNotificationBean.getId() == Integer.parseInt(request.getParameter("follow_notification_decline"))){
+							if(followNotificationBean.getIdFollow() == Integer.parseInt(request.getParameter("follow_notification_decline"))){
 								notifyController.declineFollowNotification(username, followNotificationBean);
 								break;
 							}
@@ -117,7 +117,7 @@ pageEncoding="ISO-8859-1"%>
 					
 					if(request.getParameter("reply_notification") != null) {
 						for(ReplyNotificationBean replyNotificationBean: replyNotificationBeans){
-							if(replyNotificationBean.getId() == Integer.parseInt(request.getParameter("reply_notification"))){
+							if(replyNotificationBean.getIdReply() == Integer.parseInt(request.getParameter("reply_notification"))){
 								notifyController.deleteNotification(replyNotificationBean);
 								break;
 							}
@@ -173,7 +173,7 @@ pageEncoding="ISO-8859-1"%>
 							out.println("<h4>Join notifications: " + joinNotificationBeans.size() + "</h4>");
 							
 							for(JoinNotificationBean joinNotificationBean : joinNotificationBeans) { 
-								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + joinNotificationBean.getMsg() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"join_notification_accept\" value=\""+ joinNotificationBean.getId() +"\"><input type=\"submit\" value=\"Accept\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"join_notification_decline\" value=\""+ joinNotificationBean.getId() +"\"><input type=\"submit\" value=\"Decline\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + joinNotificationBean.getMsgJoin() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"join_notification_accept\" value=\""+ joinNotificationBean.getIdJoin() +"\"><input type=\"submit\" value=\"Accept\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"join_notification_decline\" value=\""+ joinNotificationBean.getIdJoin() +"\"><input type=\"submit\" value=\"Decline\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 							}
 						%>
                        <hr>
@@ -183,7 +183,7 @@ pageEncoding="ISO-8859-1"%>
 		       				out.println("<h4>Follow notifications: " + followNotificationBeans.size() + "</h4>");	
 			       			
 		       				for(FollowNotificationBean followNotificationBean : followNotificationBeans) {
-								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + followNotificationBean.getMsg() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"follow_notification_accept\" value=\""+ followNotificationBean.getId() +"\"><input type=\"submit\" value=\"Follow\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"follow_notification_decline\" value=\""+ followNotificationBean.getId() +"\"><input type=\"submit\" value=\"Decline\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + followNotificationBean.getMsgFollow() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"follow_notification_accept\" value=\""+ followNotificationBean.getIdFollow() +"\"><input type=\"submit\" value=\"Follow\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form><form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"follow_notification_decline\" value=\""+ followNotificationBean.getIdFollow() +"\"><input type=\"submit\" value=\"Decline\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 							}
 						%>
                        <hr>
@@ -193,7 +193,7 @@ pageEncoding="ISO-8859-1"%>
 					   		out.println("<h4>Reply notifications: " + replyNotificationBeans.size() + "</h4>");
 						  	
 					   		for(ReplyNotificationBean replyNotificationBean : replyNotificationBeans) {
-								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + replyNotificationBean.getMsg() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"reply_notification\" value=\""+ replyNotificationBean.getId() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+								out.println("<div style=\"background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p><strong>Hey!</strong></p>" + replyNotificationBean.getMsgReply() + "<form action=\"notifs.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"reply_notification\" value=\""+ replyNotificationBean.getIdReply() +"\"><input type=\"submit\" value=\"Delete\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 							}
 						%>
                        <hr>

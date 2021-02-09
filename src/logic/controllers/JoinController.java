@@ -57,7 +57,7 @@ public class JoinController {
             viaggioGruppoBean.setStartDateBean(vg.getStartDate());
             viaggioGruppoBean.setEndDateBean(vg.getEndDate());
             viaggioGruppoBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-            viaggioGruppoBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+            viaggioGruppoBean.setNumTravelersBean(String.valueOf(vg.getNumMaxUt()));
             viaggioGruppoBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
             viaggioGruppoBean.setTravelNameBean(vg.getTravelName());
             
@@ -67,7 +67,7 @@ public class JoinController {
 		return publicTravelBeans;
 	}
 	
-	public void sendRequest(PublicTravelBean viaggioGruppoBean, String username) throws SystemException, DuplicateRequestException {
+	public void sendJoinRequest(PublicTravelBean viaggioGruppoBean, String username) throws SystemException, DuplicateRequestException {
 		
 		int idTravel = Integer.parseInt(viaggioGruppoBean.getIdTravelBean());
 		String travelName = viaggioGruppoBean.getTravelNameBean();

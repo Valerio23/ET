@@ -151,25 +151,25 @@
 	    	
 	    	if(session.getAttribute("save_private_success") != null){
 	    		PrivateTravelBean privateTravelBean = (PrivateTravelBean)session.getAttribute("privateTravel");
-	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + privateTravelBean.getDestination() + " from " + privateTravelBean.getStartDate() + " to " + privateTravelBean.getEndDate() + " correctly saved! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can book it in your manage page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
+	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + privateTravelBean.getDestinationBean() + " from " + privateTravelBean.getStartDateBean() + " to " + privateTravelBean.getEndDateBean() + " correctly saved! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can book it in your manage page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
 	    		session.removeAttribute("privateTravel");
 	    		session.removeAttribute("save_private_success");
 	    	}
 	    	else if(session.getAttribute("book_private_success") != null){
 	    		PrivateTravelBean privateTravelBean = (PrivateTravelBean)session.getAttribute("privateTravel");
-	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + privateTravelBean.getDestination() + " from " + privateTravelBean.getStartDate() + " to " + privateTravelBean.getEndDate() + " correctly booked! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can view it in your profile page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
+	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + privateTravelBean.getDestinationBean() + " from " + privateTravelBean.getStartDateBean() + " to " + privateTravelBean.getEndDateBean() + " correctly booked! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can view it in your profile page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
 	    		session.removeAttribute("privateTravel");
 	    		session.removeAttribute("book_private_success");
 	    	}
 			else if(session.getAttribute("save_public_success") != null){
 				PublicTravelBean publicTravelBean = (PublicTravelBean)session.getAttribute("groupTravel");
-	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + publicTravelBean.getDestination() + " from " + publicTravelBean.getStartDate() + " to " + publicTravelBean.getEndDate() + " correctly saved! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can book it in your manage page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");				
+	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + publicTravelBean.getDestinationBean() + " from " + publicTravelBean.getStartDateBean() + " to " + publicTravelBean.getEndDateBean() + " correctly saved! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can book it in your manage page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");				
 				session.removeAttribute("groupTravel");
 	    		session.removeAttribute("save_public_success");
 	    	}
 			else if(session.getAttribute("book_public_success") != null){
 				PublicTravelBean publicTravelBean = (PublicTravelBean)session.getAttribute("groupTravel");
-	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + publicTravelBean.getDestination() + " from " + publicTravelBean.getStartDate() + " to " + publicTravelBean.getEndDate() + " correctly booked! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can view it in your profile page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
+	    		out.println("<h3 style=\"color:black\"> &nbsp;&nbsp;&nbsp;Travel to " + publicTravelBean.getDestinationBean() + " from " + publicTravelBean.getStartDateBean() + " to " + publicTravelBean.getEndDateBean() + " correctly booked! </h3> <h4 font-style:italic>&nbsp;&nbsp;&nbsp; You can view it in your profile page! <br><br>&nbsp;&nbsp;&nbsp; <a href=\"home.jsp\">Back to home!</h4></a>");			
 				session.removeAttribute("groupTravel");
 	    		session.removeAttribute("book_public_success");
 	    	}

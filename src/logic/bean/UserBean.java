@@ -41,7 +41,7 @@ public class UserBean {
 	}
 
 	public void setAndValidateUsername(String username) throws UsernameSyntaxException {
-		username = this.validateUsername(username);
+		this.validateUsername(username);
 		this.username = username;
 	}
 
@@ -126,16 +126,15 @@ public class UserBean {
 	
 	//metodo che controlla l'username nel momento del signUp
 	private String validateUsername(String username) throws UsernameSyntaxException {
-		if(username.length() < 3 || username.length() > 20)
-			throw new UsernameSyntaxException("Username syntax error: please insert a username with minlength of 3 and maxlength of 20!");
-		username = this.checkApostrophe(username);
+		if(username.length() < 3 || username.length() > 20 || !this.validateUsernameFormat(username))
+			throw new UsernameSyntaxException("Username syntax error: Minlength 3 and maxlength 20! Characters allowed: letters, digits and \"_\" \".\"");
 		return username;
 	}
 	
 	//metodo che controlla la password nel momento del signUp
 	private String validatePassword(String password) throws PasswordSyntaxException {
 		if(password.length() < 8 || password.length() > 17 || !this.validatePasswordFormat(password)) 
-			throw new PasswordSyntaxException("Password syntax error: format [at least one or more uppercase characters, one or more lowercase charcaters, one or more digit and one or more special characters, minlength of 8 and max length of 16]!");
+			throw new PasswordSyntaxException("Password syntax error: format [at least one or more uppercase letters, one or more lowercase characters, one or more digit and one or more special characters, minlength of 8 and max length of 16]!");
 		password = this.checkApostrophe(password);
 		return password;
 	}
@@ -174,6 +173,16 @@ public class UserBean {
 		   }
 	   }
 	   return true;
+	}
+	
+	private boolean validateUsernameFormat(String username) {
+		for(int i =0; i<username.length(); i++) {
+            char c = username.charAt(i);
+            if(!(Character.isUpperCase(c) || Character.isLowerCase(c) || Character.isDigit(c) || (c == 46) || (c == 95))) {
+                return false;
+            }
+        }
+		return true;
 	}
 	
 	private boolean validatePasswordFormat(String password) {

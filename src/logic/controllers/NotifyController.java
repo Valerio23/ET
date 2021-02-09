@@ -57,7 +57,6 @@ public class NotifyController {
 		else {
 			/* Aggiunta di un nuovo partecipante, update dei posti disponibili e invio notifica al nuovo partecipante */
 			PublicTravelDao.insertOneParticipant(idTravel, participant);
-			
 			PublicTravelDao.decreaseAvailableSlots(idTravel, slotsNotAvailable+1);
 			
 			/* Invio notifica di conferma/risposta */

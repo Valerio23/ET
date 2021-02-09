@@ -779,7 +779,7 @@ public class SearchHotelsControllerView implements Initializable {
 		fdPrice.setText(price);
 		fdRooms.setText(vgr.getHotelInfoBean().getNumRooms());
 		fdStars.setText(vgr.getHotelInfoBean().getStars());
-		fdTrav.setText(vgr.getNumMaxUtBean());
+		fdTrav.setText(vgr.getNumTravelersBean());
 	}
 	
 	public void setPrivateTravelInfo(PrivateTravelBean vg) {
@@ -793,7 +793,7 @@ public class SearchHotelsControllerView implements Initializable {
 		fdPrice.setText(price);
 		fdRooms.setText(vg.getHotelInfoBean().getNumRooms());
 		fdStars.setText(vg.getHotelInfoBean().getStars());
-		fdTrav.setText(vg.getNumMaxUtBean());
+		fdTrav.setText(vg.getNumTravelersBean());
 	}
 	
 	@FXML

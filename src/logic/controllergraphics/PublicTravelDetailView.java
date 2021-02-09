@@ -89,7 +89,7 @@ public class PublicTravelDetailView {
     	String price = vgr.getHotelInfoBean().getPrice();
     	price = price.replace("euro", "€");
     	lblPrice.setText(price);
-    	lblTravellers.setText(vgr.getNumMaxUtBean());
+    	lblTravellers.setText(vgr.getNumTravelersBean());
     	txtDescription.setText(vgr.getDescriptionBean());
     }
 	

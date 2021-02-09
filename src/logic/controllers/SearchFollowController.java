@@ -37,11 +37,11 @@ public class SearchFollowController {
 		
 	}
 	
-	public void followReq(String follower, UserBean followed) throws SystemException, FollowRequestException, AddFollowerException {
+	public void sendFollowRequest(String follower, String followed) throws SystemException, FollowRequestException, AddFollowerException {
 		User userFollower = new User();
 		userFollower.setUsername(follower);
 		User userFollowed = new User();
-		userFollowed.setUsername(followed.getUsername());
+		userFollowed.setUsername(followed);
 		
 		/* Verifico che l'utente che si vuole seguire non è l'utente stesso */
 		if(userFollower.getUsername().equals(userFollowed.getUsername())) 

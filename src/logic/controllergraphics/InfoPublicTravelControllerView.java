@@ -414,7 +414,7 @@ public class InfoPublicTravelControllerView {
     void sendRequest(ActionEvent event) {	
     	JoinController joinPageController = new JoinController();
     	try {
-			joinPageController.sendRequest(vgr, lblUsername.getText());
+			joinPageController.sendJoinRequest(vgr, lblUsername.getText());
 			btnSend.setDisable(true);
     		lblRequest.setText("Request correctly sent");
     		lblRequest.setVisible(true);
@@ -580,7 +580,7 @@ public class InfoPublicTravelControllerView {
     	String price = vgr.getHotelInfoBean().getPrice();
     	price = price.replace("euro", "€");
     	lblPrice.setText(price);
-    	lblTravellers.setText(vgr.getNumMaxUtBean());
+    	lblTravellers.setText(vgr.getNumTravelersBean());
     	txtDescription.setText(vgr.getDescriptionBean());
     }
     

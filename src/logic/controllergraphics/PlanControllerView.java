@@ -412,9 +412,9 @@ public class PlanControllerView implements Initializable {
 			}
 			planController.validateDates(viaggioGruppoBean.getStartDateBean(), viaggioGruppoBean.getEndDateBean());
 			viaggioGruppoBean.setAndValidateDestination(tfDest.getText());
-			viaggioGruppoBean.setAndValidateNumTravellers(tfTrav.getText());
+			viaggioGruppoBean.setAndValidateNumTravelers(tfTrav.getText());
 			viaggioGruppoBean.getHotelInfoBean().setAndValidateNumRooms(tfRooms.getText());
-			planController.validateTravellersAndRooms(viaggioGruppoBean.getNumMaxUtBean(), viaggioGruppoBean.getHotelInfoBean().getNumRooms());
+			planController.validateTravelersAndRooms(viaggioGruppoBean.getNumTravelersBean(), viaggioGruppoBean.getHotelInfoBean().getNumRooms());
 			
 			this.validationPublicTravelSuccess(viaggioGruppoBean);
 		} catch (TravelNameSyntaxException|DestinationSyntaxException|NumTravSyntaxException|NumRoomsSyntaxException|DatesException|TravRoomException e) {
@@ -445,9 +445,9 @@ public class PlanControllerView implements Initializable {
 			}
 			planController.validateDates(viaggioBean.getStartDateBean(), viaggioBean.getEndDateBean());
 			viaggioBean.setAndValidateDestination(tfDest.getText());
-			viaggioBean.setAndValidateNumTravellers(tfTrav.getText());
+			viaggioBean.setAndValidateNumTravelers(tfTrav.getText());
 			viaggioBean.getHotelInfoBean().setAndValidateNumRooms(tfRooms.getText());
-			planController.validateTravellersAndRooms(viaggioBean.getNumMaxUtBean(), viaggioBean.getHotelInfoBean().getNumRooms());
+			planController.validateTravelersAndRooms(viaggioBean.getNumTravelersBean(), viaggioBean.getHotelInfoBean().getNumRooms());
 			
 			this.validationPrivateTravelSuccess(viaggioBean);
 		} catch (TravelNameSyntaxException|DestinationSyntaxException|NumTravSyntaxException|NumRoomsSyntaxException|DatesException|TravRoomException e) {
@@ -488,7 +488,7 @@ public class PlanControllerView implements Initializable {
 			this.vgBean.setEndDateBean(dpEnd.getValue().toString());
 		}
 		this.vgBean.setHotelInfoBean(hotelBean);
-		this.vgBean.setNumMaxUtBean(tfTrav.getText());
+		this.vgBean.setNumTravelersBean(tfTrav.getText());
     }
     
     private void handlerNextPageInfoPublicTravel() {
@@ -516,7 +516,7 @@ public class PlanControllerView implements Initializable {
 			this.vgrBean.setEndDateBean(dpEnd.getValue().toString());
 		}
 		this.vgrBean.setHotelInfoBean(hotelBean);
-		this.vgrBean.setNumMaxUtBean(tfTrav.getText());
+		this.vgrBean.setNumTravelersBean(tfTrav.getText());
     }
     
     @FXML
@@ -1200,7 +1200,7 @@ public class PlanControllerView implements Initializable {
 		cbPrice.setValue(this.vgrBean.getHotelInfoBean().getPrice());
 		tfRooms.setText(this.vgrBean.getHotelInfoBean().getNumRooms());
 		setImageStars(this.vgrBean.getHotelInfoBean().getStars());
-		tfTrav.setText(this.vgrBean.getNumMaxUtBean());
+		tfTrav.setText(this.vgrBean.getNumTravelersBean());
 	}
 	
 	public void setPrivateTravelInfo(PrivateTravelBean vgBean) {
@@ -1223,7 +1223,7 @@ public class PlanControllerView implements Initializable {
 		price = price.replace("euro", "€");
 		cbPrice.setValue(price);
 		tfRooms.setText(this.vgBean.getHotelInfoBean().getNumRooms());
-		tfTrav.setText(this.vgBean.getNumMaxUtBean());
+		tfTrav.setText(this.vgBean.getNumTravelersBean());
 		setImageStars(this.vgBean.getHotelInfoBean().getStars());
 	}
 

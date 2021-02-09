@@ -38,7 +38,7 @@ public class ManagePublicTravelController {
                 viaggioGruppoBean.setEndDateBean(vg.getEndDate());
                 viaggioGruppoBean.setHotelInfoBean(hotelBean);
                 viaggioGruppoBean.setAvailableSeats(String.valueOf(vg.getAvailableSeats()));
-                viaggioGruppoBean.setNumMaxUtBean(String.valueOf(vg.getNumMaxUt()));
+                viaggioGruppoBean.setNumTravelersBean(String.valueOf(vg.getNumMaxUt()));
                 viaggioGruppoBean.setIdTravelBean(String.valueOf(vg.getIdTravel()));
                 viaggioGruppoBean.setTravelNameBean(vg.getTravelName());
                 

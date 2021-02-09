@@ -12,7 +12,7 @@ public class PrivateTravelBean {
 	private String destinationBean;
 	private String startDateBean;
 	private String endDateBean;
-	private String numMaxUtBean;
+	private String numTravelersBean;
 	private String descriptionBean;
 	private String travelNameBean;
 	private HotelBean hotelInfoBean;
@@ -97,12 +97,12 @@ public class PrivateTravelBean {
 		this.hotelInfoBean = hotelInfo;
 	}
 	
-	public String getNumMaxUtBean() {
-		return numMaxUtBean;
+	public String getNumTravelersBean() {
+		return numTravelersBean;
 	}
 
-	public void setNumMaxUtBean(String numMaxUt) {
-		this.numMaxUtBean = numMaxUt;
+	public void setNumTravelersBean(String numMaxUt) {
+		this.numTravelersBean = numMaxUt;
 	}
 	
 	public void setAndValidateDestination(String destination) throws DestinationSyntaxException {
@@ -115,9 +115,9 @@ public class PrivateTravelBean {
 		this.travelNameBean = travelName;
 	}
 	
-	public void setAndValidateNumTravellers(String numTrav) throws NumTravSyntaxException {
+	public void setAndValidateNumTravelers(String numTrav) throws NumTravSyntaxException {
 		this.validateNumTrav(numTrav);
-		this.numMaxUtBean = numTrav;
+		this.numTravelersBean = numTrav;
 	}
 	
 	private String validateDescription(String description) throws DescriptionSyntaxException {

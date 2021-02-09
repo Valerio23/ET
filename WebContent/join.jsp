@@ -218,8 +218,8 @@
                     try{
 	                    if(request.getParameter("send_join_request") != null){
 	                   		for(PublicTravelBean publicTravelBean: publicTravelsList){
-	   							if(Integer.parseInt(publicTravelBean.getIdTravel()) == Integer.parseInt(request.getParameter("send_join_request"))){
-	   								joinPageController.sendRequest(publicTravelBean, username);
+	   							if(Integer.parseInt(publicTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("send_join_request"))){
+	   								joinPageController.sendJoinRequest(publicTravelBean, username);
 	   								session.setAttribute("request_correctly_sent", "Request correctly sent!");
 	   								break;
 	   							}
@@ -291,7 +291,7 @@
                     	
 	                    for(PublicTravelBean publicTravelBean : publicTravelsList ){
 							
-							String price = publicTravelBean.getHotelInfo().getPrice();
+							String price = publicTravelBean.getHotelInfoBean().getPrice();
 	                        if(price.contains("Less than"))
 	                            price = "Less than &euro; 50";
 	                        else if(price.contains("50") && price.contains("100"))
@@ -304,7 +304,7 @@
 	                            price = "More than &euro; 225";
 	                            
 	                            
-							out.println("<div style=\"width: 1040px; background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Creator: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getCreator() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + publicTravelBean.getDestination() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + publicTravelBean.getDescription() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Price per night: " + "</strong></p><p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getStartDate() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getEndDate() + "</p><p></p> <p style= \"color: black; display:inline\"><strong> Number of travellers: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getNumMaxUt() + "</p><p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspAvailable seats: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getAvailableSeats() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Hotel: " + " </strong></p> <a href=\""+ publicTravelBean.getHotelInfo().getHotelLink() + "\" target=\"_blank\" style= \" display:inline\"> " + publicTravelBean.getHotelInfo().getHotelName() + "</a><form action=\"join.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"send_join_request\" value=\""+ publicTravelBean.getIdTravel() +"\"><input type=\"submit\" value=\"Send join request\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
+							out.println("<div style=\"width: 1040px; background-color:#FFEBCD\" class=\"alert alert-success fade in\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">x</a><p style= \"color: black; display:inline\"><strong> Creator: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getCreatorBean() + "</p><p></p><p style= \"color: black; display: inline\"><strong>Destination: </strong></p>" + "<p style=\"color: black; display:inline\">" + publicTravelBean.getDestinationBean() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Description: " + "</strong></p><p style= \"color: black; display:inline\">" + publicTravelBean.getDescriptionBean() + "</p><p></p><p style= \"color: black; display:inline\">" + "<strong>Price per night: " + "</strong></p><p style= \"color: black; display:inline\"> " + price + "</p><p></p><p style= \"color: black; display:inline\"><strong> Start date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getStartDateBean() + "</p> <p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspEnd date: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getEndDateBean() + "</p><p></p> <p style= \"color: black; display:inline\"><strong> Number of travellers: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getNumTravelersBean() + "</p><p style= \"color: black; display:inline\"><strong>&nbsp&nbsp&nbsp&nbspAvailable seats: " + " </strong></p> <p style= \"color: black; display:inline\"> " + publicTravelBean.getAvailableSeats() + "</p><p></p><p style= \"color: black; display:inline\"><strong> Hotel: " + " </strong></p> <a href=\""+ publicTravelBean.getHotelInfoBean().getHotelLink() + "\" target=\"_blank\" style= \" display:inline\"> " + publicTravelBean.getHotelInfoBean().getHotelName() + "</a><form action=\"join.jsp\" method=\"post\"><input type=\"HIDDEN\" name=\"send_join_request\" value=\""+ publicTravelBean.getIdTravelBean() +"\"><input type=\"submit\" value=\"Send join request\" class=\"btn btn-warning btn-sm\" style=\"float:right\"></form></div>");
 						}
 	            		
 	            		

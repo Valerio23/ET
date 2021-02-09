@@ -151,7 +151,7 @@ pageEncoding="ISO-8859-1"%>
                     	else {
                     		List<String> filenames = new ArrayList<>();
     	                    for(PrivateTravelBean privateTravelBean : privateTravelBeansLst) {
-    	                    	filenames = profileController.retrieveTravelPhotos(privateTravelBean.getIdTravel());
+    	                    	filenames = profileController.retrieveTravelPhotos(privateTravelBean.getIdTravelBean());
     	                    	String pathTrav = "";
     	                    	String picTrav = "";
     	                    	List<String> paths = new ArrayList<>();
@@ -172,7 +172,7 @@ pageEncoding="ISO-8859-1"%>
     	           					paths.add(pathTrav);
     	                    	}
     	                    	
-    	                    	String price = privateTravelBean.getHotelInfo().getPrice();
+    	                    	String price = privateTravelBean.getHotelInfoBean().getPrice();
     	                    	if(price.contains("Less than")) 
     	                    		price = "Less than &euro; 50";
     	                    	else if(price.contains("50") && price.contains("100"))
@@ -184,10 +184,10 @@ pageEncoding="ISO-8859-1"%>
     	                    	else if(price.contains("More than"))
     	                    		price = "More than &euro; 225"; 
     	                    		
-    	                    	out.println("<br><div class=\"well\" style=\"background-color:#FFEBCD\"><p><b><h3>Travel's name: </b>" + privateTravelBean.getTravelName() + "</h3><b><h4>Destination: </b>" + privateTravelBean.getDestination() + "</h4></p><p><b>From: </b>" + privateTravelBean.getStartDate() + "</p><p><b>To: </b>" + privateTravelBean.getEndDate() + "</p><button type=\"button\" class=\"btn btn-warning btn-sm\" style=\"float:left\" data-toggle=\"collapse\" data-target=\"#info"+ privateTravelBean.getIdTravel() +"\"><span class=\"glyphicon glyphicon-info-sign\"></span> Info</button></div>");
-    							out.println("<div id=\"info"+ privateTravelBean.getIdTravel() +"\" class=\"collapse well\" style=\"background-color:#ffffff\"><p><b>Descrizione:</b> "+ privateTravelBean.getDescription() +" </p>"
-    				    					+"<p><b>Hotel:</b><a href=\" "+ privateTravelBean.getHotelInfo().getHotelLink() +" \" target=\"_blank\"> " + privateTravelBean.getHotelInfo().getHotelName() + "</a></p><p><b>Stars:</b> " + privateTravelBean.getHotelInfo().getStars() + "</p><p><b>Price per night:</b> " + price + "</p>" + "</p><p><b>Breakfast:</b> " + privateTravelBean.getHotelInfo().getBreakfast() + "</p>"
-    				                       	+ "<p><b>Number of travelers:</b> " + privateTravelBean.getNumMaxUt() + "<p><b>Rooms:</b> " + privateTravelBean.getHotelInfo().getNumRooms() + "</p>");
+    	                    	out.println("<br><div class=\"well\" style=\"background-color:#FFEBCD\"><p><b><h3>Travel's name: </b>" + privateTravelBean.getTravelNameBean() + "</h3><b><h4>Destination: </b>" + privateTravelBean.getDestinationBean() + "</h4></p><p><b>From: </b>" + privateTravelBean.getStartDateBean() + "</p><p><b>To: </b>" + privateTravelBean.getEndDateBean() + "</p><button type=\"button\" class=\"btn btn-warning btn-sm\" style=\"float:left\" data-toggle=\"collapse\" data-target=\"#info"+ privateTravelBean.getIdTravelBean() +"\"><span class=\"glyphicon glyphicon-info-sign\"></span> Info</button></div>");
+    							out.println("<div id=\"info"+ privateTravelBean.getIdTravelBean() +"\" class=\"collapse well\" style=\"background-color:#ffffff\"><p><b>Descrizione:</b> "+ privateTravelBean.getDescriptionBean() +" </p>"
+    				    					+"<p><b>Hotel:</b><a href=\" "+ privateTravelBean.getHotelInfoBean().getHotelLink() +" \" target=\"_blank\"> " + privateTravelBean.getHotelInfoBean().getHotelName() + "</a></p><p><b>Stars:</b> " + privateTravelBean.getHotelInfoBean().getStars() + "</p><p><b>Price per night:</b> " + price + "</p>" + "</p><p><b>Breakfast:</b> " + privateTravelBean.getHotelInfoBean().getBreakfast() + "</p>"
+    				                       	+ "<p><b>Number of travelers:</b> " + privateTravelBean.getNumTravelersBean() + "<p><b>Rooms:</b> " + privateTravelBean.getHotelInfoBean().getNumRooms() + "</p>");
                         		
     							for(String filePath : paths)
     								out.println("<img src=\"" + filePath + "\" style=\"width:300px; height:200px; margin:2px;\" alt=\"Photo\">");

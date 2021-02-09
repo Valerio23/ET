@@ -431,17 +431,17 @@
 									int availableSeats = 0;
 									PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
 									HotelBean hotelBean = new HotelBean();
-									viaggioGruppoBean.setHotelInfo(hotelBean);
+									viaggioGruppoBean.setHotelInfoBean(hotelBean);
 									
 									if(request.getParameter("name") != null){
 										viaggioGruppoBean.setAndValidateTravelName(request.getParameter("name"));
 									}
 									
 									if(request.getParameter("cbBreakfast") != null) {
-										viaggioGruppoBean.getHotelInfo().setBreakfast("Included");
+										viaggioGruppoBean.getHotelInfoBean().setBreakfast("Included");
 									}
 									else {
-										viaggioGruppoBean.getHotelInfo().setBreakfast("Not included");
+										viaggioGruppoBean.getHotelInfoBean().setBreakfast("Not included");
 									}
 									
 									if(request.getParameter("dest") != null){
@@ -449,32 +449,32 @@
 									}
 									
 									if(request.getParameter("dateStart") != null && request.getParameter("dateEnd") != null){
-										viaggioGruppoBean.setStartDate(request.getParameter("dateStart"));
-										viaggioGruppoBean.setEndDate(request.getParameter("dateEnd"));
+										viaggioGruppoBean.setStartDateBean(request.getParameter("dateStart"));
+										viaggioGruppoBean.setEndDateBean(request.getParameter("dateEnd"));
 										planController.validateDates(request.getParameter("dateStart"), request.getParameter("dateEnd"));
 									}
 									
 									if(request.getParameter("numberOfTravellers") != null){
-										viaggioGruppoBean.setAndValidateNumTravellers(request.getParameter("numberOfTravellers"));
+										viaggioGruppoBean.setAndValidateNumTravelers(request.getParameter("numberOfTravellers"));
 										availableSeats = Integer.parseInt(request.getParameter("numberOfTravellers")) -1;
 										viaggioGruppoBean.setAvailableSeats(String.valueOf(availableSeats));
 									}
 									
 									if(request.getParameter("numberOfRooms") != null){
-										viaggioGruppoBean.getHotelInfo().setAndValidateNumRooms(request.getParameter("numberOfRooms"));
+										viaggioGruppoBean.getHotelInfoBean().setAndValidateNumRooms(request.getParameter("numberOfRooms"));
 									}
 									
-									viaggioGruppoBean.getHotelInfo().setPrice(request.getParameter("price"));
+									viaggioGruppoBean.getHotelInfoBean().setPrice(request.getParameter("price"));
 
-									viaggioGruppoBean.getHotelInfo().setStars(request.getParameter("selectedRating"));
+									viaggioGruppoBean.getHotelInfoBean().setStars(request.getParameter("selectedRating"));
 									
-									viaggioGruppoBean.setCreator(userBean.getUsername());
+									viaggioGruppoBean.setCreatorBean(userBean.getUsername());
 									
-									planController.validateTravellersAndRooms(viaggioGruppoBean.getNumMaxUt(), viaggioGruppoBean.getHotelInfo().getNumRooms());
+									planController.validateTravelersAndRooms(viaggioGruppoBean.getNumTravelersBean(), viaggioGruppoBean.getHotelInfoBean().getNumRooms());
 		
 									session.setAttribute("groupTravel", viaggioGruppoBean);
 								
-									listHotelsBean = planController.searchHotels(viaggioGruppoBean.getDestination(), viaggioGruppoBean.getStartDate(), viaggioGruppoBean.getEndDate(), viaggioGruppoBean.getNumMaxUt(), viaggioGruppoBean.getHotelInfo());
+									listHotelsBean = planController.searchHotels(viaggioGruppoBean.getDestinationBean(), viaggioGruppoBean.getStartDateBean(), viaggioGruppoBean.getEndDateBean(), viaggioGruppoBean.getNumTravelersBean(), viaggioGruppoBean.getHotelInfoBean());
 									
 									session.setAttribute("hotels", listHotelsBean);
 									response.sendRedirect("searchHotel.jsp");
@@ -484,21 +484,21 @@
 								
 									PrivateTravelBean viaggioBean = new PrivateTravelBean();
 									HotelBean hotelBean = new HotelBean();
-									viaggioBean.setHotelInfo(hotelBean);
+									viaggioBean.setHotelInfoBean(hotelBean);
 									
 									if(request.getParameter("cbBreakfast") != null) {
-										viaggioBean.getHotelInfo().setBreakfast("Included");
+										viaggioBean.getHotelInfoBean().setBreakfast("Included");
 									}
 									else {
-										viaggioBean.getHotelInfo().setBreakfast("Not included");									
+										viaggioBean.getHotelInfoBean().setBreakfast("Not included");									
 									}
 									
 									if(request.getParameter("dest") != null){
 										viaggioBean.setAndValidateDestination(request.getParameter("dest"));									}
 									
 									if(request.getParameter("dateStart") != null && request.getParameter("dateEnd") != null){
-										viaggioBean.setStartDate(request.getParameter("dateStart"));
-										viaggioBean.setEndDate(request.getParameter("dateEnd"));
+										viaggioBean.setStartDateBean(request.getParameter("dateStart"));
+										viaggioBean.setEndDateBean(request.getParameter("dateEnd"));
 										planController.validateDates(request.getParameter("dateStart"), request.getParameter("dateEnd"));
 									}
 									if(request.getParameter("name") != null){
@@ -506,24 +506,24 @@
 									}
 									
 									if(request.getParameter("numberOfTravellers") != null){
-										viaggioBean.setAndValidateNumTravellers(request.getParameter("numberOfTravellers"));
+										viaggioBean.setAndValidateNumTravelers(request.getParameter("numberOfTravellers"));
 									}
 									
 									if(request.getParameter("numberOfRooms") != null){
-										viaggioBean.getHotelInfo().setAndValidateNumRooms(request.getParameter("numberOfRooms"));
+										viaggioBean.getHotelInfoBean().setAndValidateNumRooms(request.getParameter("numberOfRooms"));
 									}
 									
-									viaggioBean.getHotelInfo().setPrice(request.getParameter("price"));
+									viaggioBean.getHotelInfoBean().setPrice(request.getParameter("price"));
 
-									viaggioBean.getHotelInfo().setStars(request.getParameter("selectedRating"));
+									viaggioBean.getHotelInfoBean().setStars(request.getParameter("selectedRating"));
 
-									viaggioBean.setCreator(userBean.getUsername());
+									viaggioBean.setCreatorBean(userBean.getUsername());
 									
-									planController.validateTravellersAndRooms(viaggioBean.getNumMaxUt(), viaggioBean.getHotelInfo().getNumRooms());
+									planController.validateTravelersAndRooms(viaggioBean.getNumTravelersBean(), viaggioBean.getHotelInfoBean().getNumRooms());
 									
 									session.setAttribute("privateTravel", viaggioBean);
 									
-									listHotelsBean = planController.searchHotels(viaggioBean.getDestination(), viaggioBean.getStartDate(), viaggioBean.getEndDate(), viaggioBean.getNumMaxUt(), viaggioBean.getHotelInfo());
+									listHotelsBean = planController.searchHotels(viaggioBean.getDestinationBean(), viaggioBean.getStartDateBean(), viaggioBean.getEndDateBean(), viaggioBean.getNumTravelersBean(), viaggioBean.getHotelInfoBean());
 									// switch case per andare sulla nuova pagina per cercare gli hotel
 									
 									//httpSession.setAttribute("hotels", listHotelsBean);
@@ -581,12 +581,9 @@
 								session.removeAttribute("trav_rooms_error");
 							}
 					      
-					        
-				      	
 				       %>
 				       <input class="btn btn-warning" name="submit" type="submit" value="Search hotel" />
 				        
-				       
 				      </div>
 				    </div>
 		        </div>
@@ -595,9 +592,8 @@
    
     	</div>
     	
-    	
     	<%
-		}
+			}
     	%>
 
     </body>
