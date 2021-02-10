@@ -522,6 +522,7 @@ public class UserInfoControllerView {
 					lblUsername.setText(result.get());
     				lblUsernameProfile.setText(result.get());
    			 	}
+   			 	
 			} catch (UsernameSyntaxException|SystemException|UsernameException|DuplicateUsernameException e) {
 				this.userBean.setUsername(previousUsername);
 				this.showAlertError(e.getMessage());

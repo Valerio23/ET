@@ -151,7 +151,7 @@ public class JoinControllerView implements Initializable{
     	tcUsername.setCellValueFactory(new PropertyValueFactory<>("creatorBean"));
 		tcDest.setCellValueFactory(new PropertyValueFactory<>("destinationBean"));
 		tcDataPartenza.setCellValueFactory(new PropertyValueFactory<>("startDateBean"));
-		tcNumMax.setCellValueFactory(new PropertyValueFactory<>("numMaxUtBean"));
+		tcNumMax.setCellValueFactory(new PropertyValueFactory<>("numTravelersBean"));
 		tcPostiDisponiibli.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
 		
 		cebContinent.setItems(continentList);

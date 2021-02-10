@@ -60,7 +60,7 @@ public class SimpleQueries {
 	public static ResultSet selectAllGrTravelsProfile(Statement stmt, String username) throws SQLException {
 		DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);		
 		Date today = new Date();
-		String sql = "SELECT distinct * FROM Viaggi_gruppo left join Partecipante on (Viaggi_gruppo.idV = Partecipante.Viaggi_gruppo_idV) WHERE (Creatore = '" + username + OR_PARTECIPANT + username + "')" + " AND" + DATAV_LESS + dateFormat.format(today) + "'" + " AND Prenotato = 1;"; 
+		String sql = "SELECT distinct idV, Creatore, NumMaxUt, DataV, DataFineV, Destinazione, Descrizione, HotelName, HotelLink, PostiOccupati, NomeViaggio, Breakfast, Stars, NumRooms, Price FROM Viaggi_gruppo left join Partecipante on (Viaggi_gruppo.idV = Partecipante.Viaggi_gruppo_idV) WHERE (Creatore = '" + username + OR_PARTECIPANT + username + "')" + " AND" + DATAV_LESS + dateFormat.format(today) + "'" + " AND Prenotato = 1;"; 
 		return stmt.executeQuery(sql);
 	}
 	
@@ -161,7 +161,7 @@ public class SimpleQueries {
     }
     
     public static ResultSet retrieveFollower(Statement stmt, User follower, User followed) throws SQLException {
-	    String sql = String.format("SELECT * FROM `Follow` WHERE Seguace = '%s' AND Seguito = '%s';", followed.getUsername(), follower.getUsername());
+	    String sql = String.format("SELECT * FROM `Follow` WHERE Seguace = '%s' AND Seguito = '%s';", follower.getUsername(), followed.getUsername());
     	return stmt.executeQuery(sql); 
     }
     

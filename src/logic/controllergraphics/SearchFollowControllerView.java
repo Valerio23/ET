@@ -620,7 +620,7 @@ public class SearchFollowControllerView implements Initializable {
     	if(followed != null) {
     		try {
     			SearchFollowController searchFollowController = new SearchFollowController();
-    			searchFollowController.sendFollowRequest(lblUsername.getText(), this.userBean.getUsername());
+    			searchFollowController.sendFollowRequest(this.userBean.getUsername(), followed.getUsername());
     			lblReqOk.setVisible(true);
     		} catch (FollowRequestException e) {
     			lblReqOk.setVisible(false);

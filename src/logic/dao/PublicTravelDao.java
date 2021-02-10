@@ -189,6 +189,7 @@ public class PublicTravelDao {
         
     	// riposizionamento del cursore
         rs.first();
+        
         do{
         	PublicTravel vgr = new PublicTravel();
             

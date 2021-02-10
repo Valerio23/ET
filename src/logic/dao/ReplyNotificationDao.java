@@ -112,4 +112,50 @@ public class ReplyNotificationDao {
         }
     }
 	
+	public static void modifyReplySenderUsername(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifReplySenderUsername(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException("Un expected error occurred..!");
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
+	public static void modifyReplyReceiverUsername(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifReplyReceiverUsername(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException("Un expected error occurred..!");
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
 }

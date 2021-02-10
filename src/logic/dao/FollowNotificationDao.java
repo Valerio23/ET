@@ -91,4 +91,96 @@ public class FollowNotificationDao {
         }
     }
 	
+	public static void modifyFollowerUsername(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifFollowerUsername(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException(SYSTEM_ERROR);
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
+	public static void modifyFollowedUsername(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifFollowedUsername(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException(SYSTEM_ERROR);
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
+	public static void modifyFollowNotifSender(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifyFollowNotifSender(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException(SYSTEM_ERROR);
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
+	public static void modifyFollowNotifReceiver(String newUsername, String username) throws SystemException {
+    	
+    	Statement stmt = null;
+    	    	
+    	try {
+            // creazione ed esecuzione della query
+            stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            CRUDQueries.modifyFollowNotifReceiver(stmt, newUsername, username);
+
+        } catch (SQLException e) {
+        	throw new SystemException(SYSTEM_ERROR);
+		} finally {
+        	try {
+                if (stmt != null)
+                	stmt.close();            
+            } catch (SQLException se) {
+            	Logger logger = Logger.getLogger(UserDao.class.getName());
+            	logger.log(Level.WARNING, SYSTEM_ERROR);
+            }
+        }
+    	    	
+    }
+	
 }

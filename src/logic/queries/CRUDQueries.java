@@ -105,6 +105,47 @@ public class CRUDQueries {
         return stmt.executeUpdate(updateStatement);
 	}
 	
+	public static int modifFollowerUsername(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE Follow set Seguito = '%s'  WHERE Seguito = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifReplySenderUsername(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE repliesnotif set Sender = '%s'  WHERE Sender = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifReplyReceiverUsername(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE repliesnotif set Receiver = '%s'  WHERE Receiver = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifFollowedUsername(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE  Follow set Seguace = '%s'  WHERE Seguace = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifyFollowNotifSender(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE follownotif set Sender = '%s'  WHERE Sender = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifyJoinSender(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE jointravel set Sender = '%s'  WHERE Sender = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	
+	public static int modifyFollowNotifReceiver(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE follownotif set Receiver = '%s'  WHERE Receiver = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
+	public static int modifParticipantUsername(Statement stmt, String nu, String usr) throws SQLException {
+		String updateStatement = String.format("UPDATE Partecipante set Partecipante = '%s'  WHERE Partecipante = '%s'", nu, usr);
+        return stmt.executeUpdate(updateStatement);
+	}
+	
 	public static int saveTravel(Statement stmt, PrivateTravel v) throws SQLException {
 		String updateStatement = String.format("INSERT INTO `Viaggi` (`Creatore`, `Destinazione`, `Descrizione`, `NomeViaggio`, `DataV`, `DataFineV`, `HotelName`, `HotelLink`, `Breakfast`, `Stars`, `NumRooms`, `Price`, `NumTrav`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d')", v.getCreator(), v.getDestination(), v.getDescription(), v.getTravelName(), v.getStartDate(), v.getEndDate(), v.getHotelInfo().getHotelName(), v.getHotelInfo().getHotelLink(), v.getHotelInfo().getBreakfast(), v.getHotelInfo().getStars(), v.getHotelInfo().getNumRooms(), v.getHotelInfo().getPrice(), v.getNumMaxUt());
 		return stmt.executeUpdate(updateStatement);

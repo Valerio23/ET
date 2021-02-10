@@ -12,8 +12,11 @@ import logic.bean.PrivateTravelBean;
 import logic.bean.PublicTravelBean;
 import logic.bean.UserBean;
 import logic.dao.UserDao;
+import logic.dao.FollowNotificationDao;
+import logic.dao.JoinNotificationDao;
 import logic.dao.PrivateTravelDao;
 import logic.dao.PublicTravelDao;
+import logic.dao.ReplyNotificationDao;
 import logic.exceptions.DefaultPhotoException;
 import logic.exceptions.DuplicateUsernameException;
 import logic.exceptions.EmailException;
@@ -162,12 +165,52 @@ public class ProfileController {
 		UserDao.modifyTravelGRInfo(newUsr, usr);
 	}
 	
+	private void updateParticipant(String newUsr, String usr) throws SystemException{
+		UserDao.modifyParticipantUsername(newUsr, usr);
+	}
+	
+	private void updateReplySenderNotif(String newUsr, String usr) throws SystemException{
+		ReplyNotificationDao.modifyReplySenderUsername(newUsr, usr);
+	}
+	
+	private void updateReplyReceiverNotif(String newUsr, String usr) throws SystemException{
+		ReplyNotificationDao.modifyReplyReceiverUsername(newUsr, usr);
+	}
+	
+	private void updateFollowerUsernameNotif(String newUsr, String usr) throws SystemException{
+		FollowNotificationDao.modifyFollowerUsername(newUsr, usr);
+	}
+	
+	private void updateFollowedUsernameNotif(String newUsr, String usr) throws SystemException{
+		FollowNotificationDao.modifyFollowedUsername(newUsr, usr);
+	}
+	
+	private void updateFollowNotifSender(String newUsr, String usr) throws SystemException{
+		FollowNotificationDao.modifyFollowNotifSender(newUsr, usr);
+	}
+	
+	private void updateFollowNotifReceiver(String newUsr, String usr) throws SystemException{
+		FollowNotificationDao.modifyFollowNotifReceiver(newUsr, usr);
+	}
+	
+	private void updateJoinTravelSender(String newUsr, String usr) throws SystemException{
+		JoinNotificationDao.modifyJoinSender(newUsr, usr);
+	}
+	
 	public void changeUsername(String username, String newUsername) throws SystemException, UsernameException, DuplicateUsernameException {
 		try {
 			UserDao.usernameChecker(newUsername);
 			UserDao.modifUsrn(username, newUsername);
 			this.updateTravelInfo(newUsername, username);
 			this.updateTravelGrInfo(newUsername, username);
+			this.updateParticipant(newUsername, username);
+			this.updateReplySenderNotif(newUsername, username);
+			this.updateReplyReceiverNotif(newUsername, username);
+			this.updateFollowerUsernameNotif(newUsername, username);
+			this.updateFollowedUsernameNotif(newUsername, username);
+			this.updateFollowNotifSender(newUsername, username);
+			this.updateFollowNotifReceiver(newUsername, username);
+			this.updateJoinTravelSender(newUsername, username);
 		} catch (DuplicateUsernameException due) {
 			throw due;
 		} catch (UsernameException ue) {
