@@ -2,17 +2,23 @@ package logic.decorator;
 
 
 
-public class ArtDecorator extends Decorator{
+public class ArtDecorator extends Decorator {
 	
-	public ArtDecorator(GeneralFilter filter){
-		super(filter);
-        this.filter = filter;
-    }
+	private String art = "-ART";
 	
-    @Override
-    public String getFilterSelected() {
-        return filter.getFilterSelected()+ "-ART";
-    }
-    
-   
+	public ArtDecorator(GeneralFilter generalFilter) {
+		super(generalFilter);
+	}
+	
+	protected String applyFilterArt(String input){
+		return input + this.art;
+	}
+	
+	@Override
+	public String getFilters() {
+		String preliminaryResults = super.getFilters();
+		preliminaryResults = this.applyFilterArt(preliminaryResults);
+		return preliminaryResults;
+	}
+	
 }

@@ -1,22 +1,22 @@
 package logic.decorator;
 
+public class MountainDecorator extends Decorator {
 
-
-public class MountainDecorator extends Decorator{
-
-	public MountainDecorator(GeneralFilter filter){
-		super(filter);
-        this.filter = filter;
-    }
+	private String mountain = "-MOUNTAIN";
 	
-    @Override
-    public String getFilterSelected() {
-        return filter.getFilterSelected()+ "-MOUNTAIN";
-    }
-
+	public MountainDecorator(GeneralFilter generalFilter) {
+		super(generalFilter);
+	}
 	
-
-    
-    
+	protected String applyFilterMountain(String input){
+		return input + this.mountain;
+	}
+	
+	@Override
+	public String getFilters() {
+		String preliminaryResults = super.getFilters();
+		preliminaryResults = this.applyFilterMountain(preliminaryResults);
+		return preliminaryResults;
+	}
     
 }

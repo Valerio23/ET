@@ -12,7 +12,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import logic.bean.DestinationBean;
 import logic.bean.HotelBean;
 import logic.bean.PrivateTravelBean;
@@ -44,9 +43,7 @@ public class PlanController {
 		
 		List<HotelBean> listHotelsBean = new ArrayList<>();
 		List<Hotel> listHotels;
-			
-		// Validate delle date e n° persone/stanze		
-			
+		
 		listHotels = this.getHotel(destination, startDate, endDate, Integer.valueOf(numTravellers), hotelBean);
 		for(Hotel hotel : listHotels) {
 			HotelBean addHotelBean = new HotelBean();
@@ -238,7 +235,7 @@ public class PlanController {
 	private Destination splitGeneralFilter(GeneralFilter generalFilter) {
 		String[] params;
 		Destination destination = new Destination();
-		params = generalFilter.getFilterSelected().split("-");
+		params = generalFilter.getFilters().split("-");
 		for(String str : params) {
 			if(str.equalsIgnoreCase("SEA")) {
 				destination.setLocation(0);
@@ -341,9 +338,9 @@ public class PlanController {
 		viaggio.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfoBean().getNumRooms()));
 		viaggio.getHotelInfo().setPrice(vg.getHotelInfoBean().getPrice());
 		viaggio.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfoBean().getStars()));
-		viaggio.setCreator(vg.getCreatorBean());
+		viaggio.getCreator().setUsername(vg.getCreatorBean());
 		viaggio.setDescription(vg.getDescriptionBean());
-		viaggio.setDestination(vg.getDestinationBean());
+		viaggio.getDestination().setDestinationName(vg.getDestinationBean());
 		viaggio.setStartDate(vg.getStartDateBean());
 		viaggio.setEndDate(vg.getEndDateBean());
 		viaggio.setTravelName(vg.getTravelNameBean());
@@ -360,9 +357,9 @@ public class PlanController {
 		viaggioGruppo.getHotelInfo().setNumRooms(Integer.valueOf(vg.getHotelInfoBean().getNumRooms()));
 		viaggioGruppo.getHotelInfo().setPrice(vg.getHotelInfoBean().getPrice());
 		viaggioGruppo.getHotelInfo().setStars(Integer.valueOf(vg.getHotelInfoBean().getStars()));
-		viaggioGruppo.setCreator(vg.getCreatorBean());
+		viaggioGruppo.getCreator().setUsername(vg.getCreatorBean());
 		viaggioGruppo.setDescription(vg.getDescriptionBean());
-		viaggioGruppo.setDestination(vg.getDestinationBean());
+		viaggioGruppo.getDestination().setDestinationName(vg.getDestinationBean());
 		viaggioGruppo.setStartDate(vg.getStartDateBean());
 		viaggioGruppo.setEndDate(vg.getEndDateBean());
 		viaggioGruppo.setTravelName(vg.getTravelNameBean());

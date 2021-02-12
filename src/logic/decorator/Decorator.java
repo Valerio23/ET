@@ -2,10 +2,15 @@ package logic.decorator;
 
 public abstract class Decorator implements GeneralFilter {
 	
-	protected GeneralFilter filter;
+	private GeneralFilter generalFilter;
 	
-	protected Decorator(GeneralFilter filter){
-		this.filter = filter;
+	protected Decorator(GeneralFilter generalFilter) {
+		this.generalFilter = generalFilter;
+	}
+	
+	@Override
+	public String getFilters() {
+		return this.generalFilter.getFilters();
 	}
 	
 }

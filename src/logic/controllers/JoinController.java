@@ -51,8 +51,8 @@ public class JoinController {
             viaggioGruppoBean.getHotelInfoBean().setNumRooms(String.valueOf(vg.getHotelInfo().getNumRooms()));
             viaggioGruppoBean.getHotelInfoBean().setPrice(vg.getHotelInfo().getPrice());
             viaggioGruppoBean.getHotelInfoBean().setStars(String.valueOf(vg.getHotelInfo().getStars()));
-            viaggioGruppoBean.setCreatorBean(vg.getCreator());
-            viaggioGruppoBean.setDestinationBean(vg.getDestination());
+            viaggioGruppoBean.setCreatorBean(vg.getCreator().getUsername());
+            viaggioGruppoBean.setDestinationBean(vg.getDestination().getDestinationName());
             viaggioGruppoBean.setDescriptionBean(vg.getDescription());
             viaggioGruppoBean.setStartDateBean(vg.getStartDate());
             viaggioGruppoBean.setEndDateBean(vg.getEndDate());
@@ -82,7 +82,6 @@ public class JoinController {
 
 		/* Controllo che non esista già la mia richiesta */
 		PublicTravelDao.checkRequests(idTravel, username);
-		
 		PublicTravelDao.joinVGruppo(joinNotification);
 	}
 	

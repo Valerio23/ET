@@ -9,20 +9,21 @@ public class ContinentDecorator extends Decorator{
 	public ContinentDecorator(GeneralFilter filter){
 		super(filter);
 		this.continentName = "";
-        this.filter = filter;
     }
 		
-    @Override
-    public String getFilterSelected() {
-        return filter.getFilterSelected() + "-" + this.getContinentName();
-    }
-
-	private String getContinentName() {
-		return continentName;
+	protected String applyFilterContinent(String input){
+		return input + "-" + this.continentName;
 	}
-
+	
 	public void setContinentName(String continentName) {
 		this.continentName = continentName;
 	}
-    
+	
+	@Override
+	public String getFilters() {
+		String preliminaryResults = super.getFilters();
+		preliminaryResults = this.applyFilterContinent(preliminaryResults);
+		return preliminaryResults;
+	}
+
 }

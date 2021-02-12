@@ -89,6 +89,7 @@ pageEncoding="ISO-8859-1"%>
                  <div class="collapse navbar-collapse" id="myNavbar">
                      <ul class="nav navbar-nav">
                          <li><a href="home.jsp">Home</a></li>
+                      <li><a href="uploadPhoto.jsp">Upload photo</a></li>
                       <li><a href="searchFollower.jsp">Search follower</a></li>
                       <li class="active"><a href="profile.jsp">Profile</a></li>
                       <li><a href="notifs.jsp">Notifications</a></li>

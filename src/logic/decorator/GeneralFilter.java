@@ -1,8 +1,7 @@
 package logic.decorator;
 
 public interface GeneralFilter {
- 	 
-	 public String getFilterSelected();
-
-}
 	
+	public String getFilters(); 
+	
+}

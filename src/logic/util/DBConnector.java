@@ -24,7 +24,7 @@ public class DBConnector {
 			Logger logger = Logger.getLogger(DBConnector.class.getName());
 			logger.log(Level.WARNING, "DB opening error");
 	    } catch (SQLException e) {
-			throw new SystemException("An unexpected error occured, please try later!");
+			throw new SystemException("Unexpected error occured, please try later!");
 		}
 	}
     
@@ -48,8 +48,6 @@ public class DBConnector {
 		}
 	}
 	
-	public static void invalidateDBConnectorInstance() {
-		dbConnectorInstance = null;
-	}
+	
 	
 }

@@ -112,6 +112,7 @@ public class PublicTravelDao {
             stmt = DBConnector.getDBConnectorInstance().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             CRUDQueries.saveGroupTravel(stmt, vgr);
         } catch (SQLException e) {
+        	e.printStackTrace();
 			throw new SaveTravelException("Error while saving the travel!");
 		} finally {
         	try {
@@ -200,8 +201,8 @@ public class PublicTravelDao {
         	vgr.getHotelInfo().setPrice(rs.getString(PRICE));
         	vgr.getHotelInfo().setStars(rs.getInt(STARS));
             
-            vgr.setCreator(rs.getString(CREATOR));
-            vgr.setDestination(rs.getString(DESTINATION));
+            vgr.getCreator().setUsername(rs.getString(CREATOR));
+            vgr.getDestination().setDestinationName(rs.getString(DESTINATION));
             vgr.setDescription(rs.getString(DESCRIPTION));
             vgr.setStartDate(rs.getString(DATA_V));
             vgr.setEndDate(rs.getString(DATA_END));
@@ -566,7 +567,7 @@ public class PublicTravelDao {
                 
                 vgr.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
                 vgr.setIdTravel(rs.getInt("idV"));
-                vgr.setDestination(rs.getString(DESTINATION));
+                vgr.getDestination().setDestinationName(rs.getString(DESTINATION));
                 vgr.setTravelName(rs.getString(NOME_VIAGGIO));
                 
                 travels.add(vgr);

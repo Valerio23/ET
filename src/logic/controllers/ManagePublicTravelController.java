@@ -31,8 +31,8 @@ public class ManagePublicTravelController {
                 hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
                 
                 PublicTravelBean viaggioGruppoBean = new PublicTravelBean();
-                viaggioGruppoBean.setCreatorBean(vg.getCreator());
-                viaggioGruppoBean.setDestinationBean(vg.getDestination());
+                viaggioGruppoBean.setCreatorBean(vg.getCreator().getUsername());
+                viaggioGruppoBean.setDestinationBean(vg.getDestination().getDestinationName());
                 viaggioGruppoBean.setDescriptionBean(vg.getDescription());
                 viaggioGruppoBean.setStartDateBean(vg.getStartDate());
                 viaggioGruppoBean.setEndDateBean(vg.getEndDate());

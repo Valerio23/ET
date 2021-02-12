@@ -18,7 +18,6 @@ public class CloseResources {
     private void closeDBConnection() {
     	try {
 			DBConnector.getDBConnectorInstance().releaseConnection();
-			DBConnector.invalidateDBConnectorInstance();
 		} catch (SystemException e) {
 			Logger logger = Logger.getLogger(UserDao.class.getName());
         	logger.log(Level.WARNING, SYSTEM_ERROR);

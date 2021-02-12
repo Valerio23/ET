@@ -200,8 +200,8 @@ public class PrivateTravelDao {
 				vg.getHotelInfo().setPrice(rs.getString(PRICE));
 				vg.getHotelInfo().setStars(rs.getInt(STARS));
 	            
-	            vg.setCreator(rs.getString(CREATOR));
-	            vg.setDestination(rs.getString(DESTINAZIONE));
+	            vg.getCreator().setUsername(rs.getString(CREATOR));
+	            vg.getDestination().setDestinationName(rs.getString(DESTINAZIONE));
 	            vg.setDescription(rs.getString(DESCRIPTION));
 	            vg.setStartDate(rs.getString(DATA_V));
 	            vg.setEndDate(rs.getString(DATA_END));
@@ -340,7 +340,7 @@ public class PrivateTravelDao {
             	PrivateTravel vg = new PrivateTravel();
                 vg.getHotelInfo().setHotelLink(rs.getString(HOTEL_LINK));
                 vg.setIdTravel(rs.getInt("idV"));
-                vg.setDestination(rs.getString(DESTINAZIONE));
+                vg.getDestination().setDestinationName(rs.getString(DESTINAZIONE));
                 vg.setTravelName(rs.getString(NOME_VIAGGIO));
                 
                 followerTravels.add(vg);

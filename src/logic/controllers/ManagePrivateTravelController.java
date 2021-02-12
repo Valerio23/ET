@@ -30,8 +30,8 @@ public class ManagePrivateTravelController {
                 hotelBean.setStars(String.valueOf(vg.getHotelInfo().getStars()));
 				
                 PrivateTravelBean viaggioBean = new PrivateTravelBean();
-                viaggioBean.setCreatorBean(vg.getCreator());
-                viaggioBean.setDestinationBean(vg.getDestination());
+                viaggioBean.setCreatorBean(vg.getCreator().getUsername());
+                viaggioBean.setDestinationBean(vg.getDestination().getDestinationName());
                 viaggioBean.setDescriptionBean(vg.getDescription());
                 viaggioBean.setStartDateBean(vg.getStartDate());
                 viaggioBean.setEndDateBean(vg.getEndDate());

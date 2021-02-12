@@ -3,8 +3,8 @@ package logic.model;
 public class PrivateTravel {
 	
 	private Integer idTravel;
-	private String creator;
-	private String destination;
+	private User creator;
+	private Destination destination;
 	private String startDate;
 	private String endDate;
 	private String description;
@@ -14,8 +14,8 @@ public class PrivateTravel {
 	
 	public PrivateTravel() {
 		idTravel = 0;
-		creator = "";
-		destination = "";
+		creator = new User();
+		destination = new Destination();
 		startDate = "";
 		endDate = "";
 		description = "";
@@ -32,19 +32,19 @@ public class PrivateTravel {
 		this.idTravel = idTravel;
 	}
 
-	public String getCreator() {
+	public User getCreator() {
 		return creator;
 	}
 
-	public void setCreator(String creator) {
+	public void setCreator(User creator) {
 		this.creator = creator;
 	}
 
-	public String getDestination() {
+	public Destination getDestination() {
 		return destination;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(Destination destination) {
 		this.destination = destination;
 	}
 	
