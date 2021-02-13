@@ -32,7 +32,7 @@ public class SimpleQueries {
 	}
 	
 	public static ResultSet controlUniqueRequest(Statement stmt, int idV, String username) throws SQLException{
-		String sql = String.format("SELECT Sender FROM `JoinTravel` WHERE Sender = '%s' and idViaggioG = '%d'", username, idV);
+		String sql = String.format("SELECT Partecipante FROM `partecipante` WHERE Partecipante = '%s' and Viaggi_gruppo_idV = '%d' UNION ALL SELECT Sender FROM `jointravel` WHERE Sender = '%s' and idViaggioG = '%d'", username, idV, username, idV);
         return stmt.executeQuery(sql);
 	}
 

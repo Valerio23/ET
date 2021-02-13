@@ -476,8 +476,6 @@ public class SettingsControllerView {
     	Parent root;
     	
     	this.closeThreads();
-    	CloseResources closeResources = new CloseResources();
-		closeResources.closeApplication();
     	
     	try {
     	
@@ -493,6 +491,8 @@ public class SettingsControllerView {
     		stage.setResizable(false);
     		stage.show();		
     		stage.setOnCloseRequest(we -> {
+    			CloseResources closeResources = new CloseResources();
+    			closeResources.closeApplication();
 	            stage.close();
 	            System.exit(0);
 	    	});

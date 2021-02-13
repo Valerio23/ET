@@ -573,9 +573,6 @@ public class NotifyControllerView implements Initializable {
     	Stage stage;
     	Parent root;
     	
-    	CloseResources closeResources = new CloseResources();
-		closeResources.closeApplication();
-    	
     	try {
     	
     		stage = (Stage) btnLogout.getScene().getWindow();
@@ -589,8 +586,12 @@ public class NotifyControllerView implements Initializable {
     		stage.setScene(scene);
     		stage.setResizable(false);
     		stage.show();		
-    		stage.setOnCloseRequest(we ->
-    			System.exit(0)
+	    		stage.setOnCloseRequest(we -> {
+	    			CloseResources closeResources = new CloseResources();
+		    		closeResources.closeApplication();
+		    		stage.close();
+	    			System.exit(0);
+	    		}
     		);
     		
     	} catch (IOException e){

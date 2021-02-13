@@ -1,3 +1,5 @@
+<%@page import="java.util.Random"%>
+<%@page import="logic.bean.DestinationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="logic.bean.UserBean"%>
 <%@page import="logic.exceptions.TravRoomException"%>
@@ -100,12 +102,7 @@
 			  clear: both;
 			}
 			
-			
-			
-			
-       
        </style>
-       
        
     </head>
     <body>
@@ -122,7 +119,6 @@
 				session.removeAttribute("groupTravel");
 				session.removeAttribute("privateTravel");
 				session.removeAttribute("hotels");
-			
 			
 		%>
     	
@@ -230,7 +226,7 @@
 				      </div>
 				    </div>
 
-				    <div class="form-group ">
+				    <div class="form-group">
 				      <label class="control-label " for="date">
 				       From
 				      </label>
@@ -264,72 +260,18 @@
 				      <label class="control-label " for="dest">
 				       Destination
 				      </label>
-				      <input class="form-control" id="dest" name="dest" placeholder="Destination" type="text" required/>
+				      <%
+				      	if(session.getAttribute("destination") != null) {
+				      		out.println("<input class=\"form-control\" id=\"dest\" name=\"dest\" value=\"" + ((DestinationBean)session.getAttribute("destination")).getDestinationName() + "\" type=\"text\" required/>");
+				      		session.removeAttribute("destination");
+				      	}
+				      	else {
+				      		out.println("<input class=\"form-control\" id=\"dest\" name=\"dest\" placeholder=\"Destination\" type=\"text\" required/>");
+				      		session.removeAttribute("destination");
+				      	}
+				      %>
+				     
 				    </div>
-					
-					<div style="border: 1px solid #000; padding:5px;">
-				    <div class="form-group">
-				   	  <p><h4><b>If you need some help to choose the best destination for you, you can use these <i style="color:orange">filters!</i></b></h4></p>
-				      <label class="control-label ">
-				       Location
-				      </label>
-				      <div class="">
-				       <div class="radio">
-				        <label class="radio">
-				         <input name="radio1" type="radio" value="Sea" />
-				         Sea
-				        </label>
-				       </div>
-				       <div class="radio">
-				        <label class="radio">
-				         <input name="radio1" type="radio" value="Mountain" />
-				         Mountain
-				        </label>
-				       </div>
-				      </div>
-				     </div>
-				     <div class="form-group ">
-				      <label class="control-label ">
-				      Kind 
-				      </label>
-				      <div class=" ">
-				       <div class="checkbox">
-				        <label class="checkbox">
-				         <input name="checkbox" type="checkbox" value="Art City" />
-				         Art City
-				        </label>
-				       </div>
-				       <div class="checkbox">
-				        <label class="checkbox">
-				         <input name="checkbox" type="checkbox" value="Young City" />
-				         Young City
-				        </label>
-				       </div>
-				      </div>
-				     </div>
-				     <div class="form-group ">
-				      <label class="control-label " for="select">
-				       Continent
-				      </label>
-				      <select class="select form-control" id="select" name="select">
-				       <option value="America">
-				        America
-				       </option>
-				       <option value="Europe">
-				        Europe
-				       </option>
-				       <option value="Asia">
-				        Asia
-				       </option>
-				       <option value="Africa">
-				        Africa
-				       </option>
-				       <option value="Oceania">
-				        Oceania
-				       </option>
-				      </select>
-				    </div>
-		        </div>
 		        </div>
 		        
 		        <div style="float:left;width:400px; background-color:#FFF;  padding:10px;">
@@ -384,8 +326,6 @@
 					    <button type="button" class="btnrating btn btn-default btn-lg" data-attr="5" id="rating-star-5">
 					        <i class="fa fa-star" aria-hidden="true"></i>
 					    </button>
-					    
-					    
 				    </div>
 
 				    <div class="form-group ">
@@ -525,12 +465,9 @@
 									session.setAttribute("privateTravel", viaggioBean);
 									
 									listHotelsBean = planController.searchHotels(viaggioBean.getDestinationBean(), viaggioBean.getStartDateBean(), viaggioBean.getEndDateBean(), viaggioBean.getNumTravelersBean(), viaggioBean.getHotelInfoBean());
-									// switch case per andare sulla nuova pagina per cercare gli hotel
-									
-									//httpSession.setAttribute("hotels", listHotelsBean);
+
 									session.setAttribute("hotels", listHotelsBean);
 									response.sendRedirect("searchHotel.jsp");
-								
 								}
 				        		
 				        	} catch (IOException e) {
@@ -588,10 +525,130 @@
 				      </div>
 				    </div>
 		        </div>
-
 	        </form>
-   
-    	</div>
+	        
+   			<form action="plan.jsp" method="post">
+				    <div class="form-group" style="width:300px; float:left; border: 1px solid #000; margin-top:20px; margin-left: 10px; padding:10px;">
+				   	  <p><h4><b>If you need some help to choose the best destination for you, you can use these <i style="color:orange">filters!</i></b></h4></p>
+				      <label class="control-label ">
+				       Location
+				      </label>
+				      <div class="">
+				       <div class="radio">
+				        <label class="radio">
+				         <input name="radio1" type="radio" value="Sea" />
+				         Sea
+				        </label>
+				       </div>
+				       <div class="radio">
+				        <label class="radio">
+				         <input name="radio1" type="radio" value="Mountain" />
+				         Mountain
+				        </label>
+				       </div>
+				      </div>
+				    
+				     <div class="form-group ">
+				      <label class="control-label ">
+				      Kind 
+				      </label>
+				      <div class=" ">
+				       <div class="checkbox">
+				        <label class="checkbox">
+				         <input name="checkboxArt" type="checkbox" value="Art City" />
+				         Art City
+				        </label>
+				       </div>
+				       <div class="checkbox">
+				        <label class="checkbox">
+				         <input name="checkboxYoung" type="checkbox" value="Young City" />
+				         Young City
+				        </label>
+				       </div>
+				      </div>
+				     </div>
+				     <div class="form-group ">
+				      <label class="control-label " for="select">
+				       Continent
+				      </label>
+				      <select class="select form-control" id="select" name="continent">
+				      <option value="Not defined">
+				        Not defined
+				       </option>
+				       <option value="America">
+				        America
+				       </option>
+				       <option value="Europe">
+				        Europe
+				       </option>
+				       <option value="Asia">
+				        Asia
+				       </option>
+				       <option value="Africa">
+				        Africa
+				       </option>
+				       <option value="Oceania">
+				        Oceania
+				       </option>
+				      </select>
+				     
+					      <input type="HIDDEN" name="search_destinations">
+					      <input class="btn btn-warning" name="submit" type="submit" value="Search" style = "margin-top: 10px;"/>
+				      
+				    </div>
+				    </div>
+		        </form>
+		        
+		     <%	
+	        	if(request.getParameter("search_destinations") != null) {
+	        		Boolean radioSea = false;
+					Boolean radioMountain = false;
+					Boolean cbArt = false;
+					Boolean cbYoung = false;
+					String continent = "";
+					
+					if(request.getParameter("radio1") != null) {
+		            	
+						if(request.getParameter("radio1").equalsIgnoreCase("Sea")) {
+							radioSea = true;
+							radioMountain = false;
+						}
+						else {
+							radioSea = false;
+							radioMountain = true;
+						}
+					}
+						
+					if(request.getParameter("checkboxArt") != null) {
+						cbArt = true;
+					}
+					
+					if(request.getParameter("checkboxYoung") != null) {
+						cbYoung = true;
+					}
+						
+					continent = request.getParameter("continent");
+						
+					PlanController planController = new PlanController();
+		        	DestinationBean destinationBean = new DestinationBean();
+		        	destinationBean.setSea(radioSea);
+		        	destinationBean.setMountain(radioMountain);
+		        	destinationBean.setArt(cbArt);
+		        	destinationBean.setYoung(cbYoung);
+		        	destinationBean.setContinent(continent);
+		        	
+		        	List<DestinationBean> dests;
+		        	dests = planController.findSpecialDestination(destinationBean);
+		        	
+		        	Random rand = new Random();
+		        	int index = rand.nextInt(dests.size());
+		        	session.setAttribute("destination", dests.get(index));
+		        	response.sendRedirect("plan.jsp");
+				}
+	        %>
+	        
+		        
+   			</div>
     	
     	<%
 			}

@@ -630,8 +630,6 @@ public class ProfileControllerView implements Initializable {
     	Parent root;
     	
     	this.closeThreads();
-    	CloseResources closeResources = new CloseResources();
-		closeResources.closeApplication();
     	    	
     	try {
     	
@@ -647,6 +645,8 @@ public class ProfileControllerView implements Initializable {
     		stage.setResizable(false);
     		stage.show();		
     		stage.setOnCloseRequest(we -> {
+    			CloseResources closeResources = new CloseResources();
+    			closeResources.closeApplication();
 	            stage.close();
 	            System.exit(0);
 	    	});

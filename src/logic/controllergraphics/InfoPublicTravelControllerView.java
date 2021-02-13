@@ -213,9 +213,6 @@ public class InfoPublicTravelControllerView {
     	
     	this.closeThreads();
     	
-    	CloseResources closeResources = new CloseResources();
-		closeResources.closeApplication();
-    	
     	try {
     		stage = (Stage) btnLogout.getScene().getWindow();
     		
@@ -229,6 +226,8 @@ public class InfoPublicTravelControllerView {
     		stage.setResizable(false);
     		stage.show();		
     		stage.setOnCloseRequest(we -> {
+    			CloseResources closeResources = new CloseResources();
+    			closeResources.closeApplication();
 	            stage.close();
 	            System.exit(0);
 	    	});

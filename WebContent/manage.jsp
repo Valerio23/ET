@@ -95,7 +95,7 @@ pageEncoding="ISO-8859-1"%>
 							if(Integer.parseInt(privateTravelBean.getIdTravelBean()) == Integer.parseInt(request.getParameter("book_private_travel"))){
 								manageTravelController.bookTravel(privateTravelBean.getIdTravelBean());
 								privateTravelBeans.remove(privateTravelBean);
-								session.setAttribute("book_private_success", "Travel correctly booked");
+								session.setAttribute("book_private_success", "Travel correctly booked, you can view it in your profile page!");
 								session.removeAttribute("book_private_travel");
 								break;
 							}

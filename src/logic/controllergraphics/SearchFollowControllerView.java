@@ -483,8 +483,6 @@ public class SearchFollowControllerView implements Initializable {
     	Parent root;
     	
     	this.closeThreads();
-    	CloseResources closeResources = new CloseResources();
-		closeResources.closeApplication();
 		    	
     	try {
     	
@@ -499,7 +497,9 @@ public class SearchFollowControllerView implements Initializable {
     		stage.setScene(scene);
     		stage.setResizable(false);
     		stage.show();		
-    		stage.setOnCloseRequest(we -> {    			
+    		stage.setOnCloseRequest(we -> {    
+    			CloseResources closeResources = new CloseResources();
+    			closeResources.closeApplication();
 	            stage.close();
 	            System.exit(0);
 	    	});	  

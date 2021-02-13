@@ -160,9 +160,6 @@ public class HomeControllerView {
     	
     	this.closeThreads();
     	
-    	CloseResources closeResources = new CloseResources();
-    	closeResources.closeApplication();
-    	
     	try {
     		stage = (Stage) btnLogout.getScene().getWindow();
     		
@@ -176,7 +173,9 @@ public class HomeControllerView {
     		stage.setResizable(false);
     		stage.show();		
     		stage.setOnCloseRequest(we -> {
-    			closeResources.closeApplication();
+    			CloseResources closeResources = new CloseResources();
+    	    	closeResources.closeApplication();
+    	    	stage.close();
     			System.exit(0);
     		});
     	} catch (IOException e){

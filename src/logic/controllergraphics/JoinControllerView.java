@@ -248,9 +248,6 @@ public class JoinControllerView implements Initializable{
     	
     	this.closeThreads();
     	
-    	CloseResources closeResources = new CloseResources();
-    	closeResources.closeApplication();
-    	
     	try {
     		stage = (Stage) btnLogout.getScene().getWindow();
     		
@@ -264,6 +261,8 @@ public class JoinControllerView implements Initializable{
     		stage.setResizable(false);
     		stage.show();		
     		stage.setOnCloseRequest(we -> {
+    			CloseResources closeResources = new CloseResources();
+    	    	closeResources.closeApplication();
 	            stage.close();
 	            System.exit(0);
 	    	});
