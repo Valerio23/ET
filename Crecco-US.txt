@@ -1,5 +1,0 @@
-User stories
-1.	As a user, I want to search travels made by other users filtered by destination, so that I can get some help in choosing mine and plan my travel.
-2.	As a user, I want to have the possibility to modify my profile, so that I can update my personal information (username, password and email). 
-3.	As a creator of a group travel, I want to receive a notification if a user asks to join one of my group travel, so that I can decide to accept or decline the request.
-

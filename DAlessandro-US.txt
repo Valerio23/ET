@@ -1,4 +1,0 @@
-User stories
-1. As a user, I want to receive notifications about follower requests, so that I can decide who to accept.
-2. As a user, I want to plan a travel specifying some filters (continent, sea or mountain place, youth places, art places), so that I can get a hint about the destination for my travel.
-3. As a user, I want to view available group travels, so that I can join these.
