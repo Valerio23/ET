@@ -28,7 +28,7 @@ public class TestSeleniumDeAngelis {
 		driver.findElement(By.xpath("//*[@id=\"contact_form\"]/div[5]/div/div/input")).sendKeys(username);
 		driver.findElement(By.xpath("//*[@id=\"contact_form\"]/div[6]/div/div/input")).sendKeys(password);
 		driver.findElement(By.xpath("//*[@id=\"contact_form\"]/div[7]/input")).click();
-		driver.findElement(By.xpath("//*[@id=\"myNavbar\"]/ul[1]/li[3]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"myNavbar\"]/ul[1]/li[4]/a")).click();
 		
 		WebElement elemUsername = driver.findElement(By.xpath("//*[@id=\"usrInf\"]/h4[1]"));
 		WebElement elemEmail = driver.findElement(By.xpath("//*[@id=\"usrInf\"]/h4[2]"));
