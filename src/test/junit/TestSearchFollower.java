@@ -11,13 +11,13 @@ import logic.exceptions.SystemException;
 
 public class TestSearchFollower {
 	
-	/* Autor: Enrico D'Alessandro - Test 1 */
+	/* Autor: Alessandro De Angelis - Test 1 */
 	@Test
 	public void testSendFollowRequestToUserNotFollowed() {
 		SearchFollowController searchFollowController = new SearchFollowController();
 		int result = 0;
 		try {
-			searchFollowController.sendFollowRequest("Cecco", "Erik97");
+			searchFollowController.sendFollowRequest("AlessDea", "Erik97");
 			result = 1;
 		} catch (SystemException | FollowRequestException | AddFollowerException e) {
 			result = 0;
@@ -26,7 +26,7 @@ public class TestSearchFollower {
 		assertEquals(1, result);
 	}
 	
-	/* Autor: Enrico D'Alessandro - Test 2 */
+	/* Autor: Alessandro De Angelis - Test 2 */
 	@Test
 	public void testSendFollowRequestToUserAlreadyFollowed() {
 		SearchFollowController searchFollowController = new SearchFollowController();

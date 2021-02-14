@@ -10,7 +10,7 @@ import logic.exceptions.TravRoomException;
 
 public class TestPlanController {
 	
-	/* Autor: Enrico D'Alessandro - Test 4 */
+	/* Autor: Valerio Crecco - Test 1 */
 	@Test
 	public void testValidateDatesFirstLessThanSecond() {
 		PlanController planController = new PlanController();
@@ -25,7 +25,7 @@ public class TestPlanController {
 		assertEquals(1, result);
 	}
 	
-	/* Autor: Enrico D'Alessandro - Test 5 */
+	/* Autor: Valerio Crecco - Test 2 */
 	@Test
 	public void testValidateDatesFirstGreaterThanSecond() {
 		PlanController planController = new PlanController();
@@ -40,7 +40,7 @@ public class TestPlanController {
 		assertEquals(0, result);
 	}
 	
-	/* Autor: Enrico D'Alessandro - Test 6 */
+	/* Autor: Valerio Crecco - Test 3 */
 	@Test
 	public void testValidateTravelersAndRoomsPositive() {
 		PlanController planController = new PlanController();
@@ -55,7 +55,7 @@ public class TestPlanController {
 		assertEquals(1, result);
 	}	
 	
-	/* Autor: Enrico D'Alessandro - Test 9 */
+	/* Autor: Alessandro De Angelis - Test 3 */
 	@Test
 	public void testValidateTravelersAndRoomsNegative() {
 		PlanController planController = new PlanController();

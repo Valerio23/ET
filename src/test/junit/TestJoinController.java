@@ -11,7 +11,7 @@ import logic.exceptions.SystemException;
 
 public class TestJoinController {
 	
-	/* Autor: Enrico D'Alessandro - Test 7 */
+	/* Autor: Enrico D'Alessandro - Test 1 */
 	@Test
 	public void testSendJoinRequestForNewTravel() {
 		JoinController joinController = new JoinController();
@@ -30,7 +30,7 @@ public class TestJoinController {
 		assertEquals(1, resultTest);
 	}
 	
-	/* Autor: Enrico D'Alessandro - Test 8 */
+	/* Autor: Enrico D'Alessandro - Test 2 */
 	@Test
 	public void testSendJoinRequestAlreadySent() {
 		JoinController joinController = new JoinController();

@@ -18,7 +18,7 @@ public class TestSeleniumCrecco {
 		String travelName = "Safari";
 		String actualTravelName = "";
 		driver.get("http://localhost:8080/EasyTravel/login.jsp");
-		driver.findElement(By.xpath("//*[@id=\"usr\"]")).sendKeys("Valerio123");
+		driver.findElement(By.xpath("//*[@id=\"usr\"]")).sendKeys("Valerio23");
 		driver.findElement(By.xpath("//*[@id=\"pwd\"]")).sendKeys("Valerio23.");
 		driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/form/div[3]/input")).click();
 		
